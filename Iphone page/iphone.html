@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+  <title>Iphone7</title>
+</head>
+
+<body onload="startTime(),makeDraggable()">
+
+  <div class="container">
+    <div id="draggable">
+      <div class="iphone-main">
+        <div class="iphone-buttons">
+          <div class="mute"></div>
+          <div class="up"></div>
+          <div class="down"></div>
+          <div class="lock"></div>
+        </div>
+        <div class="iphone-sensors">
+          <div class="camera"></div>
+          <div class="sensor"></div>
+          <div class="mic"></div>
+
+        </div>
+        <div class="iphone-screen">
+          <header class="screen-header">
+            <div class="network">
+              <span class="network-dots"></span>
+              <span class="network-dots"></span>
+              <span class="network-dots"></span>
+              <span class="network-dots"></span>
+              <span class="network-dots"></span>
+              <span class="network-name">Quantori</span>
+              <span class="network-wifi">
+                <img src="./images/wifi-white.png" alt="wi-fi">
+              </span>
+
+            </div>
+            <div class="top pointer"></div>
+            <div class="battery">
+              <div id="battery-charge">
+
+              </div>
+              <img src="./images/battery-white.png" class="battery-image" alt="battery">
+            </div>
+          </header>
+          <section class="screen-main">
+            <div id="clock"></div>
+            <div id="date"></div>
+            <div class="unlock-slide">
+              <div class="arrow-block" onclick="animateArrow()">
+                <span id="arrow">
+                  <img id="arrow-image" src=" ./images/unlock.png" alt="forward">
+                </span>
+
+              </div>
+
+              <span class="slide-title">slide to unlock</span>
+            </div>
+          </section>
+          <footer class="screen-footer">
+            <div class="fake-div-bottom"></div>
+            <div class="bottom pointer"></div>
+            <div class="camera-icon"></div>
+          </footer>
+        </div>
+        <div class="home-button">
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="./clockAndDate.js" defer></script>
+  <script src="./animateArrow.js" defer></script>
+  <script src="./makeDraggable.js" defer></script>
+</body>
+
+</html>
