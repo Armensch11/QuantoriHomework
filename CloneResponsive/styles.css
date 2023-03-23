@@ -25,6 +25,9 @@ body {
   /* border: 1px solid rgb(25, 239, 71); */
   border-right: 1px solid #eaecf0;
   background-color: #fff;
+  position: absolute;
+  top: 66px;
+  left: 0px;
 }
 .sidebar__dashboard,
 .sidebar__pages {
@@ -209,4 +212,111 @@ body {
 }
 .content__container__upgrade__button__icon {
   margin-top: 6px;
+}
+
+.content__container__stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 32px 32px 32px 264px;
+  gap: 32px;
+}
+.content__container__stats__revenue,
+.content__container__stats__users,
+.content__container__stats__newSignups,
+.content__container__stats__retention {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: start;
+  background-color: #fff;
+  width: 262px;
+  height: 162px;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  padding: 20px 20px;
+}
+.content__container__stats__revenue p,
+.content__container__stats__users p,
+.content__container__stats__newSignups p,
+.content__container__stats__retention p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+
+  color: #5f6980;
+}
+.content__container__stats__revenue h2,
+.content__container__stats__users h2,
+.content__container__stats__newSignups h2,
+.content__container__stats__retention h2 {
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 40px;
+
+  color: #282828;
+  margin-top: 0;
+  margin-bottom: auto;
+}
+.content__container__stats__revenue__change,
+.content__container__stats__users__change,
+.content__container__stats__newSignups__change,
+.content__container__stats__retention__change {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 8px;
+}
+.content__container__stats__revenue__change__current,
+.content__container__stats__users__change__current,
+.content__container__stats__newSignups__change__current,
+.content__container__stats__retention__change__current {
+  width: 54px;
+  height: 24px;
+  border-radius: 100px;
+}
+.content__container__stats__revenue__change__previous,
+.content__container__stats__users__change__previous,
+.content__container__stats__newSignups__change__previous,
+.content__container__stats__retention__change__previous {
+  font-size: 12px;
+  line-height: 26px;
+
+  color: #9d9fa2;
+}
+.content__container__stats__revenue__change__current {
+  background-color: #dcfff5;
+  font-size: 12px;
+  line-height: 26px;
+
+  text-align: center;
+
+  color: #20c997;
+}
+.content__container__stats__users__change__current {
+  background-color: #ffe0e3;
+  font-size: 12px;
+  line-height: 26px;
+
+  text-align: center;
+
+  color: #dc3545;
+}
+.content__container__stats__newSignups__change__current {
+  background-color: #f2f4f7;
+  font-size: 12px;
+  line-height: 26px;
+
+  text-align: center;
+
+  color: #5f6980;
+}
+.content__container__stats__retention__change__current {
+  background-color: #dcfff5;
+  font-size: 12px;
+  line-height: 26px;
+
+  text-align: center;
+
+  color: #20c997;
 }
