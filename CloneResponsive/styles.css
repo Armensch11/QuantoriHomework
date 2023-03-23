@@ -333,10 +333,12 @@ body {
   border-radius: 12px;
 }
 .content__container__chart__title {
+  height: 62px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 16px;
+  align-items: center;
+  /* margin-top: 16px; */
   font-size: 18px;
   line-height: 30px;
   color: #282828;
@@ -441,10 +443,12 @@ body {
   margin: 32px 32px 32px 264px;
 }
 .content__container__apps__title {
+  height: 62px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 16px;
+  align-items: center;
+
   font-size: 18px;
   line-height: 30px;
   color: #282828;
@@ -455,6 +459,7 @@ body {
 }
 
 .content__container__apps__columns {
+  height: 54px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -473,12 +478,17 @@ body {
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
+  padding-left: 16px;
+  border-bottom: 1px solid #eaecf0;
 }
 .content__container__apps__row__icon {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
 .content__container__apps__pagination {
+  height: 92px;
   display: flex;
   flex-direction: row;
   justify-content: center;
