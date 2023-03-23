@@ -326,9 +326,9 @@ body {
   align-self: stretch;
   height: 458px;
   margin: 32px 32px 32px 264px;
-  padding-left: 24px;
+  /* padding-left: 24px; */
   padding-bottom: 24px;
-  padding-right: 24px;
+  /* padding-right: 24px; */
   background-color: #fff;
   border-radius: 12px;
 }
@@ -340,9 +340,18 @@ body {
   font-size: 18px;
   line-height: 30px;
   color: #282828;
+  padding-left: 24px;
+
+  padding-right: 24px;
+  border-bottom: 1px solid #eaecf0;
 }
 .content__container__chart__content {
   margin-top: 32px;
+  padding-left: 24px;
+
+  padding-right: 24px;
+  display: flex;
+  flex-direction: row;
 }
 .content__container__chart__axisY {
   height: 240px;
@@ -358,7 +367,12 @@ body {
   color: #9d9fa2;
 }
 .content__container__chart__image {
-  background-image: url(./images/content-Icons/green-chart.svg);
+  height: 240px;
+  width: 100%;
+
+  background-image: url(./images/content-Icons/chart-image.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 .content__container__chart__axisX {
   height: 40px;
@@ -372,6 +386,9 @@ body {
   line-height: 20px;
   margin-left: 50px;
   margin-bottom: 32px;
+  /* padding-left: 24px; */
+
+  padding-right: 24px;
   color: #9d9fa2;
 }
 .content__container__chart__marks {
