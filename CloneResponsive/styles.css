@@ -320,3 +320,96 @@ body {
 
   color: #20c997;
 }
+.content__container__chart {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  height: 458px;
+  margin: 32px 32px 32px 264px;
+  padding-left: 24px;
+  padding-bottom: 24px;
+  padding-right: 24px;
+  background-color: #fff;
+  border-radius: 12px;
+}
+.content__container__chart__title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 16px;
+  font-size: 18px;
+  line-height: 30px;
+  color: #282828;
+}
+.content__container__chart__content {
+  margin-top: 32px;
+}
+.content__container__chart__axisY {
+  height: 240px;
+  width: 40px;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+
+  color: #9d9fa2;
+}
+.content__container__chart__image {
+  background-image: url(./images/content-Icons/green-chart.svg);
+}
+.content__container__chart__axisX {
+  height: 40px;
+  width: calc(100% - margin-left);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  margin-left: 50px;
+  margin-bottom: 32px;
+  color: #9d9fa2;
+}
+.content__container__chart__marks {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.content__container__chart__marks,
+.content__container__chart__marks__element {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+
+  color: #5f6980;
+}
+.content__container__chart__marks__element {
+  margin-right: 52px;
+}
+
+.content__container__chart__marks__element__green {
+  background-color: #20c997;
+  width: 12px;
+  height: 12px;
+  align-self: center;
+
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.content__container__chart__marks__element__blue {
+  background-color: #5a9cfe;
+  width: 12px;
+  height: 12px;
+  align-self: center;
+  border-radius: 50%;
+  margin-right: 8px;
+}
