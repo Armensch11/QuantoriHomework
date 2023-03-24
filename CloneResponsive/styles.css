@@ -597,7 +597,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  border-bottom: 1px solid #eaecf0;
   color: #5f6980;
 }
 
@@ -606,6 +606,7 @@ body {
   flex-direction: row !important;
   justify-content: flex-start !important;
   align-items: center;
+  border-bottom: none !important;
   /* border: 1px solid green; */
 }
 
