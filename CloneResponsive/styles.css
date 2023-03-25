@@ -742,105 +742,70 @@ body {
   grid-row: 6/7;
   grid-column: 6/7;
 }
-@media (max-width: 1100px) {
-  .header__main__searchbar {
-    width: 65%;
-  }
-}
 @media (max-width: 850px) {
-  .header__main__searchbar {
-    width: 50%;
-  }
-  .content__container__stats {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: 8px 8px 8px 232px;
-    gap: none;
-  }
-  .content__container__stats__revenue,
-  .content__container__stats__users,
-  .content__container__stats__newSignups,
-  .content__container__stats__retention {
-    margin: 8px 8px 8px 8px;
-    width: calc(100vw - 232px);
-  }
-  .content__container__apps {
-    margin: 8px 8px;
-    width: calc(100vw - 232px);
-  }
-}
-@media (max-width: 600px) {
-  .header__main__notification,
-  .header__main__calendar,
-  .header__main__tiles {
-    display: none;
-  }
   .header__main__searchbar {
     width: 65%;
   }
   .content__container__upgrade {
+    display: flex;
     flex-direction: column;
-    height: fit-content;
-    margin: 8px 8px;
-    margin-left: 232px;
-    width: calc(100% - 232px);
+    justify-content: space-between;
+    height: auto;
+    align-items: center;
+    gap: 16px;
   }
-  .content__container__chart {
-    width: calc(100vw);
-    min-width: 350px;
+  .content__container__apps {
+    overflow: hidden;
+    overflow-x: scroll;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 700px) {
   .sidebar {
-    display: none;
+    display: none !important;
   }
   .header {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    width: 100%;
   }
   .logo {
     width: 100%;
-    border-right: none;
   }
   .header__main {
     width: 100%;
   }
-  .content__container__upgrade {
-    flex-direction: column;
-    height: fit-content;
-    margin: 8px 8px;
+  .header__main__calendar,
+  .header__main__notification,
+  .header__main__tiles {
+    display: none !important;
   }
-  .content__container__stats {
+  .content__container__upgrade {
+    margin: 16px 16px;
+    padding: 16px 16px;
+  }
+  .content__container__stats,
+  .content__container__chart,
+  .content__container__apps {
+    margin: 16px 16px;
+  }
+}
+@media (max-width: 400px) {
+  .content__container {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    margin: 0;
-    gap: none;
-    width: 100%;
+  }
+  .content__container__upgrade,
+  .content__container__stats,
+  .content__container__chart,
+  .content__container__apps {
+    margin-bottom: 8px;
   }
   .content__container__stats__revenue,
-  .content__container__stats__users,
   .content__container__stats__newSignups,
-  .content__container__stats__retention {
-    width: calc(100vw);
-    margin: 8px 8px;
-  }
-  .content__container__chart {
-    min-width: 375px;
-    margin: 8px 8px;
-  }
-
-  .content__container__chart__marks__element {
-    margin-right: 16px;
-  }
-  .content__container__apps {
-    margin: 8px 8px !important;
-    overflow: hidden;
-    overflow-x: scroll;
-    min-width: 375px;
+  .content__container__stats__retention,
+  .content__container__stats__users {
+    width: 375px;
   }
 }
