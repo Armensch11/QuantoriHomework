@@ -147,7 +147,7 @@ body {
   height: 40px;
   border-radius: 50%;
 
-  background-image: url(./images/header-Icons/avatar200.jpg);
+  background-image: url(./images/header-Icons/avatarMark.jpg);
   background-size: contain;
   position: relative;
 }
@@ -162,6 +162,7 @@ body {
   margin: 32px 32px 32px 264px;
   padding: 32px 36px;
   height: 128px;
+  min-width: 375px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -218,6 +219,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  flex-wrap: wrap;
   margin: 32px 32px 32px 264px;
   gap: 32px;
 }
@@ -458,7 +460,6 @@ body {
   border-bottom: 1px solid #eaecf0;
 }
 
-
 .content__container__apps__pagination {
   height: 92px;
   display: flex;
@@ -487,6 +488,8 @@ body {
   grid-template-rows: 54px 76px 76px 76px 76px 76px;
   justify-items: start;
   align-items: center;
+  min-width: 850px;
+  overflow-x: hidden;
 }
 .content__grid div {
   width: 100%;
@@ -738,4 +741,106 @@ body {
 .col6__row6 {
   grid-row: 6/7;
   grid-column: 6/7;
+}
+@media (max-width: 1100px) {
+  .header__main__searchbar {
+    width: 65%;
+  }
+}
+@media (max-width: 850px) {
+  .header__main__searchbar {
+    width: 50%;
+  }
+  .content__container__stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 8px 8px 8px 232px;
+    gap: none;
+  }
+  .content__container__stats__revenue,
+  .content__container__stats__users,
+  .content__container__stats__newSignups,
+  .content__container__stats__retention {
+    margin: 8px 8px 8px 8px;
+    width: calc(100vw - 232px);
+  }
+  .content__container__apps {
+    margin: 8px 8px;
+    width: calc(100vw - 232px);
+  }
+}
+@media (max-width: 600px) {
+  .header__main__notification,
+  .header__main__calendar,
+  .header__main__tiles {
+    display: none;
+  }
+  .header__main__searchbar {
+    width: 65%;
+  }
+  .content__container__upgrade {
+    flex-direction: column;
+    height: fit-content;
+    margin: 8px 8px;
+    margin-left: 232px;
+    width: calc(100% - 232px);
+  }
+  .content__container__chart {
+    width: calc(100vw);
+    min-width: 350px;
+  }
+}
+@media (max-width: 400px) {
+  .sidebar {
+    display: none;
+  }
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .logo {
+    width: 100%;
+    border-right: none;
+  }
+  .header__main {
+    width: 100%;
+  }
+  .content__container__upgrade {
+    flex-direction: column;
+    height: fit-content;
+    margin: 8px 8px;
+  }
+  .content__container__stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+    gap: none;
+    width: 100%;
+  }
+  .content__container__stats__revenue,
+  .content__container__stats__users,
+  .content__container__stats__newSignups,
+  .content__container__stats__retention {
+    width: calc(100vw);
+    margin: 8px 8px;
+  }
+  .content__container__chart {
+    min-width: 375px;
+    margin: 8px 8px;
+  }
+
+  .content__container__chart__marks__element {
+    margin-right: 16px;
+  }
+  .content__container__apps {
+    margin: 8px 8px !important;
+    overflow: hidden;
+    overflow-x: scroll;
+    min-width: 375px;
+  }
 }
