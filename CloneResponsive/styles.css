@@ -374,10 +374,11 @@ body {
   height: 240px;
   width: 100%;
 
-  background-image: url(./images/content-Icons/chart-image.png);
+  /* background-image: url(./images/content-Icons/chart-image.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 }
+
 .content__container__chart__axisX {
   height: 40px;
   width: calc(100% - margin-left);
@@ -807,9 +808,5 @@ body {
   .content__container__stats__retention,
   .content__container__stats__users {
     width: 375px;
-  }
-  .content__container__chart__image {
-    background-image: url(./images/content-Icons/chartSqueezed.png);
-    background-size: auto 240px;
   }
 }
