@@ -210,9 +210,8 @@ const getFullName = (user) => {
  *
  * Use: map
  */
-const multiplyTo = (numbers, multiplier) => {
-  return numbers.map((el) => el * multiplier);
-};
+const multiplyTo = (numbers, multiplier) =>
+  numbers.map((el) => el * multiplier);
 /**
  * Exercise 15
  *
@@ -268,7 +267,17 @@ const getSmallestColumn = (numbers) => {};
  * Write a function that returns the 2 biggest value of an array
  * [4,3,2,1] => [4,3]
  */
-const get2BiggestValues = (numbers) => {};
+const get2BiggestValues = (numbers) => {
+  numbers.sort((a, b) => b - a);
+  const resArr = [numbers[0]];
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] !== resArr[0]) {
+      resArr.push(numbers[i]);
+      break;
+    }
+  }
+  return resArr;
+};
 /**
  * Exercise 19
  *
@@ -277,7 +286,16 @@ const get2BiggestValues = (numbers) => {};
  *
  * 'Return the number (count) of vowels in the given string.' => 15
  */
-const getNumberOfVowels = (string) => {};
+const getNumberOfVowels = (string) => {
+  const vowels = ["a", "e", "i", "o", "u"];
+  let count = 0;
+  for (let i = 0; i < string.length; i++) {
+    if (vowels.indexOf(string[i].toLowerCase()) > -1) {
+      count++;
+    }
+  }
+  return count;
+};
 /**
  * Exercise 20
  *
@@ -286,7 +304,17 @@ const getNumberOfVowels = (string) => {};
  * with capital odd.
  * 'abcdef' => ['AbCdEf', 'aBcDeF']
  */
-const getCapitalizedStrings = (string) => {};
+const getCapitalizedStrings = (string) => {
+  let oddString = string
+    .split("")
+    .map((el, index) => (index % 2 === 0 ? el.toUpperCase() : el))
+    .join("");
+  let evenString = string
+    .split("")
+    .map((el, index) => (index % 2 > 0 ? el.toUpperCase() : el))
+    .join("");
+  return [oddString, evenString];
+};
 /**
  * Exercise 21
  *
@@ -313,7 +341,15 @@ const getCorrectString = (string) => {};
  * and returns an array of all their elements without nesting.
  * [1, 2, [3, 4], 5, [[6, 7], 8], 9] => [1, 2, 3, 4, 5, 6, 7, 8, 9]
  */
-const getFlattenedArray = (numbers) => {};
+const getFlattenedArray = (numbers) => {
+  return numbers.reduce((acc, el) => {
+    if (el instanceof Array) {
+      return [...acc, ...getFlattenedArray(el)];
+    } else {
+      return [...acc, el];
+    }
+  }, []);
+};
 /**
  * Exercise 23
  *
@@ -321,4 +357,8 @@ const getFlattenedArray = (numbers) => {};
  *
  * [1, 2, 2, 4, 5, 5] => [2, 5]
  */
-const getNotUniqueValues = (numbers) => {};
+const getNotUniqueValues = (numbers) => {
+  return numbers
+    .filter((el, index, array) => array.lastIndexOf(el) !== index)
+    .filter((el, index, array) => array.lastIndexOf(el) == index);
+};
