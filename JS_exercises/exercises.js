@@ -247,7 +247,11 @@ const getCharacterNames = (characters, franchise) =>
  *]
  * => [1,2,3,4]
  */
-const getSmallestRow = (numbers) => {};
+const getSmallestRow = (numbers) =>
+  numbers.map((row) => {
+    row.sort((a, b) => a - b);
+    return row[0];
+  });
 /**
  * Exercise 17
  *
@@ -260,7 +264,14 @@ const getSmallestRow = (numbers) => {};
  *]
  * => [1,2,3,4]
  */
-const getSmallestColumn = (numbers) => {};
+const getSmallestColumn = (numbers) => {
+  const resArr = [];
+  for (let i = 0; i < numbers.length; i++) {
+    for (let j = 0; j < numbers[i].length; j++) {
+      
+    }
+  }
+};
 /**
  * Exercise 18
  *
