@@ -266,11 +266,21 @@ const getSmallestRow = (numbers) =>
  */
 const getSmallestColumn = (numbers) => {
   const resArr = [];
-  for (let i = 0; i < numbers.length; i++) {
-    for (let j = 0; j < numbers[i].length; j++) {
-      
+
+  let columnMin = Infinity;
+  let i = 0;
+  for (let j = 0; j < numbers[i].length; j++) {
+    while (i < numbers.length) {
+      if (numbers[i][j] < columnMin) {
+        columnMin = numbers[i][j];
+      }
+      i++;
     }
+    resArr.push(columnMin);
+    columnMin = Infinity;
+    i = 0;
   }
+  return resArr;
 };
 /**
  * Exercise 18
