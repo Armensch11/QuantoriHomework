@@ -354,7 +354,24 @@ const getCapitalizedStrings = (string) => {
  * N is an integer in the range [1..200,000]
  * S consists only of lowercase letters [a-z]
  */
-const getCorrectString = (string) => {};
+const getCorrectString = (string) => {
+  const resArr = [string[0]];
+  let counter = 1;
+  for (let i = 1; i < string.length; i++) {
+    if (string[i] === resArr[resArr.length - 1]) {
+      if (counter < 2) {
+        resArr.push(string[i]);
+        counter++;
+      }
+      i++;
+    }
+    if (string[i] !== resArr[resArr.length - 1]) {
+      resArr.push(string[i]);
+      counter = 1;
+    }
+  }
+  return resArr.join("");
+};
 /**
  * Exercise 22
  *
