@@ -65,7 +65,8 @@ const getShorterStrings = (strings, characters = 20) => {
  *
  * Use: map
  */
-const getComputedStrings = (fish) => {};
+const getComputedStrings = (fish) =>
+  fish.map((el) => `${el.name} likes ${el.likes}`);
 /**
  * Exercise 6
  *
