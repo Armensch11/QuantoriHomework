@@ -164,6 +164,8 @@ const getErrorMessage = (code) => {
       return "Access denied";
     case 404:
       return "Not found";
+    default:
+      return "Unhandled error";
   }
 };
 /**
@@ -309,10 +311,11 @@ const get2BiggestValues = (numbers) => {
  * 'Return the number (count) of vowels in the given string.' => 15
  */
 const getNumberOfVowels = (string) => {
-  const vowels = ["a", "e", "i", "o", "u"];
+  const vowels = new Set(["a", "e", "i", "o", "u"]);
+
   let count = 0;
   for (let i = 0; i < string.length; i++) {
-    if (vowels.indexOf(string[i].toLowerCase()) > -1) {
+    if (vowels.has(string[i])) {
       count++;
     }
   }
