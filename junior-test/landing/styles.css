@@ -41,6 +41,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  width: 70%;
 }
 .header__contacts__container,
 .header__contacts__socials {
@@ -95,7 +96,7 @@
   color: #e4e5ea;
 }
 .content__right {
-  width: 300px;
+  width: 350px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -129,6 +130,36 @@
 }
 .content__right__gift {
   margin-bottom: 60px;
+}
+.content__right__gift__widget h3,
+.content__right__gift__dashboard h3,
+.content__right__gift__audit h3,
+.content__right__gift__days h3 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 6px;
+
+  text-align: right;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  color: #e4e5ea;
+}
+.content__right__gift__widget p,
+.content__right__gift__dashboard p,
+.content__right__gift__audit p,
+.content__right__gift__days p {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: right;
+
+  color: #e4e5ea;
 }
 .content__right__button {
   width: 262px;
