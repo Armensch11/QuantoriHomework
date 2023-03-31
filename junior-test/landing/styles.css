@@ -10,6 +10,84 @@
   height: 100vh;
   overflow: scroll;
   padding: 50px 150px 50px 150px;
+  position: relative;
+}
+.circle__purple__big {
+  position: absolute;
+  width: 259px;
+  height: 259px;
+  left: 602px;
+  top: -154px;
+  border-radius: 50%;
+  background: #833ab4;
+  opacity: 0.5;
+  filter: blur(196px);
+}
+.circle__purple__small {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  left: 868px;
+  top: -2px;
+  border-radius: 50%;
+  background: radial-gradient(
+    64% 64% at 27.25% 26.5%,
+    rgba(236, 208, 255, 0.64) 0%,
+    rgba(161, 93, 207, 0.24) 59.67%,
+    rgba(118, 49, 164, 0.208) 78.59%,
+    rgba(86, 24, 128, 0.232) 100%
+  );
+
+  box-shadow: 3px 6px 27px -10px rgba(177, 118, 217, 0.25);
+  filter: blur(5px);
+}
+.circle__brown__big {
+  position: absolute;
+  width: 311px;
+  height: 311px;
+  left: -102px;
+  top: 251px;
+  border-radius: 50%;
+  background: #961a1a;
+  opacity: 0.5;
+  filter: blur(196px);
+}
+.circle__brown__middle {
+  position: absolute;
+  width: 83px;
+  height: 83px;
+  left: 519px;
+  top: 83px;
+  border-radius: 50%;
+
+  background: radial-gradient(
+      64% 64% at 27.25% 26.5%,
+      rgba(255, 208, 208, 0.536) 0%,
+      rgba(212, 93, 93, 0.264) 59.67%,
+      rgba(167, 49, 49, 0.248) 78.59%,
+      rgba(130, 25, 25, 0.248) 100%
+    )
+    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  box-shadow: 3px 6px 27px -10px rgba(223, 125, 125, 0.25);
+  backdrop-filter: blur(2px);
+}
+.circle__brown__small {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  left: 851px;
+  top: 547px;
+  border-radius: 50%;
+  background: radial-gradient(
+      64% 64% at 27.25% 26.5%,
+      rgba(255, 208, 208, 0.48) 0%,
+      rgba(212, 93, 93, 0.248) 59.67%,
+      rgba(167, 49, 49, 0.264) 78.59%,
+      rgba(130, 25, 25, 0.232) 100%
+    )
+    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  box-shadow: 3px 6px 27px -10px rgba(223, 125, 125, 0.25);
+  filter: blur(2.5px);
 }
 .header {
   display: flex;
@@ -62,6 +140,18 @@
   align-items: center;
   margin-left: auto;
   margin-right: 0;
+}
+.header__contacts__phone {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: right;
+
+  /* light text */
+
+  color: #e4e5ea;
 }
 
 .header__contacts__socials__whats,
@@ -205,6 +295,7 @@
   width: 262px;
   height: 61px;
 }
+
 .content__right__button button {
   background-color: #4077f3;
   font-family: "Inter";
@@ -216,6 +307,10 @@
   width: 262px;
   height: 61px;
   color: #e4e5ea;
+  border: none;
+}
+.content__right__button button:hover {
+  transform: scale(1.02);
 }
 .footer__main {
   margin-top: 124px;
@@ -307,11 +402,8 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
-  /* identical to box height */
 
   text-align: right;
-
-  /* light text */
 
   color: #e4e5ea;
 }
