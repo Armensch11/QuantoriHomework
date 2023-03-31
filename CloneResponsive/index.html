@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="./styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <title>Clone</title>
+</head>
+
+<body>
+  <section class="main__container">
+    <section class="header">
+      <div class="logo">
+        <img src="./images/Logo.svg" alt="logo" class="logo__icon" />
+      </div>
+      </div>
+      <div class="header__main">
+        <div class="header__main__searchbar">
+          <div class="header__main__searchbar__icon">
+            <img src="./images/header-Icons/search.svg" alt="search icon">
+          </div>
+          <div class="header__main__searchbar__placeholder">
+            <input type="search" placeholder="Search..." id="search-input" size=100>
+          </div>
+        </div>
+        <div class="header__main__notification">
+          <div class="header__main__notification__icon">
+            <img src="./images/header-Icons/notification.svg" alt="notification indicator">
+          </div>
+        </div>
+        <div class="header__main__calendar">
+          <div class="header__main__calendar__icon">
+            <img src="./images/header-Icons/calendar.svg" alt="calendar icon">
+          </div>
+        </div>
+        <div class="header__main__tiles">
+          <div class="header__main__tiles__icon">
+            <img src="./images/header-Icons/tiles.svg" alt="app tiles">
+          </div>
+        </div>
+        <div class="header__main__avatar">
+          <div class="header__main__avatar__icon">
+
+            <img src="./images/header-Icons/green-indicator.svg" alt="status indicator"
+              class="header__main__avatar__icon__status">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="content__container">
+      <div class="content__container__upgrade">
+        <div class="content__container__upgrade__description">
+          <h3>Unlock premium stats</h3>
+          <p>Get up to 10TB of storage for a limited time</p>
+        </div>
+        <div class="content__container__upgrade__button">
+          <div class="content__container__upgrade__button__icon">
+            <img src="./images/content-Icons/lightning.svg" alt="lightning">
+          </div>
+          <div>
+            Upgrade
+          </div>
+
+        </div>
+      </div>
+      <div class="content__container__stats">
+        <div class="content__container__stats__revenue">
+          <p>
+            Revenue
+          </p>
+          <h2>
+            $56,945
+          </h2>
+          <div class="content__container__stats__revenue__change">
+            <div class="content__container__stats__revenue__change__current">
+              +45%
+            </div>
+            <div class="content__container__stats__revenue__change__previous">
+              From 4.6%
+            </div>
+          </div>
+
+        </div>
+        <div class="content__container__stats__users">
+          <p>
+            Users
+          </p>
+          <h2>
+            76.8%
+          </h2>
+          <div class="content__container__stats__users__change">
+            <div class="content__container__stats__users__change__current">
+              -1.7%
+            </div>
+            <div class="content__container__stats__users__change__previous">
+              From 4.6%
+            </div>
+          </div>
+        </div>
+        <div class="content__container__stats__newSignups">
+          <p>
+            New Signups
+          </p>
+          <h2>
+            116
+          </h2>
+          <div class="content__container__stats__newSignups__change">
+            <div class="content__container__stats__newSignups__change__current">
+              0.00
+            </div>
+            <div class="content__container__stats__newSignups__change__previous">
+
+            </div>
+          </div>
+        </div>
+        <div class="content__container__stats__retention">
+          <p>
+            Retention
+          </p>
+          <h2>
+            12.67%
+          </h2>
+          <div class="content__container__stats__retention__change">
+            <div class="content__container__stats__retention__change__current">
+              +0.6%
+            </div>
+            <div class="content__container__stats__retention__change__previous">
+              From 4.6%
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content__container__chart">
+        <div class="content__container__chart__title">
+          <div>
+            Performance
+          </div>
+          <div>
+            <img src="./images/content-Icons/vertical-dots.svg" alt="dots">
+          </div>
+        </div>
+        <div class="content__container__chart__content">
+          <div class="content__container__chart__axisY">
+            <div>
+              0
+            </div>
+            <div>
+              100
+            </div>
+            <div>
+              200
+            </div>
+            <div>
+              300
+            </div>
+            <div>
+              400
+            </div>
+          </div>
+          <div class="content__container__chart__image">
+
+
+            <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+              viewBox="0 0 1044 242" fill="none">
+              <path stroke="#20C997" stroke-width="3"
+                d="M1 136.467c28.27-5.335 203.573 10.672 238.285-9.891 43.389-25.704 77.745-108.25 116.844-61.886 41.924 49.714 112.811-106.567 170.915-50.276 26.251 25.432 82.793 103.624 138.61 103.624 45.362 0 45.298-73.627 136.023-73.627 90.724 0 82.569 92.056 242.323 92.056" />
+              <path fill="url(#a)"
+                d="M239.285 126.576C204.573 147.139 29.269 131.132 1 136.467V242h1043V136.467c-159.754 0-151.599-92.056-242.323-92.056-90.725 0-90.661 73.627-136.023 73.627-55.817 0-112.359-78.192-138.61-103.624-58.104-56.29-128.991 99.99-170.915 50.276-39.099-46.364-73.455 36.182-116.844 61.886Z" />
+              <path fill="url(#b)"
+                d="M127.483 117.52C93.235 133.621 28.891 146.001 1 150.178V242h1043V93.977c-157.618 0-159.563 96.453-249.075 96.453-89.511 0-93.403-103.84-138.158-103.84-44.756 0-33.08 78.777-136.213 75.36-103.132-3.418-153.726-37.215-215.994-67.973-61.934-30.593-133.492 3.051-176.383 23.217l-.694.326Z" />
+              <path stroke="#679CF6" stroke-width="3"
+                d="M1 150.178c27.891-4.177 92.235-16.557 126.483-32.658 42.81-20.126 114.808-54.302 177.077-23.543 62.268 30.758 112.862 64.555 215.994 67.973 103.133 3.417 91.457-74.868 136.213-74.868 44.755 0 48.647 103.348 138.158 103.348 89.512 0 91.457-96.453 249.075-96.453" />
+              <defs>
+                <linearGradient id="a" x1="522.5" x2="522.5" y1="2" y2="242" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#20C997" stop-opacity=".13" />
+                  <stop offset="1" stop-color="#20C997" stop-opacity="0" />
+                </linearGradient>
+                <linearGradient id="b" x1="522.5" x2="522.5" y1="81.672" y2="242" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#4285F4" stop-opacity=".25" />
+                  <stop offset="1" stop-color="#4285F4" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        <div class="content__container__chart__axisX">
+          <div>
+            Sun
+          </div>
+          <div>
+            Mon
+          </div>
+          <div>
+            Tue
+          </div>
+          <div>
+            Wed
+          </div>
+          <div>
+            Thu
+          </div>
+          <div>
+            Fri
+          </div>
+          <div>
+            Sat
+          </div>
+        </div>
+
+        <div class="content__container__chart__marks">
+          <div class="content__container__chart__marks__element">
+            <div class="content__container__chart__marks__element__green">
+
+            </div>
+            <p>Instagram</p>
+          </div>
+          <div class="content__container__chart__marks__element">
+            <div class="content__container__chart__marks__element__blue"></div>
+            <p>Facebook</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="content__container__apps">
+        <div class="content__container__apps__title">
+          <div>
+            Installed Apps
+          </div>
+          <div>
+            <img src="./images/content-Icons/vertical-dots.svg" alt="dots">
+          </div>
+        </div>
+
+
+
+        <div class="content__grid">
+          <div class="col1__row1">
+            <p>Source</p>
+          </div>
+          <div class="col1__row2">
+            <div class="content__container__apps__row__icon">
+              <img src="./images/content-Icons/zeppelin-icon.svg" alt="zeppelin icon">
+              <p>Zeppelin</p>
+            </div>
+          </div>
+          <div class="col1__row3">
+            <div class="content__container__apps__row__icon">
+              <img src="./images/content-Icons/figma-icon.svg" alt="figma icon">
+              <p>Figma</p>
+            </div>
+          </div>
+          <div class="col1__row4">
+            <div class="content__container__apps__row__icon">
+              <img src="./images/content-Icons/meta-icon.svg" alt="meta icon">
+              <p>Meta</p>
+            </div>
+          </div>
+          <div class="col1__row5">
+            <div class="content__container__apps__row__icon">
+              <img src="./images/content-Icons/angular-icon.svg" alt="angular icon">
+              <p>Angular</p>
+            </div>
+          </div>
+          <div class="col1__row6">
+            <div class="content__container__apps__row__icon">
+
+              <img src="./images/content-Icons/vue-icon.svg" alt="vue icon">
+              <p>Vue</p>
+            </div>
+          </div>
+          <!-- column 2 -->
+          <div class="col2__row1">
+            <p>Amount</p>
+          </div>
+          <div class="col2__row2">686.00</div>
+          <div class="col2__row3">864.00</div>
+          <div class="col2__row4">176.00</div>
+          <div class="col2__row5">49.00</div>
+          <div class="col2__row6">999.00</div>
+          <!-- column 3 -->
+          <div class="col3__row1">
+            <p>Status</p>
+          </div>
+          <div class="col3__row2">
+            <p>Active</p>
+          </div>
+          <div class="col3__row3">
+            <p> Pending</p>
+          </div>
+          <div class="col3__row4">
+            <p> Cancel</p>
+          </div>
+          <div class="col3__row5">
+            <p>Active</p>
+          </div>
+          <div class="col3__row6">
+            <p>Active</p>
+          </div>
+          <!-- column 4 -->
+          <div class="col4__row1">
+            <p>User ID</p>
+          </div>
+          <div class="col4__row2">114423</div>
+          <div class="col4__row3">76223</div>
+          <div class="col4__row4">89453</div>
+          <div class="col4__row5">11467</div>
+          <div class="col4__row6">67385</div>
+          <!-- column 5 -->
+          <div class="col5__row1">
+            <p>Joined</p>
+          </div>
+          <div class="col5__row2">October</div>
+          <div class="col5__row3">June</div>
+          <div class="col5__row4">March</div>
+          <div class="col5__row5">February</div>
+          <div class="col5__row6">October</div>
+          <!-- column 6 -->
+          <div class="col6__row1">
+            <p>Group</p>
+          </div>
+          <div class="col6__row2">Design</div>
+          <div class="col6__row3">Finance</div>
+          <div class="col6__row4">Coding</div>
+          <div class="col6__row5">Marketing</div>
+          <div class="col6__row6">Finance</div>
+        </div>
+        <div class="content__container__apps__pagination">
+          <div class="content__container__apps__pagination__arrowLeft">
+            <img src="./images/content-Icons/arrow-left.svg" alt="arrow left">
+          </div>
+          <div class="content__container__apps__pagination__number">
+            1/15
+          </div>
+          <div class="content__container__apps__pagination__arrowRight">
+            <img src="./images/content-Icons/arrow-right.svg" alt="arrow right">
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </section>
+
+  <section class="sidebar">
+    <div class="sidebar__dashboard"> Dashboard
+      <div class="sidebar__dashboard__element dashboard">
+        <div class="sidebar__dashboard__element__icon">
+          <img src="./images/sidebar-Icons/dashboard-Icon.svg" alt="dashboard icon">
+        </div>
+
+        <div class="sidebar__dashboard__element__title">Dashboard</div>
+        <div class="sidebar__dashboard__element__arrowDown">
+          <img src="./images/sidebar-Icons/down-Arrow.svg" alt="down arrow">
+        </div>
+
+      </div>
+      <div class="sidebar__dashboard__element messages">
+        <div class="sidebar__dashboard__element__icon">
+          <img src="./images/sidebar-Icons/messages-Icon.svg" alt="messages icon">
+        </div>
+
+        <div class="sidebar__dashboard__element__title">Messages</div>
+        <div class="sidebar__dashboard__element__arrowDown">
+          <img src="./images/sidebar-Icons/down-Arrow.svg" alt="down arrow">
+        </div>
+
+      </div>
+      <div class="sidebar__dashboard__element friends">
+        <div class="sidebar__dashboard__element__icon">
+          <img src="./images/sidebar-Icons/friends-Icon.svg" alt="friends icon">
+        </div>
+
+        <div class="sidebar__dashboard__element__title">Friends</div>
+        <div class="sidebar__dashboard__element__arrowDown">
+          <img src="./images/sidebar-Icons/down-Arrow.svg" alt="down arrow">
+        </div>
+      </div>
+      <div class="sidebar__dashboard__element apps">
+        <div class="sidebar__dashboard__element__icon">
+          <img src="./images/sidebar-Icons/apps-Icon.svg" alt="apps icon">
+        </div>
+
+        <div class="sidebar__dashboard__element__title">Apps</div>
+        <div class="sidebar__dashboard__element__arrowDown">
+          <img src="./images/sidebar-Icons/down-Arrow.svg" alt="down arrow">
+        </div>
+      </div>
+    </div>
+    <div class="sidebar__pages">Pages
+      <div class="sidebar__pages__element help">
+        <div class="sidebar__pages__element__icon">
+          <img src="./images/sidebar-Icons/help-Icon.svg" alt="help icon">
+        </div>
+
+        <div class="sidebar__pages__element__title">Help Center</div>
+        <div class="sidebar__pages__element__arrowDown">
+          <img src="./images/sidebar-Icons/down-Arrow.svg" alt="down arrow">
+        </div>
+      </div>
+      <div class="sidebar__pages__element file">
+        <div class="sidebar__pages__element__icon">
+          <img src="./images/sidebar-Icons/file-Icon.svg" alt="file icon">
+        </div>
+
+        <div class="sidebar__pages__element__title">File Manager</div>
+        <div class="sidebar__pages__element__arrowDown">
+          <img src="./images/sidebar-Icons/down-Arrow.svg" alt="down arrow">
+        </div>
+      </div>
+    </div>
+    <div class="sidebar__footer">
+      <div class="sidebar__footer__icon option">
+        <img src="./images/sidebar-Icons/footer1.svg" alt="">
+      </div>
+      <div class="sidebar__footer__icon export">
+        <img src="./images/sidebar-Icons/footer2.svg" alt="">
+      </div>
+      <div class="sidebar__footer__icon network">
+        <img src="./images/sidebar-Icons/footer3.svg" alt="">
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>
