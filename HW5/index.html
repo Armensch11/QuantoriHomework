@@ -1,16 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Nunito:wght@400;500;700;800&display=swap"
+        rel="stylesheet">
     <title>OOP Homework</title>
     <link rel="stylesheet" href="main.css">
 </head>
+
 <body>
-<div id="root"></div>
-<div id="functional-example"></div>
+    <div id="root"></div>
+    <div id="functional-example"></div>
+    <div class="modal__container">
+        <div class="modal__container__inside">
+            <div class="modal__container__inside__title">
+                <h2>Add New Task</h2>
+            </div>
+            <div class="modal__container__input__todo">
+                <input type="text">
+
+            </div>
+            <div class="modal__container__input__options">
+                <div class="modal__container__input__options__type">
+
+                    <div class="modal__container__input__options__type health">health</div>
+                    <div class="modal__container__input__options__type work">work</div>
+                    <div class="modal__container__input__options__type home">home</div>
+                    <div class="modal__container__input__options__type other">other</div>
+
+
+                </div>
+                <input class="modal__container__input__options__date" type="date">
+            </div>
+            <div class="modal__container__inside__buttons">
+                <button class="modal__container__inside__buttons__cancel">
+                    <h3>Cancel</h3>
+                </button>
+                <button class="modal__container__inside__buttons__add">
+                    <h3>Add task</h3>
+                </button>
+            </div>
+
+        </div>
+    </div>
 </body>
 <script src="oop/base_classes.js"></script>
 <script src="oop/components.js"></script>
 <script src="oop/app.js"></script>
 <script src="functional/functional.js"></script>
+
 </html>
