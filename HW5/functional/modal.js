@@ -1,4 +1,4 @@
-import modalActions from "./modalActions.js";
+import { modalCancelAction, checkTodoType } from "./modalActions.js";
 
 const modal = () => {
   const body = document.querySelector("body");
@@ -38,6 +38,12 @@ const modal = () => {
   other.innerText = "other";
   const optionTypesArr = [health, work, home, other];
   optionTypesArr.forEach((type) => optionsTypes.appendChild(type));
+  optionTypesArr.forEach((type) =>
+    type.addEventListener("click", (event) => {
+      event.preventDefault();
+      checkTodoType(event);
+    })
+  );
   const optionsDate = document.createElement("input");
   optionsDate.setAttribute("type", "date");
   optionsDate.setAttribute("class", "modal__container__input__options__date");
@@ -71,6 +77,6 @@ const modal = () => {
   //   e.stopPropagation();
   //   closeModal();
   // });
-  modalActions();
+  modalCancelAction();
 };
 modal();

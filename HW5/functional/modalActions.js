@@ -1,4 +1,4 @@
-export default function modalActions() {
+export function modalCancelAction() {
   const cancelButton = document.getElementsByClassName(
     "modal__container__inside__buttons__cancel"
   )[0];
@@ -14,5 +14,24 @@ export default function modalActions() {
     if (!modal.contains(e.target)) {
       modalContainer.style.display = "none";
     }
-  })
+  });
+}
+export function checkTodoType(check) {
+  const allTypes = document.getElementsByClassName(
+    "modal__container__input__options__type"
+  );
+  const todoTypes = [...allTypes];
+
+  const color = check.target.style.color;
+  const typeName = check.target.className.split(" ")[1];
+  check.target.style.border = `1px solid ${color}`;
+  todoTypes.forEach((type) => {
+    if (!type.classList.contains(typeName)) {
+      type.style.border = "none";
+      type.setAttribute("selected", false);
+    } else {
+      type.setAttribute("selected", true);
+    }
+  });
+  console.log(todoTypes);
 }
