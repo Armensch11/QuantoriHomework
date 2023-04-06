@@ -1,3 +1,5 @@
+import modalActions from "./modalActions.js";
+
 const modal = () => {
   const body = document.querySelector("body");
   const modalContainer = document.createElement("div");
@@ -10,10 +12,13 @@ const modal = () => {
 
   const title = document.createElement("div");
   title.setAttribute("class", "modal__container__inside__title");
-  title.appendChild((document.createElement("h2").innerText = "Add New Task"));
+  const titleText = document.createElement("h2");
+  titleText.innerText = "Add New Task";
+  title.appendChild(titleText);
   const todo = document.createElement("div");
   todo.setAttribute("class", "modal__container__input__todo");
-  const input = document.createElement("input").setAttribute("type", "text");
+  const input = document.createElement("input");
+  input.setAttribute("type", "text");
   todo.appendChild(input);
   const options = document.createElement("div");
   options.setAttribute("class", "modal__container__input__options");
@@ -33,22 +38,39 @@ const modal = () => {
   other.innerText = "other";
   const optionTypesArr = [health, work, home, other];
   optionTypesArr.forEach((type) => optionsTypes.appendChild(type));
-  const optionsDate = document
-    .createElement("input")
-    .setAttribute("type", "date");
+  const optionsDate = document.createElement("input");
+  optionsDate.setAttribute("type", "date");
   optionsDate.setAttribute("class", "modal__container__input__options__date");
   options.appendChild(optionsTypes);
   options.appendChild(optionsDate);
   const buttons = document.createElement("div");
-  buttons.setAttribute("class", "modal__container__input__buttons");
+  buttons.setAttribute("class", "modal__container__inside__buttons");
   const buttonCancel = document.createElement("button");
-  const cancelText = document.createElement("h2");
+  buttonCancel.setAttribute(
+    "class",
+    "modal__container__inside__buttons__cancel"
+  );
+  const cancelText = document.createElement("h3");
   cancelText.innerText = "Cancel";
   buttonCancel.appendChild(cancelText);
   const buttonAdd = document.createElement("button");
-  const addText = document.createElement("h2");
+  buttonAdd.setAttribute("class", "modal__container__inside__buttons__add");
+  const addText = document.createElement("h3");
   addText.innerText = "Add task";
   buttonAdd.appendChild(addText);
+  buttons.appendChild(buttonCancel);
+  buttons.appendChild(buttonAdd);
   const insideNodes = [title, todo, options, buttons];
   insideNodes.forEach((child) => containerInside.appendChild(child));
+  // const closeModal = () => {
+  //   const modalContainer =
+  //     document.getElementsByClassName("modal__container")[0];
+  //   modalContainer.style.display = "none";
+  // };
+  // buttonCancel.addEventListener("click", (e) => {
+  //   e.stopPropagation();
+  //   closeModal();
+  // });
+  modalActions();
 };
+modal();
