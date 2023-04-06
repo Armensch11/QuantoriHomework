@@ -1,4 +1,4 @@
-import { modalCancelAction, checkTodoType } from "./modalActions.js";
+import { modalCancelAction, checkTodoType, getTodo } from "./modalActions.js";
 
 const modal = () => {
   const body = document.querySelector("body");
@@ -19,6 +19,8 @@ const modal = () => {
   todo.setAttribute("class", "modal__container__input__todo");
   const input = document.createElement("input");
   input.setAttribute("type", "text");
+  input.addEventListener("click", () => (input.value = ""));
+  input.addEventListener("blur", getTodo);
   todo.appendChild(input);
   const options = document.createElement("div");
   options.setAttribute("class", "modal__container__input__options");
@@ -77,6 +79,7 @@ const modal = () => {
   //   e.stopPropagation();
   //   closeModal();
   // });
+  // getTodo();
   modalCancelAction();
 };
 modal();

@@ -35,3 +35,14 @@ export function checkTodoType(check) {
   });
   console.log(todoTypes);
 }
+export function getTodo() {
+  const input = document.getElementsByClassName(
+    "modal__container__input__todo"
+  )[0].firstChild;
+
+  if (input.value.trim().length > 0) {
+    console.log(input.value);
+    return input.value;
+  }
+  return null;
+}
