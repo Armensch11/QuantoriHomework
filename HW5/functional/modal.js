@@ -1,4 +1,11 @@
-import { modalCancelAction, checkTodoType, getTodo } from "./modalActions.js";
+import {
+  modalCancelAction,
+  checkTodoType,
+  getTodo,
+  getDueDate,
+  validateEntries,
+  addTask,
+} from "./modalActions.js";
 
 const modal = () => {
   const body = document.querySelector("body");
@@ -49,6 +56,10 @@ const modal = () => {
   const optionsDate = document.createElement("input");
   optionsDate.setAttribute("type", "date");
   optionsDate.setAttribute("class", "modal__container__input__options__date");
+  optionsDate.addEventListener("blur", () => {
+    getDueDate();
+    validateEntries();
+  });
   options.appendChild(optionsTypes);
   options.appendChild(optionsDate);
   const buttons = document.createElement("div");
@@ -63,6 +74,8 @@ const modal = () => {
   buttonCancel.appendChild(cancelText);
   const buttonAdd = document.createElement("button");
   buttonAdd.setAttribute("class", "modal__container__inside__buttons__add");
+  buttonAdd.disabled = true;
+
   const addText = document.createElement("h3");
   addText.innerText = "Add task";
   buttonAdd.appendChild(addText);
@@ -70,16 +83,7 @@ const modal = () => {
   buttons.appendChild(buttonAdd);
   const insideNodes = [title, todo, options, buttons];
   insideNodes.forEach((child) => containerInside.appendChild(child));
-  // const closeModal = () => {
-  //   const modalContainer =
-  //     document.getElementsByClassName("modal__container")[0];
-  //   modalContainer.style.display = "none";
-  // };
-  // buttonCancel.addEventListener("click", (e) => {
-  //   e.stopPropagation();
-  //   closeModal();
-  // });
-  // getTodo();
+
   modalCancelAction();
 };
 modal();
