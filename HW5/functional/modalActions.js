@@ -91,8 +91,8 @@ export function validateEntries() {
     todoItem.task = todo;
     todoItem.date = dueDate;
     todoItem.type = todoType;
-    todoItem.done = false;
-    todoItem.id = Math.floor(Math.random() * 10000);
+    todoItem.status = "pending";
+    todoItem.id = Math.floor(Math.random() * 10000).toString();
     addButton.disabled = false;
     addButton.style.backgroundColor = "#3C86F4";
     addButton.onclick = (e) => {

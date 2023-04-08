@@ -1,10 +1,8 @@
 import { modal } from "./modal.js";
 import { showModal, hideModal } from "./modalActions.js";
-
-
+import { todoItem, renderTaskList } from "./todoItem.js";
 
 console.log("app runs");
-
 
 export function tasksRender() {
   const body = document.querySelector("body");
@@ -33,6 +31,7 @@ export function tasksRender() {
   const pendingTitle = document.createElement("p");
   pendingTitle.innerText = "All Tasks";
   pendingTasks.appendChild(pendingTitle);
+  // pendingTasks.appendChild(todoItem());
   const completedTasks = document.createElement("div");
   completedTasks.setAttribute("class", "main__container__tasks__completed");
   const completedTitle = document.createElement("p");
@@ -44,5 +43,7 @@ export function tasksRender() {
   [header, searchContainer, tasksContainer].forEach((el) =>
     main.appendChild(el)
   );
+  renderTaskList("pending");
+  renderTaskList("completed");
 }
 tasksRender();
