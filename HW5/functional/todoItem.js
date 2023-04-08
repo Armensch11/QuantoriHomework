@@ -22,9 +22,6 @@ export function todoItem(todo) {
       // }
       this.checked ? markCompleted(this) : notCompleted(this);
       removeAllChildNodes();
-
-      renderTaskList("pending");
-      renderTaskList("completed");
     }
   );
   const todoContent = document.createElement("div");
@@ -69,9 +66,6 @@ export function todoItem(todo) {
     removeTodo(id);
 
     removeAllChildNodes();
-
-    renderTaskList("pending");
-    renderTaskList("completed");
   };
   const deleteIcon = document.createElement("img");
   deleteIcon.setAttribute("src", "./images/trash_bin.svg");
@@ -104,7 +98,10 @@ export function markCompleted(object) {
     }
   });
   localStorage.setItem("todos", JSON.stringify(todos));
+  removeBodyChildren();
+
   tasksRender();
+  document.location.reload(true);
 }
 export function notCompleted(object) {
   const idToMark = object.getAttribute("serial");
@@ -119,13 +116,19 @@ export function notCompleted(object) {
     }
   });
   localStorage.setItem("todos", JSON.stringify(todos));
+  removeBodyChildren();
+
   tasksRender();
+  document.location.reload(true);
 }
 export function removeTodo(id) {
   const todos = JSON.parse(localStorage.getItem("todos"));
   const filtered = todos.filter((todo) => todo.id.toString() !== id);
   localStorage.setItem("todos", JSON.stringify(filtered));
+  removeBodyChildren();
+
   tasksRender();
+  document.location.reload(true);
 }
 export function removeAllChildNodes() {
   const pendingContainer = document.getElementsByClassName(
@@ -135,9 +138,19 @@ export function removeAllChildNodes() {
     "main__container__tasks__completed"
   )[0];
   while (pendingContainer.firstChild) {
-    parent.removeChild(parent.lastChild);
+    pendingContainer.removeChild(pendingContainer.lastChild);
   }
   while (completedContainer.firstChild) {
-    parent.removeChild(parent.lastChild);
+    completedContainer.removeChild(completedContainer.lastChild);
+  }
+}
+export function removeBodyChildren() {
+  const body = document.getElementsByTagName("body");
+  // console.log(body);
+  // const main = document.getElementsByClassName("main__container")[0];
+  // const modal = document.getElementsByClassName("modal__container")[0];
+  // [main, modal].forEach((el) => body.removeChild(el));
+  while (body.firstChild) {
+    body.removeChild(body.lastChild);
   }
 }
