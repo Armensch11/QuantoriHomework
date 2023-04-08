@@ -48,6 +48,7 @@ export function todoItem(todo) {
     "class",
     "main__container__tasks__pending__list__item__content__type"
   );
+  type.setAttribute("class", `${todo.type}`);
   type.innerText = todo?.type;
   const date = document.createElement("div");
   date.setAttribute(
