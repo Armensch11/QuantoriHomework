@@ -11,6 +11,7 @@ export function tasksRender() {
   main.setAttribute("class", "main__container");
   body.appendChild(main);
   modal();
+  hideModal();
   const header = document.createElement("header");
   header.innerText = "To Do List";
   const searchContainer = document.createElement("div");

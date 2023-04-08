@@ -1,3 +1,4 @@
+import { tasksRender } from "./app.js";
 export function todoItem(todo) {
   const todoContainer = document.createElement("div");
   todoContainer.setAttribute(
@@ -10,25 +11,49 @@ export function todoItem(todo) {
   if (todo.status === "completed") {
     checkBox.checked = true;
   }
-  checkBox.addEventListener("change", function () {
-    if (this.checked) {
-      console.log(this);
-      markCompleted(this);
+  checkBox.addEventListener(
+    "change",
+
+    function () {
+      // if (this.checked) {
+      //   markCompleted(this);
+      // } else {
+      //   notCompleted(this);
+      // }
+      this.checked ? markCompleted(this) : notCompleted(this);
+      removeAllChildNodes();
+
       renderTaskList("pending");
       renderTaskList("completed");
     }
-  });
+  );
   const todoContent = document.createElement("div");
   todoContent.setAttribute(
     "class",
     "main__container__tasks__pending__list__item__content"
   );
-  const todoDesc = document.createElement("p");
+  const todoDesc = document.createElement("div");
+  todoDesc.setAttribute(
+    "class",
+    "main__container__tasks__pending__list__item__content__title"
+  );
   todoDesc.innerHTML = todo?.task;
   const typeAndDate = document.createElement("div");
+  typeAndDate.setAttribute(
+    "class",
+    "main__container__tasks__pending__list__item__content__dateType"
+  );
   const type = document.createElement("div");
+  type.setAttribute(
+    "class",
+    "main__container__tasks__pending__list__item__content__type"
+  );
   type.innerText = todo?.type;
   const date = document.createElement("div");
+  date.setAttribute(
+    "class",
+    "main__container__tasks__pending__list__item__content__date"
+  );
   date.innerText = todo?.date;
   [type, date].forEach((el) => typeAndDate.appendChild(el));
   [todoDesc, typeAndDate].forEach((el) => todoContent.appendChild(el));
@@ -41,6 +66,9 @@ export function todoItem(todo) {
   deleteTodo.onclick = () => {
     const id = deleteTodo.getAttribute("serial");
     removeTodo(id);
+
+    removeAllChildNodes();
+
     renderTaskList("pending");
     renderTaskList("completed");
   };
@@ -75,9 +103,40 @@ export function markCompleted(object) {
     }
   });
   localStorage.setItem("todos", JSON.stringify(todos));
+  tasksRender();
+}
+export function notCompleted(object) {
+  const idToMark = object.getAttribute("serial");
+  console.log(idToMark.trim());
+
+  const todos = JSON.parse(localStorage.getItem("todos"));
+  todos.forEach((todo) => {
+    console.log(todo.id);
+    if (todo.id.toString() === idToMark) {
+      todo.status = "pending";
+      console.log(todo);
+    }
+  });
+  localStorage.setItem("todos", JSON.stringify(todos));
+  tasksRender();
 }
 export function removeTodo(id) {
   const todos = JSON.parse(localStorage.getItem("todos"));
   const filtered = todos.filter((todo) => todo.id.toString() !== id);
   localStorage.setItem("todos", JSON.stringify(filtered));
+  tasksRender();
+}
+export function removeAllChildNodes() {
+  const pendingContainer = document.getElementsByClassName(
+    "main__container__tasks__pending"
+  )[0];
+  const completedContainer = document.getElementsByClassName(
+    "main__container__tasks__completed"
+  )[0];
+  while (pendingContainer.firstChild) {
+    parent.removeChild(parent.lastChild);
+  }
+  while (completedContainer.firstChild) {
+    parent.removeChild(parent.lastChild);
+  }
 }
