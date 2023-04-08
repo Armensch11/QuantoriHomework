@@ -7,12 +7,12 @@ import {
   addTask,
 } from "./modalActions.js";
 
-const modal = () => {
+export const modal = () => {
   const body = document.querySelector("body");
   const modalContainer = document.createElement("div");
   modalContainer.setAttribute("class", "modal__container");
   body.appendChild(modalContainer);
-
+  modalContainer.style.display = "flex";
   const containerInside = document.createElement("div");
   containerInside.setAttribute("class", "modal__container__inside");
   modalContainer.appendChild(containerInside);
@@ -86,4 +86,5 @@ const modal = () => {
 
   modalCancelAction();
 };
-modal();
+
+// modal();

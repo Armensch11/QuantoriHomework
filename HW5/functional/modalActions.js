@@ -1,3 +1,8 @@
+export function closeModal() {
+  const modalContainer = document.getElementsByClassName("modal__container")[0];
+  modalContainer.style.display = "none";
+  console.log("modal window closed");
+}
 export function modalCancelAction() {
   const cancelButton = document.getElementsByClassName(
     "modal__container__inside__buttons__cancel"
@@ -5,16 +10,27 @@ export function modalCancelAction() {
 
   let modalContainer = document.getElementsByClassName("modal__container")[0];
 
-  cancelButton.onclick = (e) => {
-    e.preventDefault();
+  // cancelButton.onclick = (e) => {
+  //   e.preventDefault();
+  //   modalContainer.style.display = "none";
+  // };
+  cancelButton.addEventListener("click", () => {
     modalContainer.style.display = "none";
-  };
-  const modal = document.getElementsByClassName("modal__container__inside")[0];
-  document.addEventListener("click", (e) => {
-    if (!modal.contains(e.target)) {
-      modalContainer.style.display = "none";
-    }
   });
+  // const modal = document.getElementsByClassName("modal__container__inside")[0];
+  // document.addEventListener("click", (e) => {
+  //   if (!modal.contains(e.target)) {
+  //     modalContainer.style.display = "none";
+  //   }
+  // });
+}
+export function showModal() {
+  let modalContainer = document.getElementsByClassName("modal__container")[0];
+  modalContainer.style.display = "flex";
+}
+export function hideModal() {
+  let modalContainer = document.getElementsByClassName("modal__container")[0];
+  modalContainer.style.display = "none";
 }
 export function checkTodoType(check) {
   const todoTypes = document.getElementsByClassName(
@@ -79,22 +95,17 @@ export function validateEntries() {
     todoItem.id = Math.floor(Math.random() * 10000);
     addButton.disabled = false;
     addButton.style.backgroundColor = "#3C86F4";
-    addButton.addEventListener("click", () => {
-      addTask();
-    });
-    return todoItem;
+    addButton.onclick = (e) => {
+      e.preventDefault();
+      addTask(todoItem);
+      closeModal();
+    };
   } else console.log("some entries invalid");
   console.log(todoItem);
 }
-export function addTask() {
-  const todoItem = validateEntries();
-  let updatedTodos = [];
-  const existingTodos = JSON.parse(localStorage.getItem("todos"));
-  if (existingTodos && todoItem) {
-    updatedTodos = [...existingTodos, todoItem];
-    localStorage.setItem("todos", JSON.stringify(updatedTodos));
-  } else if (todoItem) {
-    updatedTodos = [todoItem];
-    localStorage.setItem("todos", JSON.stringify(updatedTodos));
-  }
+export function addTask(todoItem) {
+  const existingTodos = JSON.parse(localStorage.getItem("todos")) || [];
+  existingTodos.push(todoItem);
+  localStorage.setItem("todos", JSON.stringify(existingTodos));
+  console.log(existingTodos);
 }
