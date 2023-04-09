@@ -6,7 +6,7 @@ export function search(searchTerm, status = "pending") {
     (task) => task.getAttribute("status") === status
   );
   // console.log(pendingTodos);
-  const filteredTodos = pendingTodos.filter((el) => {
+  pendingTodos.forEach((el) => {
     if (el.innerText.substring(0, searchTerm.length) !== searchTerm) {
       el.parentElement.parentElement.style.display = "none";
     } else {
