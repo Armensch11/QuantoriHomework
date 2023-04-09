@@ -7,9 +7,11 @@ export function search(searchTerm, status = "pending") {
   );
   // console.log(pendingTodos);
   const filteredTodos = pendingTodos.filter((el) => {
-    if (el.innerText.substring(0, searchTerm.length) === searchTerm) {
-      return true;
+    if (el.innerText.substring(0, searchTerm.length) !== searchTerm) {
+      el.parentElement.parentElement.style.display = "none";
+    } else {
+      el.parentElement.parentElement.style.display = "flex";
     }
   });
-  console.log(filteredTodos);
+  // console.log(filteredTodos);
 }

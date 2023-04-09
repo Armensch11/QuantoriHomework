@@ -56,8 +56,8 @@ export const modal = () => {
   const optionsDate = document.createElement("input");
   optionsDate.setAttribute("type", "date");
   optionsDate.setAttribute("class", "modal__container__input__options__date");
-  optionsDate.addEventListener("blur", () => {
-    getDueDate();
+  optionsDate.addEventListener("mouseleave", () => {
+    // getDueDate();
     validateEntries();
   });
   options.appendChild(optionsTypes);

@@ -75,8 +75,9 @@ export function getDueDate() {
   const input = document.getElementsByClassName(
     "modal__container__input__options__date"
   )[0];
+  // console.log(input.value);
 
-  return input.value;
+  return formatDate(input.value);
 }
 export function validateEntries() {
   const todoItem = {};
@@ -88,6 +89,7 @@ export function validateEntries() {
   )[0];
 
   if (todo && dueDate && todoType) {
+    console.log("validating ");
     todoItem.task = todo;
     todoItem.date = dueDate;
     todoItem.type = todoType;
@@ -99,6 +101,7 @@ export function validateEntries() {
       e.preventDefault();
       addTask(todoItem);
       closeModal();
+      document.location.reload(true);
     };
   } else console.log("some entries invalid");
   console.log(todoItem);
@@ -107,5 +110,32 @@ export function addTask(todoItem) {
   const existingTodos = JSON.parse(localStorage.getItem("todos")) || [];
   existingTodos.push(todoItem);
   localStorage.setItem("todos", JSON.stringify(existingTodos));
-  console.log(existingTodos);
+  // console.log(existingTodos);
+}
+
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  const now = new Date();
+  const day = date.toLocaleString(window.navigator.language, {
+    weekday: "long",
+  });
+  const month = date.toLocaleString(window.navigator.language, {
+    month: "long",
+  });
+
+  const monthNow = now.toLocaleString(window.navigator.language, {
+    month: "long",
+  });
+  const monthDate = date.getDate();
+  const monthDateNow = now.getDate();
+  if (monthNow === month) {
+    if (monthDate === monthDateNow) {
+      return "Today";
+    }
+    if (monthDate - monthDateNow === 1) {
+      return "Tomorrow";
+    }
+  }
+  const formatedDate = `${day}, ${monthDate}  ${month}`;
+  return formatedDate;
 }
