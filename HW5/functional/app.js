@@ -1,7 +1,7 @@
 import { modal } from "./modal.js";
 import { showModal, hideModal } from "./modalActions.js";
 import { todoItem, renderTaskList } from "./todoItem.js";
-
+import { search } from "./search.js";
 console.log("app runs");
 
 export function tasksRender() {
@@ -17,9 +17,13 @@ export function tasksRender() {
   const searchContainer = document.createElement("div");
   searchContainer.setAttribute("class", "main__container__searchbar");
   const searchField = document.createElement("input");
-  searchField.setAttribute("type", "text");
+  searchField.setAttribute("type", "search");
   searchField.setAttribute("class", "main__container__searchfield");
   searchField.setAttribute("placeholder", "Search Task");
+  searchField.addEventListener("keyup", (event) => {
+    console.log(event.target.value);
+    search(event.target.value);
+  });
   const newTaskButton = document.createElement("button");
   newTaskButton.setAttribute("class", "main__container__newTask");
   newTaskButton.innerText = "+ New Task";

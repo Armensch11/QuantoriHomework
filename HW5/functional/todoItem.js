@@ -34,6 +34,7 @@ export function todoItem(todo) {
     "class",
     "main__container__tasks__pending__list__item__content__title"
   );
+  todoDesc.setAttribute("status", todo?.status);
   todoDesc.innerHTML = todo?.task;
   const typeAndDate = document.createElement("div");
   typeAndDate.setAttribute(
