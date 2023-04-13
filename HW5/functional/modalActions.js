@@ -114,9 +114,7 @@ export async function addTask(todoItem) {
     },
     body: JSON.stringify(todoItem),
   });
-  const existingTodos = JSON.parse(localStorage.getItem("todos")) || [];
-  existingTodos.push(todoItem);
-  localStorage.setItem("todos", JSON.stringify(existingTodos));
+
   // console.log(existingTodos);
 }
 

@@ -91,46 +91,80 @@ export async function renderTaskList(status) {
   )[0];
   filtered.forEach((todo) => listContainer.appendChild(todoItem(todo)));
 }
-export function markCompleted(object) {
+export async function markCompleted(object) {
   const idToMark = object.getAttribute("serial");
-  console.log(idToMark.trim());
 
-  const todos = JSON.parse(localStorage.getItem("todos"));
-  todos.forEach((todo) => {
-    console.log(todo.id);
-    if (todo.id.toString() === idToMark) {
-      todo.status = "completed";
-      console.log(todo);
-    }
-  });
-  localStorage.setItem("todos", JSON.stringify(todos));
+  const getTodos = await fetch(`http://localhost:3004/tasks`);
+  const todos = await getTodos.json();
+
+  // debugger;
+  const todoToMark = todos.filter(
+    (el) => el.id.toString() === idToMark.toString()
+  );
+  console.log(todoToMark);
+  const updatedTodo = { ...todoToMark[0], status: "completed" };
+  const configPut = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedTodo),
+  };
+  await fetch(`http://localhost:3004/tasks/${idToMark}`, configPut);
+
+  // const todos = JSON.parse(localStorage.getItem("todos"));
+  // todos.forEach((todo) => {
+  //   console.log(todo.id);
+  //   if (todo.id.toString() === idToMark) {
+  //     todo.status = "completed";
+  //     console.log(todo);
+  //   }
+  // });
+  // localStorage.setItem("todos", JSON.stringify(todos));
   removeBodyChildren();
 
   tasksRender();
   document.location.reload(true);
 }
-export function notCompleted(object) {
+export async function notCompleted(object) {
   const idToMark = object.getAttribute("serial");
   console.log(idToMark.trim());
+  const getTodos = await fetch(`http://localhost:3004/tasks`);
+  const todos = await getTodos.json();
 
-  const todos = JSON.parse(localStorage.getItem("todos"));
-  todos.forEach((todo) => {
-    console.log(todo.id);
-    if (todo.id.toString() === idToMark) {
-      todo.status = "pending";
-      console.log(todo);
-    }
-  });
-  localStorage.setItem("todos", JSON.stringify(todos));
+  // debugger;
+  const todoToMark = todos.filter(
+    (el) => el.id.toString() === idToMark.toString()
+  );
+  console.log(todoToMark);
+  const updatedTodo = { ...todoToMark[0], status: "pending" };
+  const configPut = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedTodo),
+  };
+  await fetch(`http://localhost:3004/tasks/${idToMark}`, configPut);
+  // const todos = JSON.parse(localStorage.getItem("todos"));
+  // todos.forEach((todo) => {
+  //   console.log(todo.id);
+  //   if (todo.id.toString() === idToMark) {
+  //     todo.status = "pending";
+  //     console.log(todo);
+  //   }
+  // });
+  // localStorage.setItem("todos", JSON.stringify(todos));
   removeBodyChildren();
 
   tasksRender();
   document.location.reload(true);
 }
-export function removeTodo(id) {
-  const todos = JSON.parse(localStorage.getItem("todos"));
-  const filtered = todos.filter((todo) => todo.id.toString() !== id);
-  localStorage.setItem("todos", JSON.stringify(filtered));
+export async function removeTodo(id) {
+  const configPut = {
+    method: "DELETE",
+  };
+  await fetch(`http://localhost:3004/tasks/${id}`, configPut);
   removeBodyChildren();
 
   tasksRender();
