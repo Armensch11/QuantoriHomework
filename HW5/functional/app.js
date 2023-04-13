@@ -3,6 +3,7 @@ import { showModal, hideModal } from "./modalActions.js";
 import { todoItem, renderTaskList } from "./todoItem.js";
 import { search } from "./search.js";
 import { weatherWidget } from "./weatherWidget.js";
+import { daylyTaskModal, isShownToday } from "./daylyTaskModal.js";
 console.log("app runs");
 
 export function tasksRender() {
@@ -58,6 +59,7 @@ export function tasksRender() {
   );
   renderTaskList("pending");
   renderTaskList("completed");
+  !isShownToday() ? setTimeout(() => daylyTaskModal(), 1500) : null;
 }
 tasksRender();
 weatherWidget();
