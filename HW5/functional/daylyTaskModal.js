@@ -5,7 +5,7 @@ export const daylyTaskModal = async () => {
   body.appendChild(modalContainer);
   modalContainer.style.display = "flex";
   const containerInside = document.createElement("div");
-  containerInside.setAttribute("class", "modal__container__inside");
+  containerInside.setAttribute("class", "modal__container__inside dayly-modal");
   modalContainer.appendChild(containerInside);
 
   const title = document.createElement("div");
@@ -82,6 +82,10 @@ async function getTodaysTasks(className) {
   console.log(todaysTodos);
   const container = document.getElementsByClassName(className)[0];
   if (todaysTodos.length) {
+    const subTitle = document.createElement("span");
+    subTitle.innerHTML = "You have the next planned tasks for today: ";
+    subTitle.setAttribute("class", "daylyTask-modal__subtitle");
+    container.appendChild(subTitle);
     container.insertAdjacentHTML(
       "beforeend",
       todaysTodos
