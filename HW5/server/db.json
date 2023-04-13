@@ -1,13 +1,6 @@
 {
   "tasks": [
     {
-      "task": "starting from scratch",
-      "date": "Wednesday, 19  April",
-      "type": "home",
-      "status": "pending",
-      "id": "2177"
-    },
-    {
       "task": "watch some movee",
       "date": "Tuesday, 18  April",
       "type": "health",
@@ -53,15 +46,15 @@
       "task": "do the insert of string into html",
       "date": "Today",
       "type": "health",
-      "status": "pending",
+      "status": "completed",
       "id": "1007"
     },
     {
-      "task": "naother task for insert",
-      "date": "Thursday, 13  April",
+      "task": "make BEM naming for html tags",
+      "date": "Friday, 14  April",
       "type": "work",
-      "status": "pending",
-      "id": "9838"
+      "status": "completed",
+      "id": "6981"
     }
   ]
 }

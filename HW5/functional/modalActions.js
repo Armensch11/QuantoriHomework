@@ -15,7 +15,7 @@ export function modalCancelAction() {
   //   modalContainer.style.display = "none";
   // };
   cancelButton.addEventListener("click", () => {
-    modalContainer.style.display = "none";
+    modalContainer.remove();
   });
   // const modal = document.getElementsByClassName("modal__container__inside")[0];
   // document.addEventListener("click", (e) => {
@@ -65,7 +65,7 @@ export function getType() {
   const todoTypes = document.getElementsByClassName(
     "modal__container__input__options__type"
   );
-  const selectedType = [...todoTypes].filter(
+  const selectedType = [...todoTypes]?.filter(
     (type) => type.getAttribute("selected") === "true"
   );
 
