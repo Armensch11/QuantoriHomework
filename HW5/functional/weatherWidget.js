@@ -27,29 +27,37 @@ const locationSuccess = async (pos) => {
   locationCurrent.latitude = pos.coords.latitude.toFixed(4);
   locationCurrent.longitude = pos.coords.longitude.toFixed(4);
   reqParam = locationCurrent.latitude + "," + locationCurrent.longitude;
-  const weatherData = await fetch(
-    `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${reqParam}&aqi=no`
-  );
-  weather = await weatherData.json();
-  console.log(weather);
-  const [icon, temp, city] = [
-    weather.current.condition.icon,
-    weather.current.temp_c,
-    weather.location.name,
-  ];
-  widgetFrame(icon, temp, city);
+  try {
+    const weatherData = await fetch(
+      `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${reqParam}&aqi=no`
+    );
+    weather = await weatherData.json();
+    console.log(weather);
+    const [icon, temp, city] = [
+      weather.current.condition.icon,
+      weather.current.temp_c,
+      weather.location.name,
+    ];
+    widgetFrame(icon, temp, city);
+  } catch (error) {
+    console.error(error);
+  }
 };
 const locationError = async (pos) => {
   const apiKey = "8865504129134593933100446231304";
   const locationDefault = "Tbilisi";
-  const weatherData = await fetch(
-    `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${locationDefault}&aqi=no`
-  );
-  const weather = await weatherData.json();
-  const [icon, temp, city] = [
-    weather.current.condition.icon,
-    weather.current.temp_c,
-    weather.location.name,
-  ];
-  widgetFrame(icon, temp, city);
+  try {
+    const weatherData = await fetch(
+      `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${locationDefault}&aqi=no`
+    );
+    const weather = await weatherData.json();
+    const [icon, temp, city] = [
+      weather.current.condition.icon,
+      weather.current.temp_c,
+      weather.location.name,
+    ];
+    widgetFrame(icon, temp, city);
+  } catch (error) {
+    console.error(error);
+  }
 };

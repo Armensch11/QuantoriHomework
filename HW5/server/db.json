@@ -4,7 +4,7 @@
       "task": "watch some movee",
       "date": "Tuesday, 18  April",
       "type": "health",
-      "status": "pending",
+      "status": "completed",
       "id": "405"
     },
     {
@@ -55,13 +55,6 @@
       "type": "work",
       "status": "completed",
       "id": "6981"
-    },
-    {
-      "task": "some veryvery veyr loooooooooooooooonooogoogogoggogogogogogogogogoogoggogogogogotaksksksksksksksksks",
-      "date": "Friday, 14  April",
-      "type": "home",
-      "status": "pending",
-      "id": "3061"
     }
   ]
 }
