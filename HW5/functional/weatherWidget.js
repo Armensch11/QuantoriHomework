@@ -43,7 +43,7 @@ const locationError = async (pos) => {
   const apiKey = "8865504129134593933100446231304";
   const locationDefault = "Tbilisi";
   const weatherData = await fetch(
-    `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${locationDefault}&aqi=no`
+    `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${locationDefault}&aqi=no`
   );
   const weather = await weatherData.json();
   const [icon, temp, city] = [
