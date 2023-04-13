@@ -18,7 +18,7 @@ export function tasksRender() {
   const title = document.createElement("span");
   title.innerHTML = "To Do List";
   header.appendChild(title);
-  weatherWidget();
+
   const searchContainer = document.createElement("div");
   searchContainer.setAttribute("class", "main__container__searchbar");
   const searchField = document.createElement("input");
@@ -60,3 +60,4 @@ export function tasksRender() {
   renderTaskList("completed");
 }
 tasksRender();
+weatherWidget();
