@@ -341,4 +341,5 @@ header {
   width: 100%;
   padding: 16px 48px;
   margin-bottom: 48px;
+  overflow: scroll;
 }

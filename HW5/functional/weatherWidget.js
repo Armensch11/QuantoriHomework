@@ -28,7 +28,7 @@ const locationSuccess = async (pos) => {
   locationCurrent.longitude = pos.coords.longitude.toFixed(4);
   reqParam = locationCurrent.latitude + "," + locationCurrent.longitude;
   const weatherData = await fetch(
-    `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${reqParam}&aqi=no`
+    `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${reqParam}&aqi=no`
   );
   weather = await weatherData.json();
   console.log(weather);
