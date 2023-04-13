@@ -78,8 +78,13 @@ export function todoItem(todo) {
   return todoContainer;
 }
 
-export function renderTaskList(status) {
-  const todos = JSON.parse(localStorage.getItem("todos"));
+export async function renderTaskList(status) {
+  // const todos = JSON.parse(localStorage.getItem("todos"));
+  const getTodos = await fetch("http://localhost:3004/tasks", {
+    method: "GET",
+  });
+  const todos = await getTodos.json();
+  console.log(todos);
   const filtered = todos.filter((todo) => todo.status === status);
   const listContainer = document.getElementsByClassName(
     `main__container__tasks__${status}`

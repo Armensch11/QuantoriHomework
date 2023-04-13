@@ -106,7 +106,14 @@ export function validateEntries() {
   } else console.log("some entries invalid");
   console.log(todoItem);
 }
-export function addTask(todoItem) {
+export async function addTask(todoItem) {
+  await fetch("http://localhost:3004/tasks", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+    body: JSON.stringify(todoItem),
+  });
   const existingTodos = JSON.parse(localStorage.getItem("todos")) || [];
   existingTodos.push(todoItem);
   localStorage.setItem("todos", JSON.stringify(existingTodos));
