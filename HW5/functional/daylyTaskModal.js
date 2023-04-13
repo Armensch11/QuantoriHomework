@@ -1,4 +1,4 @@
-export const daylyTaskModal = () => {
+export const daylyTaskModal = async () => {
   const body = document.querySelector("body");
   const modalContainer = document.createElement("div");
   modalContainer.setAttribute("class", "modal__container");
@@ -16,6 +16,10 @@ export const daylyTaskModal = () => {
   const todo = document.createElement("div");
   todo.setAttribute("class", "modal__container__input__todo");
 
+  const taskTitlesContainer = document.createElement("div");
+  taskTitlesContainer.setAttribute("class", "daylyTask-modal-container");
+  getTodaysTasks("daylyTask-modal-container");
+
   const buttonContainer = document.createElement("div");
   buttonContainer.setAttribute("class", "modal__container__inside__buttons");
   const buttonOk = document.createElement("button");
@@ -32,10 +36,9 @@ export const daylyTaskModal = () => {
     e.preventDefault();
     closeDaylyTaskModal();
   });
-  [title, buttonContainer].forEach((child) =>
+  [title, taskTitlesContainer, buttonContainer].forEach((child) =>
     containerInside.appendChild(child)
   );
-  isShownToday();
 };
 
 function closeDaylyTaskModal() {
@@ -59,4 +62,36 @@ export function isShownToday() {
     : localStorage.setItem("lastShow", JSON.stringify(today));
 
   return isShown;
+}
+
+async function getTodaysTasks(className) {
+  const now = new Date();
+  const date = now.getDate().toString();
+  const month = now.toLocaleString(window.navigator.language, {
+    month: "long",
+  });
+  const today = date + month;
+  const getTodos = await fetch("http://localhost:3004/tasks");
+  const todos = await getTodos.json();
+  const pendingTodos = todos.filter((todo) => todo.status === "pending");
+
+  const todaysTodos = pendingTodos.filter((todo) => {
+    const tododate = todo.date.split(", ")[1]?.split(" ").join("");
+    return tododate === today;
+  });
+  console.log(todaysTodos);
+  const container = document.getElementsByClassName(className)[0];
+  if (todaysTodos.length) {
+    container.insertAdjacentHTML(
+      "beforeend",
+      todaysTodos
+        .map((todo) => `<p class="daylyTask__titles">${todo.task}<p>`)
+        .join("\n")
+    );
+  } else {
+    const title = document.createElement("p");
+    title.innerHTML = "No Tasks for Today";
+    container.appendChild(title);
+  }
+  // return todaysTodos;
 }

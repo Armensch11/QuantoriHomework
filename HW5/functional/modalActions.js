@@ -133,14 +133,14 @@ function formatDate(dateString) {
   });
   const monthDate = date.getDate();
   const monthDateNow = now.getDate();
-  if (monthNow === month) {
-    if (monthDate === monthDateNow) {
-      return "Today";
-    }
-    if (monthDate - monthDateNow === 1) {
-      return "Tomorrow";
-    }
-  }
+  // if (monthNow === month) {
+  //   if (monthDate === monthDateNow) {
+  //     return "Today";
+  //   }
+  //   if (monthDate - monthDateNow === 1) {
+  //     return "Tomorrow";
+  //   }
+  // }
   const formatedDate = `${day}, ${monthDate}  ${month}`;
   return formatedDate;
 }

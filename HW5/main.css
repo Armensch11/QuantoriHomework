@@ -337,3 +337,8 @@ header {
   border: 1px solid transparent;
   border-radius: 12px;
 }
+.daylyTask-modal-container {
+  width: 100%;
+  padding: 16px 48px;
+  margin-bottom: 48px;
+}
