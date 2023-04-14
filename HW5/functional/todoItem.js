@@ -115,7 +115,7 @@ export async function markCompleted(object) {
   removeBodyChildren();
 
   tasksRender();
-  document.location.reload(true);
+  // document.location.reload(true);
 }
 export async function notCompleted(object) {
   const idToMark = object.getAttribute("serial");
@@ -149,7 +149,7 @@ export async function notCompleted(object) {
   removeBodyChildren();
 
   tasksRender();
-  document.location.reload(true);
+  // document.location.reload(true);
 }
 export async function removeTodo(id) {
   const configPut = {

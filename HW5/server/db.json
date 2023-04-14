@@ -4,7 +4,7 @@
       "task": "watch some movee",
       "date": "Tuesday, 18  April",
       "type": "health",
-      "status": "completed",
+      "status": "pending",
       "id": "405"
     },
     {
@@ -69,6 +69,13 @@
       "type": "health",
       "status": "pending",
       "id": "1668"
+    },
+    {
+      "task": "remove force update",
+      "date": "Friday, 14  April",
+      "type": "work",
+      "status": "pending",
+      "id": "9760"
     }
   ]
 }
