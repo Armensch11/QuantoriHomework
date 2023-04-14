@@ -1,3 +1,5 @@
+import { popup } from "./popup.js";
+
 export function closeModal() {
   const modalContainer = document.getElementsByClassName("modal__container")[0];
   modalContainer.style.display = "none";
@@ -116,6 +118,7 @@ export async function addTask(todoItem) {
       },
       body: JSON.stringify(todoItem),
     });
+    saveToRemote.ok ? popup("Task added") : popup("adding failed", "error");
     debugger;
     console.log(saveToRemote);
   } catch (error) {

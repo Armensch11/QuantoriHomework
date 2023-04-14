@@ -79,12 +79,9 @@ export function todoItem(todo) {
 }
 
 export async function renderTaskList(status) {
-  const getTodos = await fetch(
-    "http://localhost:3005/tasks",
-    {
-      method: "GET",
-    }
-  );
+  const getTodos = await fetch("http://localhost:3005/tasks", {
+    method: "GET",
+  });
   const todos = await getTodos.json();
   // console.log(todos);
   const filtered = todos.filter((todo) => todo.status === status);
@@ -97,16 +94,14 @@ export async function renderTaskList(status) {
 export async function markCompleted(object) {
   const idToMark = object.getAttribute("serial");
 
-  const getTodos = await fetch(
-    `http://localhost:3005/tasks`
-  );
+  const getTodos = await fetch(`http://localhost:3005/tasks`);
   const todos = await getTodos.json();
 
   // debugger;
   const todoToMark = todos.filter(
     (el) => el.id.toString() === idToMark.toString()
   );
-  
+
   const updatedTodo = { ...todoToMark[0], status: "completed" };
   const configPut = {
     method: "PATCH",
@@ -115,10 +110,7 @@ export async function markCompleted(object) {
     },
     body: JSON.stringify(updatedTodo),
   };
-  await fetch(
-    `http://localhost:3005/tasks/${idToMark}`,
-    configPut
-  );
+  await fetch(`http://localhost:3005/tasks/${idToMark}`, configPut);
 
   removeBodyChildren();
 
@@ -128,9 +120,7 @@ export async function markCompleted(object) {
 export async function notCompleted(object) {
   const idToMark = object.getAttribute("serial");
   console.log(idToMark.trim());
-  const getTodos = await fetch(
-    `http://localhost:3005/tasks`
-  );
+  const getTodos = await fetch(`http://localhost:3005/tasks`);
   const todos = await getTodos.json();
 
   // debugger;
@@ -146,10 +136,7 @@ export async function notCompleted(object) {
     },
     body: JSON.stringify(updatedTodo),
   };
-  await fetch(
-    `http://localhost:3005/tasks/${idToMark}`,
-    configPut
-  );
+  await fetch(`http://localhost:3005/tasks/${idToMark}`, configPut);
   // const todos = JSON.parse(localStorage.getItem("todos"));
   // todos.forEach((todo) => {
   //   console.log(todo.id);
@@ -168,10 +155,7 @@ export async function removeTodo(id) {
   const configPut = {
     method: "DELETE",
   };
-  await fetch(
-    `https://my-json-server.typicode.com/armensch11/QuantoriHomework/tasks/${id}`,
-    configPut
-  );
+  await fetch(`http://localhost:3005/tasks/${id}`, configPut);
   removeBodyChildren();
 
   tasksRender();
