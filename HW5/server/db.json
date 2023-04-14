@@ -15,20 +15,6 @@
       "id": "4135"
     },
     {
-      "task": "grel hayeren",
-      "date": "Tomorrow",
-      "type": "health",
-      "status": "completed",
-      "id": "1864"
-    },
-    {
-      "task": "some task for today",
-      "date": "Today",
-      "type": "work",
-      "status": "completed",
-      "id": "2"
-    },
-    {
       "task": "go runnin",
       "date": "Thursday, 13  April",
       "type": "health",

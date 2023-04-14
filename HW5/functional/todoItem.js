@@ -159,7 +159,7 @@ export async function removeTodo(id) {
   removeBodyChildren();
 
   tasksRender();
-  document.location.reload(true);
+  // document.location.reload(true);
 }
 export function removeAllChildNodes() {
   const pendingContainer = document.getElementsByClassName(
