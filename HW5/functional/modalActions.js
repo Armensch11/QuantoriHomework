@@ -99,6 +99,7 @@ export function validateEntries() {
     addButton.style.backgroundColor = "#3C86F4";
     addButton.onclick = (e) => {
       e.preventDefault();
+      console.log(todoItem);
       addTask(todoItem);
       closeModal();
       document.location.reload(true);
@@ -107,13 +108,26 @@ export function validateEntries() {
   console.log(todoItem);
 }
 export async function addTask(todoItem) {
-  await fetch("http://localhost:3004/tasks", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-    body: JSON.stringify(todoItem),
-  });
+  try {
+    const saveToRemote = await fetch("http://localhost:3005/tasks", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify(todoItem),
+    });
+    debugger;
+    console.log(saveToRemote);
+  } catch (error) {
+    console.error(error);
+  }
+  // await fetch("https://my-json-server.typicode.com/armensch11/QuantoriHomework/tasks", {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-type": "application/json; charset=UTF-8",
+  //   },
+  //   body: JSON.stringify(todoItem),
+  // });
 
   // console.log(existingTodos);
 }
