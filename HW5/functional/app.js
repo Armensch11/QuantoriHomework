@@ -57,9 +57,9 @@ export function tasksRender() {
   [header, searchContainer, tasksContainer].forEach((el) =>
     main.appendChild(el)
   );
-  renderTaskList("pending");
+  const pendingTodos = renderTaskList("pending");
   renderTaskList("completed");
-  !isShownToday() ? setTimeout(() => daylyTaskModal(), 1500) : null;
+  !isShownToday() ? setTimeout(() => daylyTaskModal(pendingTodos), 1500) : null;
 }
 tasksRender();
 weatherWidget();

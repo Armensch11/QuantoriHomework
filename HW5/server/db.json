@@ -25,7 +25,7 @@
       "task": "some task for today",
       "date": "Today",
       "type": "work",
-      "status": "pending",
+      "status": "completed",
       "id": "2"
     },
     {
@@ -55,6 +55,20 @@
       "type": "work",
       "status": "completed",
       "id": "6981"
+    },
+    {
+      "task": "task for today",
+      "date": "Friday, 14  April",
+      "type": "health",
+      "status": "pending",
+      "id": "594"
+    },
+    {
+      "task": "new task",
+      "date": "Friday, 14  April",
+      "type": "health",
+      "status": "pending",
+      "id": "1668"
     }
   ]
 }

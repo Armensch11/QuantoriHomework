@@ -79,17 +79,17 @@ export function todoItem(todo) {
 }
 
 export async function renderTaskList(status) {
-  // const todos = JSON.parse(localStorage.getItem("todos"));
   const getTodos = await fetch("http://localhost:3004/tasks", {
     method: "GET",
   });
   const todos = await getTodos.json();
-  console.log(todos);
+  // console.log(todos);
   const filtered = todos.filter((todo) => todo.status === status);
   const listContainer = document.getElementsByClassName(
     `main__container__tasks__${status}`
   )[0];
   filtered.forEach((todo) => listContainer.appendChild(todoItem(todo)));
+  return filtered;
 }
 export async function markCompleted(object) {
   const idToMark = object.getAttribute("serial");
@@ -112,15 +112,6 @@ export async function markCompleted(object) {
   };
   await fetch(`http://localhost:3004/tasks/${idToMark}`, configPut);
 
-  // const todos = JSON.parse(localStorage.getItem("todos"));
-  // todos.forEach((todo) => {
-  //   console.log(todo.id);
-  //   if (todo.id.toString() === idToMark) {
-  //     todo.status = "completed";
-  //     console.log(todo);
-  //   }
-  // });
-  // localStorage.setItem("todos", JSON.stringify(todos));
   removeBodyChildren();
 
   tasksRender();

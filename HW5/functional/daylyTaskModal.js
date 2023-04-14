@@ -1,4 +1,4 @@
-export const daylyTaskModal = async () => {
+export const daylyTaskModal = async (todos) => {
   const body = document.querySelector("body");
   const modalContainer = document.createElement("div");
   modalContainer.setAttribute("class", "modal__container");
@@ -18,7 +18,7 @@ export const daylyTaskModal = async () => {
 
   const taskTitlesContainer = document.createElement("div");
   taskTitlesContainer.setAttribute("class", "daylyTask-modal-container");
-  getTodaysTasks("daylyTask-modal-container");
+  getTodaysTasks("daylyTask-modal-container", todos);
 
   const buttonContainer = document.createElement("div");
   buttonContainer.setAttribute("class", "modal__container__inside__buttons");
@@ -64,18 +64,19 @@ export function isShownToday() {
   return isShown;
 }
 
-async function getTodaysTasks(className) {
+async function getTodaysTasks(className, todos) {
   const now = new Date();
   const date = now.getDate().toString();
   const month = now.toLocaleString(window.navigator.language, {
     month: "long",
   });
   const today = date + month;
-  const getTodos = await fetch("http://localhost:3004/tasks");
-  const todos = await getTodos.json();
-  const pendingTodos = todos.filter((todo) => todo.status === "pending");
+  const todosArr = await todos;
+  // const getTodos = await fetch("http://localhost:3004/tasks");
+  // const todos = await getTodos.json();
+  // const pendingTodos = todos.filter((todo) => todo.status === "pending");
 
-  const todaysTodos = pendingTodos.filter((todo) => {
+  const todaysTodos = todosArr.filter((todo) => {
     const tododate = todo.date.split(", ")[1]?.split(" ").join("");
     return tododate === today;
   });
