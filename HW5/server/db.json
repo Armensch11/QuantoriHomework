@@ -48,6 +48,20 @@
       "type": "work",
       "status": "completed",
       "id": "4450"
+    },
+    {
+      "task": "wash the car",
+      "date": "Saturday, 15  April",
+      "type": "other",
+      "status": "completed",
+      "id": "7341"
+    },
+    {
+      "task": "some tas",
+      "date": "Thursday, 20  April",
+      "type": "work",
+      "status": "completed",
+      "id": "4457"
     }
   ]
 }

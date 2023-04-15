@@ -16,11 +16,6 @@ export function todoItem(todo) {
     "change",
 
     function () {
-      // if (this.checked) {
-      //   markCompleted(this);
-      // } else {
-      //   notCompleted(this);
-      // }
       this.checked ? markCompleted(this) : notCompleted(this);
       removeAllChildNodes();
     }
@@ -118,10 +113,7 @@ export async function markCompleted(object) {
     popup(error.message, "error");
   }
 
-  removeBodyChildren();
-
   tasksRender();
-  // document.location.reload(true);
 }
 export async function notCompleted(object) {
   const idToMark = object.getAttribute("serial");
@@ -149,19 +141,7 @@ export async function notCompleted(object) {
     popup(error.message, "error");
   }
 
-  // const todos = JSON.parse(localStorage.getItem("todos"));
-  // todos.forEach((todo) => {
-  //   console.log(todo.id);
-  //   if (todo.id.toString() === idToMark) {
-  //     todo.status = "pending";
-  //     console.log(todo);
-  //   }
-  // });
-  // localStorage.setItem("todos", JSON.stringify(todos));
-  removeBodyChildren();
-
   tasksRender();
-  // document.location.reload(true);
 }
 export async function removeTodo(id) {
   const config = {
@@ -174,10 +154,7 @@ export async function removeTodo(id) {
     popup(error.message, "does not matter");
   }
 
-  removeBodyChildren();
-
   tasksRender();
-  // document.location.reload(true);
 }
 export function removeAllChildNodes() {
   const pendingContainer = document.getElementsByClassName(
@@ -191,15 +168,5 @@ export function removeAllChildNodes() {
   }
   while (completedContainer.firstChild) {
     completedContainer.removeChild(completedContainer.lastChild);
-  }
-}
-export function removeBodyChildren() {
-  const body = document.getElementsByTagName("body");
-  // console.log(body);
-  // const main = document.getElementsByClassName("main__container")[0];
-  // const modal = document.getElementsByClassName("modal__container")[0];
-  // [main, modal].forEach((el) => body.removeChild(el));
-  while (body.firstChild) {
-    body.removeChild(body.lastChild);
   }
 }
