@@ -10,7 +10,7 @@ export function popup(message, type = "success") {
 
   body.appendChild(popContainer);
   console.log("popup runs");
-  setTimeout(() => closePopup(popContainer), 2000);
+  setTimeout(() => closePopup(popContainer), 4000);
 }
 function closePopup(popContainer) {
   popContainer.remove();

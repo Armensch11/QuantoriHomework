@@ -17,7 +17,7 @@ export function todoItem(todo) {
 
     function () {
       this.checked ? markCompleted(this) : notCompleted(this);
-      removeAllChildNodes();
+      // removeAllChildNodes();
     }
   );
   const todoContent = document.createElement("div");
@@ -62,7 +62,7 @@ export function todoItem(todo) {
     const id = deleteTodo.getAttribute("serial");
     removeTodo(id);
 
-    removeAllChildNodes();
+    // removeAllChildNodes();
   };
   const deleteIcon = document.createElement("img");
   deleteIcon.setAttribute("src", "./images/trash_bin.svg");
@@ -108,6 +108,8 @@ export async function markCompleted(object) {
   };
   try {
     await fetch(`http://localhost:3005/tasks/${idToMark}`, configPut);
+    // debugger;
+    // tasksRender();
     popup("marked completed successfully");
   } catch (error) {
     popup(error.message, "error");
@@ -136,6 +138,7 @@ export async function notCompleted(object) {
   };
   try {
     await fetch(`http://localhost:3005/tasks/${idToMark}`, configPut);
+
     popup("marked pending");
   } catch (error) {
     popup(error.message, "error");
@@ -155,18 +158,4 @@ export async function removeTodo(id) {
   }
 
   tasksRender();
-}
-export function removeAllChildNodes() {
-  const pendingContainer = document.getElementsByClassName(
-    "main__container__tasks__pending"
-  )[0];
-  const completedContainer = document.getElementsByClassName(
-    "main__container__tasks__completed"
-  )[0];
-  while (pendingContainer.firstChild) {
-    pendingContainer.removeChild(pendingContainer.lastChild);
-  }
-  while (completedContainer.firstChild) {
-    completedContainer.removeChild(completedContainer.lastChild);
-  }
 }

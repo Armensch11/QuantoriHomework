@@ -15,38 +15,24 @@
       "id": "7597"
     },
     {
-      "task": "go swimming",
-      "date": "Thursday, 13  April",
-      "type": "health",
-      "status": "pending",
-      "id": "8587"
-    },
-    {
       "task": "do the insert of string into html",
       "date": "Today",
       "type": "health",
-      "status": "pending",
+      "status": "completed",
       "id": "1007"
     },
     {
       "task": "box shadow for popup",
       "date": "Thursday, 20  April",
       "type": "work",
-      "status": "pending",
-      "id": "4450"
-    },
-    {
-      "task": "wash the car",
-      "date": "Saturday, 15  April",
-      "type": "other",
       "status": "completed",
-      "id": "7341"
+      "id": "4450"
     },
     {
       "task": "some tas",
       "date": "Thursday, 20  April",
       "type": "work",
-      "status": "completed",
+      "status": "pending",
       "id": "4457"
     },
     {
@@ -55,6 +41,13 @@
       "type": "health",
       "status": "completed",
       "id": "2354"
+    },
+    {
+      "task": "go wedding",
+      "date": "Sunday, 16  April",
+      "type": "other",
+      "status": "pending",
+      "id": "7788"
     }
   ]
 }
