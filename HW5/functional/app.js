@@ -4,7 +4,7 @@ import { todoItem, renderTaskList } from "./todoItem.js";
 import { search } from "./search.js";
 import { weatherWidget } from "./weatherWidget.js";
 import { daylyTaskModal, isShownToday } from "./daylyTaskModal.js";
-import { popup } from "./popup.js";
+
 
 export function tasksRender() {
   const body = document.querySelector("body");

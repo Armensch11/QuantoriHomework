@@ -12,19 +12,9 @@ export function modalCancelAction() {
 
   let modalContainer = document.getElementsByClassName("modal__container")[0];
 
-  // cancelButton.onclick = (e) => {
-  //   e.preventDefault();
-  //   modalContainer.style.display = "none";
-  // };
   cancelButton.addEventListener("click", () => {
     modalContainer.remove();
   });
-  // const modal = document.getElementsByClassName("modal__container__inside")[0];
-  // document.addEventListener("click", (e) => {
-  //   if (!modal.contains(e.target)) {
-  //     modalContainer.style.display = "none";
-  //   }
-  // });
 }
 export function showModal() {
   let modalContainer = document.getElementsByClassName("modal__container")[0];
@@ -71,7 +61,7 @@ export function getType() {
     (type) => type.getAttribute("selected") === "true"
   );
 
-  return selectedType[0].innerHTML;
+  return selectedType[0]?.innerHTML;
 }
 export function getDueDate() {
   const input = document.getElementsByClassName(
