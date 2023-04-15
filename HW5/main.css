@@ -354,7 +354,18 @@ header {
   margin-left: 32px;
 }
 .popup {
-  z-index: 1000;
+  width: 160px;
+  height: 40px;
+  z-index: 100;
+  background-color: #f9f6f6;
+  color: #34eb37;
+
+  border-radius: 8px;
+  position: absolute;
+  top: calc(100% - 30px);
+  left: 80%;
+  display: block;
+  transform: translate(-50%, -50%);
   text-align: center;
   line-height: 16px;
   font-size: 16px;

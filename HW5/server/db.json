@@ -4,7 +4,7 @@
       "task": "watch some movee",
       "date": "Tuesday, 18  April",
       "type": "health",
-      "status": "pending",
+      "status": "completed",
       "id": "405"
     },
     {
@@ -39,7 +39,7 @@
       "task": "wash the car",
       "date": "Saturday, 15  April",
       "type": "other",
-      "status": "pending",
+      "status": "completed",
       "id": "7341"
     },
     {
