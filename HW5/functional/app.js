@@ -4,7 +4,7 @@ import { todoItem, renderTaskList } from "./todoItem.js";
 import { search } from "./search.js";
 import { weatherWidget } from "./weatherWidget.js";
 import { daylyTaskModal, isShownToday } from "./daylyTaskModal.js";
-console.log("app runs");
+import { popup } from "./popup.js";
 
 export function tasksRender() {
   const body = document.querySelector("body");
@@ -57,9 +57,11 @@ export function tasksRender() {
   [header, searchContainer, tasksContainer].forEach((el) =>
     main.appendChild(el)
   );
+
   const pendingTodos = renderTaskList("pending");
   const completedTodos = renderTaskList("completed");
   !isShownToday() ? setTimeout(() => daylyTaskModal(pendingTodos), 1500) : null;
 }
 tasksRender();
+
 weatherWidget();

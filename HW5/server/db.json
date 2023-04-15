@@ -8,13 +8,6 @@
       "id": "405"
     },
     {
-      "task": "checking server db",
-      "date": "Monday, 24  April",
-      "type": "health",
-      "status": "completed",
-      "id": "4135"
-    },
-    {
       "task": "go runnin",
       "date": "Thursday, 13  April",
       "type": "health",
@@ -32,7 +25,7 @@
       "task": "do the insert of string into html",
       "date": "Today",
       "type": "health",
-      "status": "completed",
+      "status": "pending",
       "id": "1007"
     },
     {
@@ -48,34 +41,6 @@
       "type": "health",
       "status": "pending",
       "id": "594"
-    },
-    {
-      "task": "new task",
-      "date": "Friday, 14  April",
-      "type": "health",
-      "status": "pending",
-      "id": "1668"
-    },
-    {
-      "task": "remove force update",
-      "date": "Friday, 14  April",
-      "type": "work",
-      "status": "pending",
-      "id": "9760"
-    },
-    {
-      "task": "add some task to check",
-      "date": "Saturday, 15  April",
-      "type": "health",
-      "status": "pending",
-      "id": "390"
-    },
-    {
-      "task": "checking the popup",
-      "date": "Saturday, 15  April",
-      "type": "health",
-      "status": "pending",
-      "id": "5402"
     }
   ]
 }

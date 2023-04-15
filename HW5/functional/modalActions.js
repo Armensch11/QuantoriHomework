@@ -104,7 +104,7 @@ export function validateEntries() {
       console.log(todoItem);
       addTask(todoItem);
       closeModal();
-      document.location.reload(true);
+      // document.location.reload(true);
     };
   } else console.log("some entries invalid");
   console.log(todoItem);
@@ -118,21 +118,11 @@ export async function addTask(todoItem) {
       },
       body: JSON.stringify(todoItem),
     });
-    saveToRemote.ok ? popup("Task added") : popup("adding failed", "error");
-    debugger;
-    console.log(saveToRemote);
+    popup("Task added");
   } catch (error) {
-    console.error(error);
+    popup(error, "error");
+    // console.error(error);
   }
-  // await fetch("https://my-json-server.typicode.com/armensch11/QuantoriHomework/tasks", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-type": "application/json; charset=UTF-8",
-  //   },
-  //   body: JSON.stringify(todoItem),
-  // });
-
-  // console.log(existingTodos);
 }
 
 function formatDate(dateString) {

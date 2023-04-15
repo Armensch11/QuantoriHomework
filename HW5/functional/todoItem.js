@@ -1,4 +1,5 @@
 import { tasksRender } from "./app.js";
+import { popup } from "./popup.js";
 export function todoItem(todo) {
   const todoContainer = document.createElement("div");
   todoContainer.setAttribute(
@@ -110,7 +111,12 @@ export async function markCompleted(object) {
     },
     body: JSON.stringify(updatedTodo),
   };
-  await fetch(`http://localhost:3005/tasks/${idToMark}`, configPut);
+  try {
+    await fetch(`http://localhost:3005/tasks/${idToMark}`, configPut);
+    popup("marked completed successfully");
+  } catch (error) {
+    popup(error.message, "error");
+  }
 
   removeBodyChildren();
 
@@ -136,7 +142,13 @@ export async function notCompleted(object) {
     },
     body: JSON.stringify(updatedTodo),
   };
-  await fetch(`http://localhost:3005/tasks/${idToMark}`, configPut);
+  try {
+    await fetch(`http://localhost:3005/tasks/${idToMark}`, configPut);
+    popup("marked pending");
+  } catch (error) {
+    popup(error.message, "error");
+  }
+
   // const todos = JSON.parse(localStorage.getItem("todos"));
   // todos.forEach((todo) => {
   //   console.log(todo.id);
@@ -152,10 +164,16 @@ export async function notCompleted(object) {
   // document.location.reload(true);
 }
 export async function removeTodo(id) {
-  const configPut = {
+  const config = {
     method: "DELETE",
   };
-  await fetch(`http://localhost:3005/tasks/${id}`, configPut);
+  try {
+    await fetch(`http://localhost:3005/tasks/${id}`, config);
+    popup("task deleted successfully");
+  } catch (error) {
+    popup(error.message, "does not matter");
+  }
+
   removeBodyChildren();
 
   tasksRender();

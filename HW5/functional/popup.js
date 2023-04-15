@@ -1,17 +1,29 @@
 export function popup(message, type = "success") {
   const body = document.getElementsByTagName("body")[0];
   const popContainer = document.createElement("div");
-  popContainer.style.width = "300px";
-  popContainer.style.height = "100px";
+  popContainer.setAttribute("class", "fetch-popup");
+  popContainer.style.width = "240px";
+  popContainer.style.height = "60px";
+  popContainer.backgroundColor = "#e6e3e3";
   if (type === "success") {
-    popContainer.style.border = "2px solid #34eb37";
+    popContainer.style.border = "1px solid #67cf92";
+    popContainer.style.color = "#34eb37";
   } else {
-    popContainer.style.border = "2px solid #eb3437";
+    popContainer.style.border = "1px solid #cf555d";
+    popContainer.style.color = "#eb3437";
   }
+  popContainer.style.borderRadius = "8px";
   popContainer.innerText = message;
   popContainer.style.zIndex = "100";
   popContainer.style.position = "absolute";
-  popContainer.style.top = "0px";
-  popContainer.style.left = "calc(100%/2 + 150px)";
+  popContainer.style.top = "calc(100% - 30px)";
+  popContainer.style.left = "80%";
+  popContainer.style.display = "block";
+  popContainer.style.transform = "translate(-50%, -50%)";
   body.appendChild(popContainer);
+  console.log("popup runs");
+  setTimeout(() => closePopup(popContainer), 2000);
+}
+function closePopup(popContainer) {
+  popContainer.remove();
 }
