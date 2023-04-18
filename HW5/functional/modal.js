@@ -56,6 +56,9 @@ export const modal = () => {
 
   const optionTypesArr = [health, work, home, other];
   optionTypesArr.forEach((type) => optionsTypes.appendChild(type));
+  
+  // adding listener for marking selected todo type with 1px border 
+  // in the same color as is the selected todo type, and remove border from the previous selection
   optionTypesArr.forEach((type) =>
     type.addEventListener("click", (event) => {
       event.preventDefault();

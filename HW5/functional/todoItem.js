@@ -1,5 +1,7 @@
 import { tasksRender } from "./app.js";
 import { popup } from "./popup.js";
+
+
 export function todoItem(todo) {
   const todoContainer = document.createElement("div");
   todoContainer.setAttribute(
@@ -20,11 +22,15 @@ export function todoItem(todo) {
       // removeAllChildNodes();
     }
   );
+
+
   const todoContent = document.createElement("div");
   todoContent.setAttribute(
     "class",
     "main__container__tasks__pending__list__item__content"
   );
+
+
   const todoDesc = document.createElement("div");
   todoDesc.setAttribute(
     "class",
@@ -32,11 +38,15 @@ export function todoItem(todo) {
   );
   todoDesc.setAttribute("status", todo?.status);
   todoDesc.innerHTML = todo?.task;
+
+
   const typeAndDate = document.createElement("div");
   typeAndDate.setAttribute(
     "class",
     "main__container__tasks__pending__list__item__content__dateType"
   );
+
+
   const type = document.createElement("div");
   type.setAttribute(
     "class",
@@ -44,14 +54,22 @@ export function todoItem(todo) {
   );
   type.setAttribute("class", `${todo.type}`);
   type.innerText = todo?.type;
+
+
   const date = document.createElement("div");
   date.setAttribute(
     "class",
     "main__container__tasks__pending__list__item__content__date"
   );
   date.innerText = todo?.date;
+
+
   [type, date].forEach((el) => typeAndDate.appendChild(el));
+
+
   [todoDesc, typeAndDate].forEach((el) => todoContent.appendChild(el));
+
+  
   const deleteTodo = document.createElement("div");
   deleteTodo.setAttribute(
     "class",
