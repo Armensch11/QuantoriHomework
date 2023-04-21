@@ -62,7 +62,7 @@ export const modal = () => {
   optionTypesArr.forEach((type) =>
     type.addEventListener("click", (event) => {
       event.preventDefault();
-      checkTodoType(event);
+      checkTodoType(event.target);
       validateEntries();
     })
   );
