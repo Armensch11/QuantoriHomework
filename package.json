@@ -18,6 +18,13 @@
   },
   "homepage": "https://github.com/Armensch11/QuantoriHomework#readme",
   "dependencies": {
-    "json-server": "^0.17.3"
+    "json-server": "^0.17.3",
+    "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "css-loader": "^6.7.3",
+    "html-webpack-plugin": "^5.5.1",
+    "style-loader": "^3.3.2",
+    "webpack": "^5.80.0"
   }
 }

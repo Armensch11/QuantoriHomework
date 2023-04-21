@@ -392,6 +392,14 @@ const getFlattenedArray = (numbers) => {
     }
   }, []);
 };
+const getFlattenedArrayWithConcat = (array) => {
+  const newArr = array.reduce(
+    (acc, el) =>
+      acc.concat(Array.isArray(el) ? getFlattenedArrayWithConcat(el) : el),
+    []
+  );
+  return newArr;
+};
 /**
  * Exercise 23
  *

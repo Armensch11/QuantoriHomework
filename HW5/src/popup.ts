@@ -1,4 +1,4 @@
-export function popup(message, type = "success") {
+export function popup(message: string, type = "success"): void {
   // const body = document.getElementsByTagName("body")[0];
   const body = document.querySelector("body");
   console.log(body);
@@ -9,10 +9,10 @@ export function popup(message, type = "success") {
     popContainer.style.color = "#eb3437";
   }
 
-  body.appendChild(popContainer);
+  body?.appendChild(popContainer);
   console.log("popup runs");
   setTimeout(() => closePopup(popContainer), 4000);
 }
-function closePopup(popContainer) {
+function closePopup(popContainer: HTMLDivElement) {
   popContainer.remove();
 }
