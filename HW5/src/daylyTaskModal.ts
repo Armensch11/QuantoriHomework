@@ -20,6 +20,7 @@ export const daylyTaskModal = async (todos: ITodoItem[]) => {
 
   const taskTitlesContainer = document.createElement("div");
   taskTitlesContainer.setAttribute("class", "daylyTask-modal-container");
+
   getTodaysTasks("daylyTask-modal-container", todos);
 
   const buttonContainer = document.createElement("div");

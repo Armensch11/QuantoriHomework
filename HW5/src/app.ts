@@ -62,7 +62,7 @@ export function tasksRender() {
     main.appendChild(el)
   );
 
-  const pendingTodos = renderTaskList("pending");
+  const pendingTodos = await renderTaskList("pending");
   const completedTodos = renderTaskList("completed");
 
   !isShownToday() ? setTimeout(() => daylyTaskModal(pendingTodos), 1500) : null;

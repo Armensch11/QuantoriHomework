@@ -2,7 +2,7 @@ import { tasksRender } from "./app.js";
 import { popup } from "./popup.js";
 import { ITodoItem } from "./Interfaces/Interfaces.js";
 
-export function todoItem(todo: ITodoItem) {
+function todoItem(todo: ITodoItem) {
   const todoContainer = document.createElement("div");
   todoContainer.setAttribute(
     "class",
@@ -95,7 +95,9 @@ export async function renderTaskList(status: string) {
   const listContainer = document.getElementsByClassName(
     `main__container__tasks__${status}`
   )[0];
+
   filtered.forEach((todo) => listContainer.appendChild(todoItem(todo)));
+
   return filtered;
 }
 
@@ -124,7 +126,10 @@ export async function markCompleted(object: HTMLDivElement) {
     // tasksRender();
     popup("marked completed successfully");
   } catch (error) {
-    popup(error.message, "error");
+    let message;
+    if (error instanceof Error) message = error.message;
+    else message = String(error);
+    popup(message, "error");
   }
 
   tasksRender();
@@ -154,7 +159,10 @@ export async function notCompleted(object: HTMLDivElement) {
 
     popup("marked pending");
   } catch (error) {
-    popup(error.message, "error");
+    let message;
+    if (error instanceof Error) message = error.message;
+    else message = String(error);
+    popup(message, "error");
   }
 
   tasksRender();
@@ -167,7 +175,10 @@ export async function removeTodo(id: string) {
     await fetch(`http://localhost:3005/tasks/${id}`, config);
     popup("task deleted successfully");
   } catch (error) {
-    popup(error.message, "does not matter");
+    let message;
+    if (error instanceof Error) message = error.message;
+    else message = String(error);
+    popup(message, "error");
   }
 
   tasksRender();
