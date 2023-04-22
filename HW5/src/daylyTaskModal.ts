@@ -1,8 +1,10 @@
-export const daylyTaskModal = async (todos) => {
+import { ITodoItem } from "./Interfaces/Interfaces";
+
+export const daylyTaskModal = async (todos: ITodoItem[]) => {
   const body = document.querySelector("body");
   const modalContainer = document.createElement("div");
   modalContainer.setAttribute("class", "modal__container");
-  body.appendChild(modalContainer);
+  body?.appendChild(modalContainer);
   modalContainer.style.display = "flex";
   const containerInside = document.createElement("div");
   containerInside.setAttribute("class", "modal__container__inside dayly-modal");
@@ -55,7 +57,9 @@ export function isShownToday() {
   });
   const today = date + month;
 
-  const lastShow = JSON.parse(localStorage.getItem("lastShow"));
+  const lastShow: string | null = JSON.parse(
+    localStorage.getItem("lastShow") ?? "null"
+  );
 
   lastShow === today
     ? (isShown = true)
@@ -64,7 +68,7 @@ export function isShownToday() {
   return isShown;
 }
 
-async function getTodaysTasks(className, todos) {
+async function getTodaysTasks(className: string, todos: ITodoItem[]) {
   const now = new Date();
   const date = now.getDate().toString();
   const month = now.toLocaleString(window.navigator.language, {
@@ -80,7 +84,7 @@ async function getTodaysTasks(className, todos) {
     const tododate = todo.date.split(", ")[1]?.split(" ").join("");
     return tododate === today;
   });
-  console.log(todaysTodos);
+
   const container = document.getElementsByClassName(className)[0];
   if (todaysTodos.length) {
     const subTitle = document.createElement("span");

@@ -10,7 +10,7 @@ export function tasksRender() {
 
   const main = document.createElement("section");
   main.setAttribute("class", "main__container");
-  body.appendChild(main);
+  body?.appendChild(main);
 
   const header = document.createElement("header");
   header.setAttribute("class", "header");
@@ -25,9 +25,8 @@ export function tasksRender() {
   searchField.setAttribute("class", "main__container__searchfield");
   searchField.setAttribute("placeholder", "Search Task");
 
-  searchField.addEventListener("keyup", (event) => {
-    console.log(event.target.value);
-    search(event.target.value);
+  searchField.addEventListener("keyup", (event: KeyboardEvent) => {
+    search((event.target as HTMLInputElement).value);
   });
 
   const newTaskButton = document.createElement("button");

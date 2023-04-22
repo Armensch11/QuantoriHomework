@@ -1,7 +1,8 @@
 import { tasksRender } from "./app.js";
 import { popup } from "./popup.js";
+import { ITodoItem } from "./Interfaces/Interfaces.js";
 
-export function todoItem(todo) {
+export function todoItem(todo: ITodoItem) {
   const todoContainer = document.createElement("div");
   todoContainer.setAttribute(
     "class",
@@ -68,7 +69,8 @@ export function todoItem(todo) {
   );
   deleteTodo.setAttribute("serial", `${todo?.id}`);
   deleteTodo.onclick = () => {
-    const id = deleteTodo.getAttribute("serial");
+    const id = deleteTodo.getAttribute("serial")!;
+
     removeTodo(id);
 
     // removeAllChildNodes();
@@ -83,28 +85,29 @@ export function todoItem(todo) {
   return todoContainer;
 }
 
-export async function renderTaskList(status) {
+export async function renderTaskList(status: string) {
   const getTodos = await fetch("http://localhost:3005/tasks", {
     method: "GET",
   });
-  const todos = await getTodos.json();
+  const todos: ITodoItem[] = await getTodos.json();
   // console.log(todos);
-  const filtered = todos.filter((todo) => todo.status === status);
+  const filtered = todos.filter((todo: ITodoItem) => todo.status === status);
   const listContainer = document.getElementsByClassName(
     `main__container__tasks__${status}`
   )[0];
   filtered.forEach((todo) => listContainer.appendChild(todoItem(todo)));
   return filtered;
 }
-export async function markCompleted(object) {
+
+export async function markCompleted(object: HTMLDivElement) {
   const idToMark = object.getAttribute("serial");
 
   const getTodos = await fetch(`http://localhost:3005/tasks`);
-  const todos = await getTodos.json();
+  const todos: ITodoItem[] = await getTodos.json();
 
   // debugger;
   const todoToMark = todos.filter(
-    (el) => el.id.toString() === idToMark.toString()
+    (el) => el.id.toString() === idToMark?.toString()
   );
 
   const updatedTodo = { ...todoToMark[0], status: "completed" };
@@ -126,15 +129,16 @@ export async function markCompleted(object) {
 
   tasksRender();
 }
-export async function notCompleted(object) {
+
+export async function notCompleted(object: HTMLDivElement) {
   const idToMark = object.getAttribute("serial");
-  console.log(idToMark.trim());
+  console.log(idToMark?.trim());
   const getTodos = await fetch(`http://localhost:3005/tasks`);
-  const todos = await getTodos.json();
+  const todos: ITodoItem[] = await getTodos.json();
 
   // debugger;
   const todoToMark = todos.filter(
-    (el) => el.id.toString() === idToMark.toString()
+    (el) => el.id.toString() === idToMark?.toString()
   );
   console.log(todoToMark);
   const updatedTodo = { ...todoToMark[0], status: "pending" };
@@ -155,7 +159,7 @@ export async function notCompleted(object) {
 
   tasksRender();
 }
-export async function removeTodo(id) {
+export async function removeTodo(id: string) {
   const config = {
     method: "DELETE",
   };
