@@ -1,6 +1,6 @@
 import { ITodoItem } from "./Interfaces/Interfaces";
 
-export const daylyTaskModal = async (todos: ITodoItem[]) => {
+export const daylyTaskModal = async (todos: Promise<ITodoItem[]>) => {
   const body = document.querySelector("body");
   const modalContainer = document.createElement("div");
   modalContainer.setAttribute("class", "modal__container");
@@ -69,7 +69,7 @@ export function isShownToday() {
   return isShown;
 }
 
-async function getTodaysTasks(className: string, todos: ITodoItem[]) {
+async function getTodaysTasks(className: string, todos: Promise<ITodoItem[]>) {
   const now = new Date();
   const date = now.getDate().toString();
   const month = now.toLocaleString(window.navigator.language, {

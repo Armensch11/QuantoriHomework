@@ -4,14 +4,14 @@
       "task": "watch some movee",
       "date": "Tuesday, 18  April",
       "type": "health",
-      "status": "completed",
+      "status": "pending",
       "id": "405"
     },
     {
       "task": "go runnin",
       "date": "Thursday, 13  April",
       "type": "health",
-      "status": "pending",
+      "status": "completed",
       "id": "7597"
     },
     {

@@ -1,5 +1,5 @@
 import { popup } from "./popup.js";
-import { ITodoItem } from "./Interfaces/Interfaces.js";
+import { ITodoItem } from "./Interfaces/Interfaces";
 
 export function modalCancelAction() {
   const cancelButton = document.getElementsByClassName(
