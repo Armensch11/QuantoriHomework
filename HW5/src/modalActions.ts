@@ -95,7 +95,7 @@ export function validateEntries() {
     todoItem.date = dueDate;
     todoItem.type = todoType;
     todoItem.status = "pending";
-    todoItem.id = Math.floor(Math.random() * 10000).toString();
+    todoItem.id = new Date().valueOf().toString();
     addButton.disabled = false;
     addButton.style.backgroundColor = "#3C86F4";
     addButton.onclick = (e) => {
@@ -110,7 +110,7 @@ export function validateEntries() {
 
 async function addTask(todoItem: ITodoItem) {
   try {
-    const saveToRemote = await fetch("http://localhost:3005/tasks", {
+    await fetch("http://localhost:3005/tasks", {
       method: "POST",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
