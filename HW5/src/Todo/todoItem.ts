@@ -1,6 +1,6 @@
-import { tasksRender } from "./app.js";
-import { popup } from "./popup.js";
-import { ITodoItem } from "./Interfaces/Interfaces.js";
+import { tasksRender } from "../app";
+import { popup } from "../Popup/popup";
+import { ITodoItem } from "../Interfaces/Interfaces";
 
 function todoItem(todo: ITodoItem) {
   const todoContainer = document.createElement("div");
@@ -183,5 +183,3 @@ export async function removeTodo(id: string) {
 
   tasksRender();
 }
-
-

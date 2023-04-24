@@ -1,4 +1,4 @@
-import { ILocationCurrent } from "./Interfaces/Interfaces";
+import { ILocationCurrent } from "../Interfaces/Interfaces";
 
 export async function weatherWidget() {
   navigator.geolocation.getCurrentPosition(locationSuccess, locationError);

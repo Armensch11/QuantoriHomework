@@ -1,4 +1,4 @@
-import { ITodoItem } from "./Interfaces/Interfaces";
+import { ITodoItem } from "../Interfaces/Interfaces";
 
 export const daylyTaskModal = async (todos: Promise<ITodoItem[]>) => {
   const body = document.querySelector("body");

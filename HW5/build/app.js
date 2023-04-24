@@ -1,9 +1,9 @@
-import { modal } from "./modal.js";
-import { showModal } from "./modalActions.js";
+import { modal } from "./Modals/modal";
+import { showModal } from "./Modals/modalActions";
 import { renderTaskList } from "./todoItem.js";
-import { search } from "./search.js";
-import { weatherWidget } from "./weatherWidget.js";
-import { daylyTaskModal, isShownToday } from "./daylyTaskModal.js";
+import { search } from "./Search/search";
+import { weatherWidget } from "./Widgets/weatherWidget";
+import { daylyTaskModal, isShownToday } from "./Modals/daylyTaskModal";
 export function tasksRender() {
     const body = document.querySelector("body");
     const main = document.createElement("section");
