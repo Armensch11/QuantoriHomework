@@ -7,8 +7,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { tasksRender } from "./app.js";
-import { popup } from "./popup.js";
+import { tasksRender } from "../Main/app.js";
+import { popup } from "../Popup/popup.js";
 function todoItem(todo) {
     const todoContainer = document.createElement("div");
     todoContainer.setAttribute("class", "main__container__tasks__pending__list__item");

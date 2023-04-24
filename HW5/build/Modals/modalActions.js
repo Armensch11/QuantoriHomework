@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { popup } from "../popup";
+import { popup } from "../Popup/popup.js";
 export function modalCancelAction() {
     const cancelButton = document.getElementsByClassName("modal__container__inside__buttons__cancel")[0];
     let modalContainer = document.getElementsByClassName("modal__container")[0];

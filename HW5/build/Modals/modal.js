@@ -1,4 +1,4 @@
-import { modalCancelAction, checkTodoType, validateEntries, } from "./modalActions";
+import { modalCancelAction, checkTodoType, validateEntries, } from "./modalActions.js";
 export const modal = () => {
     const body = document.querySelector("body");
     const modalContainer = document.createElement("div");
