@@ -1,3 +1,5 @@
+import "./popup.css";
+
 export function popup(message: string, type = "success"): void {
   // const body = document.getElementsByTagName("body")[0];
   const body = document.querySelector("body");

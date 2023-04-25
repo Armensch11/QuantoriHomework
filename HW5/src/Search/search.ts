@@ -1,3 +1,5 @@
+import "./search.css";
+
 export function search(searchTerm: string, status = "pending") {
   const todos = document.getElementsByClassName(
     "main__container__tasks__pending__list__item__content__title"

@@ -4,6 +4,7 @@ import { renderTaskList } from "../todo/todoItem";
 import { search } from "../search/search";
 import { weatherWidget } from "../widgets/weatherWidget";
 import { daylyTaskModal, isShownToday } from "../modals/daylyTaskModal";
+import "./app.css";
 
 export function tasksRender() {
   const body = document.querySelector("body");

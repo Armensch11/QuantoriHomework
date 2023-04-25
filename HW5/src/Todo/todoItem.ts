@@ -1,6 +1,7 @@
 import { tasksRender } from "../main/app";
 import { popup } from "../popup/popup";
 import { ITodoItem } from "../Interfaces/Interfaces";
+import "./todoItem.css";
 
 function todoItem(todo: ITodoItem) {
   const todoContainer = document.createElement("div");

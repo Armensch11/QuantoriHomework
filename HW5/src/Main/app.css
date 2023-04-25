@@ -1,0 +1,51 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+
+  font-family: "Nunito", "Inter", sans-serif;
+  z-index: 0;
+}
+* {
+  box-sizing: border-box;
+  z-index: 0;
+}
+#root {
+  z-index: 10;
+}
+.main__container {
+  width: 100vw;
+  height: 100vh;
+  padding: 44px 165px;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+header {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 36px;
+
+  color: #1d1d1d;
+  margin-bottom: 44px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.main__container__tasks__pending p,
+.main__container__tasks__completed p {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 33px;
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+  margin-bottom: 24px;
+}

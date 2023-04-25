@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "json-server --watch  ./HW5/server/db.json -p 3005 ",
-    "build": "webpack",
+    "build": "webpack-dev-server",
     "build:prod": "webpack -p"
   },
   "repository": {

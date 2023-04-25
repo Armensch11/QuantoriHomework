@@ -3,6 +3,7 @@ import {
   checkTodoType,
   validateEntries,
 } from "./modalActions";
+import "./modal.css";
 
 export const modal = () => {
   const body = document.querySelector("body");

@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
@@ -23,5 +24,13 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
   },
-  // 
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      title: "HW5 typescript webpack",
+      meta: {
+        viewport: "width=device-width, initial-scale=1",
+      },
+    }),
+  ],
 };
