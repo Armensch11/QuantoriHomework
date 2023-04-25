@@ -1,9 +1,9 @@
-import { modal } from "../Modals/modal.js";
-import { showModal } from "../Modals/modalActions.js";
-import { renderTaskList } from "../Todo/todoItem.js";
-import { search } from "../Search/search.js";
-import { weatherWidget } from "../Widgets/weatherWidget.js";
-import { daylyTaskModal, isShownToday } from "../Modals/daylyTaskModal.js";
+import { modal } from "../modals/modal";
+import { showModal } from "../modals/modalActions";
+import { renderTaskList } from "../todo/todoItem";
+import { search } from "../search/search";
+import { weatherWidget } from "../widgets/weatherWidget";
+import { daylyTaskModal, isShownToday } from "../modals/daylyTaskModal";
 
 export function tasksRender() {
   const body = document.querySelector("body");

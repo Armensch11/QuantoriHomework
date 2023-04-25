@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "build": "tsc --build"
+    "build": "webpack-dev-server ",
+    "build:prod": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -19,13 +19,16 @@
   },
   "homepage": "https://github.com/Armensch11/QuantoriHomework#readme",
   "dependencies": {
-    "json-server": "^0.17.3",
-    "typescript": "^5.0.4"
+    "json-server": "^0.17.3"
   },
   "devDependencies": {
     "css-loader": "^6.7.3",
     "html-webpack-plugin": "^5.5.1",
     "style-loader": "^3.3.2",
-    "webpack": "^5.80.0"
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.4",
+    "webpack": "^5.80.0",
+    "webpack-cli": "^5.0.2",
+    "webpack-dev-server": "^4.13.3"
   }
 }

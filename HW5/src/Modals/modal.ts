@@ -2,7 +2,7 @@ import {
   modalCancelAction,
   checkTodoType,
   validateEntries,
-} from "./modalActions.js";
+} from "./modalActions";
 
 export const modal = () => {
   const body = document.querySelector("body");

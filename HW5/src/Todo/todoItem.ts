@@ -1,5 +1,5 @@
-import { tasksRender } from "../Main/app.js";
-import { popup } from "../Popup/popup.js";
+import { tasksRender } from "../main/app";
+import { popup } from "../popup/popup";
 import { ITodoItem } from "../Interfaces/Interfaces";
 
 function todoItem(todo: ITodoItem) {

@@ -1,4 +1,4 @@
-import { popup } from "../Popup/popup.js";
+import { popup } from "../popup/popup";
 import { ITodoItem } from "../Interfaces/Interfaces";
 
 export function modalCancelAction() {
