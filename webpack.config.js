@@ -3,6 +3,7 @@ const path = require("path");
 
 module.exports = {
   entry: "/HW5/src/main/app.ts",
+
   module: {
     rules: [
       {
@@ -16,7 +17,14 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        type: "asset/inline",
+        use: [
+          {
+            loader: "svg-url-loader",
+            options: {
+              encoding: "base64",
+            },
+          },
+        ],
       },
     ],
   },

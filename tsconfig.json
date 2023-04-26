@@ -32,7 +32,8 @@
     "target": "es6",
     "downlevelIteration": true,
     "rootDir": "./HW5/src" /* Specify the root folder within your source files. */,
-    // "moduleResolution": "node",                       /* Specify how TypeScript looks up a file from a given module specifier. */
+    "moduleResolution": "node" /* Specify how TypeScript looks up a file from a given module specifier. */,
+    "typeRoots": ["./src/types"],
     // "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
     // "paths": {},                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
@@ -40,10 +41,10 @@
     // "types": [],                                      /* Specify type package names to be included without being referenced in a source file. */
     // "allowUmdGlobalAccess": true,                     /* Allow accessing UMD globals from modules. */
     //"moduleSuffixes": [] /* List of file name suffixes to search when resolving a module. */,
-    // "resolveJsonModule": true,                        /* Enable importing .json files. */
+    "resolveJsonModule": true /* Enable importing .json files. */,
     // "noResolve": true,                                /* Disallow 'import's, 'require's or '<reference>'s from expanding the number of files TypeScript should add to a project. */
-    // "allowSyntheticDefaultImports": true,
-    // "esModuleInterop": true,
+
+    "esModuleInterop": true,
     /* JavaScript Support */
     "allowJs": true /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */,
     // "checkJs": true,                                  /* Enable error reporting in type-checked JavaScript files. */
@@ -63,8 +64,8 @@
     // "downlevelIteration": true,                       /* Emit more compliant, but verbose and less performant JavaScript for iteration. */
     // "sourceRoot": "",                                 /* Specify the root path for debuggers to find the reference source code. */
     // "mapRoot": "",                                    /* Specify the location where debugger should locate map files instead of generated locations. */
-    // "inlineSourceMap": true,                          /* Include sourcemap files inside the emitted JavaScript. */
-    // "inlineSources": true,                            /* Include source code in the sourcemaps inside the emitted JavaScript. */
+    "inlineSourceMap": true /* Include sourcemap files inside the emitted JavaScript. */,
+    "inlineSources": true /* Include source code in the sourcemaps inside the emitted JavaScript. */,
     // "emitBOM": true,                                  /* Emit a UTF-8 Byte Order Mark (BOM) in the beginning of output files. */
     // "newLine": "crlf",                                /* Set the newline character for emitting files. */
     // "stripInternal": true,                            /* Disable emitting declarations that have '@internal' in their JSDoc comments. */
@@ -76,7 +77,7 @@
 
     /* Interop Constraints */
     // "isolatedModules": true,                          /* Ensure that each file can be safely transpiled without relying on other imports. */
-    // "allowSyntheticDefaultImports": true,             /* Allow 'import x from y' when a module doesn't have a default export. */
+    "allowSyntheticDefaultImports": true /* Allow 'import x from y' when a module doesn't have a default export. */,
     //"esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
     // "preserveSymlinks": true,                         /* Disable resolving symlinks to their realpath. This correlates to the same flag in node. */
     // "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,

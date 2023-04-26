@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/Armensch11/QuantoriHomework#readme",
   "dependencies": {
-    "json-server": "^0.17.3"
+    "json-server": "^0.17.3",
+    "svg-url-loader": "^8.0.0"
   },
   "devDependencies": {
     "concurrently": "^8.0.1",

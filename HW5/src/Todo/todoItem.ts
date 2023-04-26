@@ -2,6 +2,7 @@
 import { popup } from "../popup/popup";
 import { ITodoItem } from "../Interfaces/Interfaces";
 import "./todoItem.css";
+import trashBinSvg from "../images/trash_bin.svg";
 //
 
 function todoItem(todo: ITodoItem) {
@@ -78,7 +79,8 @@ function todoItem(todo: ITodoItem) {
     // removeAllChildNodes();
   };
   const deleteIcon = document.createElement("img");
-  deleteIcon.setAttribute("src", "./images/trash_bin.svg");
+  // deleteIcon.setAttribute("src", "./images/trash_bin.svg");
+  deleteIcon.src = trashBinSvg;
   deleteIcon.setAttribute("alt", "trash bin icon");
   deleteTodo.appendChild(deleteIcon);
   [checkBox, todoContent, deleteTodo].forEach((el) =>
