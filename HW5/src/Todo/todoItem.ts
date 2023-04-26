@@ -77,7 +77,7 @@ function todoItem(todo: ITodoItem) {
     // removeAllChildNodes();
   };
   const deleteIcon = document.createElement("img");
-  deleteIcon.setAttribute("src", "./images/trash_bin.svg");
+  // deleteIcon.setAttribute("src", "../../trash_bin.svg");
   deleteIcon.setAttribute("alt", "trash bin icon");
   deleteTodo.appendChild(deleteIcon);
   [checkBox, todoContent, deleteTodo].forEach((el) =>
@@ -95,7 +95,17 @@ export async function renderTaskList(status: string) {
   const filtered = todos.filter((todo: ITodoItem) => todo.status === status);
   const listContainer = document.getElementsByClassName(
     `main__container__tasks__${status}`
-  )[0];
+  )[0] as HTMLDivElement;
+
+  const containerTitle = document.createElement("p");
+
+  status === "pending"
+    ? (containerTitle.innerText = "All Tasks")
+    : (containerTitle.innerText = "Completed Tasks");
+
+  listContainer.innerHTML = "";
+
+  listContainer.appendChild(containerTitle);
 
   filtered.forEach((todo) => listContainer.appendChild(todoItem(todo)));
 
@@ -132,8 +142,9 @@ export async function markCompleted(object: HTMLDivElement) {
     else message = String(error);
     popup(message, "error");
   }
-
-  tasksRender();
+  renderTaskList("pending");
+  renderTaskList("completed");
+  // tasksRender();
 }
 
 export async function notCompleted(object: HTMLDivElement) {
@@ -166,7 +177,8 @@ export async function notCompleted(object: HTMLDivElement) {
     popup(message, "error");
   }
 
-  tasksRender();
+  renderTaskList("pending");
+  renderTaskList("completed");
 }
 export async function removeTodo(id: string) {
   const config = {
@@ -182,5 +194,6 @@ export async function removeTodo(id: string) {
     popup(message, "error");
   }
 
-  tasksRender();
+  renderTaskList("pending");
+  renderTaskList("completed");
 }

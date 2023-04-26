@@ -14,6 +14,21 @@ module.exports = {
         use: "ts-loader",
         exclude: /node_modules/,
       },
+      {
+        test: /\.svg/,
+        use: [
+          {
+            loader: "svg-loader",
+          },
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[hash].[ext]",
+              outputPath: "images",
+            },
+          },
+        ],
+      },
     ],
   },
   mode: "development",
@@ -26,11 +41,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      template: "./HW5/index.html",
       filename: "index.html",
-      title: "HW5 typescript webpack",
-      meta: {
-        viewport: "width=device-width, initial-scale=1",
-      },
     }),
   ],
 };

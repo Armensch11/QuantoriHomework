@@ -63,12 +63,16 @@ export function tasksRender() {
     main.appendChild(el)
   );
 
-  const pendingTodos = renderTaskList("pending");
-  renderTaskList("completed");
+  // const pendingTodos = renderTaskList("pending");
+  // renderTaskList("completed");
 
-  !isShownToday() ? setTimeout(() => daylyTaskModal(pendingTodos), 1500) : null;
+  // !isShownToday() ? setTimeout(() => daylyTaskModal(pendingTodos), 1500) : null;
 }
 
 tasksRender();
+const pendingTodos = renderTaskList("pending");
+renderTaskList("completed");
+
+!isShownToday() ? setTimeout(() => daylyTaskModal(pendingTodos), 1500) : null;
 
 weatherWidget();
