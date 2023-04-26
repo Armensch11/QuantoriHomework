@@ -10,24 +10,13 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.tsx?$/,
+        test: /\.ts$/,
         use: "ts-loader",
         exclude: /node_modules/,
       },
       {
-        test: /\.svg/,
-        use: [
-          {
-            loader: "svg-loader",
-          },
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].[hash].[ext]",
-              outputPath: "images",
-            },
-          },
-        ],
+        test: /\.svg$/,
+        type: "asset/inline",
       },
     ],
   },

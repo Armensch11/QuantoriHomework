@@ -53,14 +53,14 @@
       "task": "dededededed",
       "date": "Tuesday, 18  April",
       "type": "work",
-      "status": "completed",
+      "status": "pending",
       "id": "7109"
     },
     {
       "task": "dadasd",
       "date": "Tuesday, 18  April",
       "type": "work",
-      "status": "completed",
+      "status": "pending",
       "id": "3263"
     },
     {
@@ -76,13 +76,6 @@
       "type": "health",
       "status": "completed",
       "id": "3385"
-    },
-    {
-      "task": "changed id to newDate().valueOf()",
-      "date": "Tuesday, 25  April",
-      "type": "work",
-      "status": "pending",
-      "id": "1682324119393"
     },
     {
       "task": "just checking how the timestamp works",

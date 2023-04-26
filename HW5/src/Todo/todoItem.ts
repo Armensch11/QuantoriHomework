@@ -1,7 +1,8 @@
-import { tasksRender } from "../main/app";
+// import { tasksRender } from "../main/app";
 import { popup } from "../popup/popup";
 import { ITodoItem } from "../Interfaces/Interfaces";
 import "./todoItem.css";
+//
 
 function todoItem(todo: ITodoItem) {
   const todoContainer = document.createElement("div");
@@ -77,7 +78,7 @@ function todoItem(todo: ITodoItem) {
     // removeAllChildNodes();
   };
   const deleteIcon = document.createElement("img");
-  // deleteIcon.setAttribute("src", "../../trash_bin.svg");
+  deleteIcon.setAttribute("src", "./images/trash_bin.svg");
   deleteIcon.setAttribute("alt", "trash bin icon");
   deleteTodo.appendChild(deleteIcon);
   [checkBox, todoContent, deleteTodo].forEach((el) =>
