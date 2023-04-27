@@ -20,6 +20,7 @@ export const getWeather = async (
       weatherConditionImageUrl: weather.current.condition.icon,
       temperature: weather.current.temp_c,
       city: weather.location.name,
+      showLoader: false,
     });
   } catch (error) {
     console.error(error);

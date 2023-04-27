@@ -1,12 +1,14 @@
 import "./App.css";
+import Header from "./components/header/";
 
-
-import Weather from "./components/widgets/weather";
 function App() {
   return (
-    <>
-      <Weather />
-    </>
+  
+      <div className="App">
+        
+        <Header />
+      </div>
+    
   );
 }
 
