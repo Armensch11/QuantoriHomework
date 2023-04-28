@@ -2,8 +2,3 @@
 * {
   box-sizing: border-box;
 }
-.App {
-  margin: 68px 174px;
-  height: calc(100vh - 2 * 68px);
-  /* border: 1px solid green; */
-}

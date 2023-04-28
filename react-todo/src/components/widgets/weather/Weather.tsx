@@ -1,9 +1,9 @@
 import React, { useEffect, useState, Dispatch, SetStateAction } from "react";
-import { IWeatherData } from "../../Interfaces/Interfaces";
+import { IWeatherData } from "../../../Interfaces/Interfaces";
 import { getLocationWeather } from "../../utils/getLocationWeather";
 
 import "./Weather.css";
-import loader from "../../../assets/gpsAnimated.gif";
+import loader from "../../../assets/circular_progress_indicator.gif";
 
 const Weather = () => {
   const [weatherData, setWeatherData] = useState<IWeatherData>({
@@ -16,7 +16,7 @@ const Weather = () => {
   const localWeather = async (
     setData: Dispatch<SetStateAction<IWeatherData>>
   ) => {
-    const setWeather = await getLocationWeather(setData);
+    await getLocationWeather(setData);
   };
 
   useEffect(() => {
@@ -26,8 +26,12 @@ const Weather = () => {
   return (
     <React.Fragment>
       {weatherData.showLoader ? (
-        <div>
-          <img src={loader} alt="checking location" />
+        <div className="weather-loader">
+          <img
+            className="weather-loader__image"
+            src={loader}
+            alt="checking location"
+          />
         </div>
       ) : (
         <div className="weather-container">

@@ -1,8 +1,7 @@
-import { ILocationCurrent, IWeatherData } from "../Interfaces/Interfaces";
+import { ILocationCurrent, IWeatherData } from "../../Interfaces/Interfaces";
 import { Dispatch, SetStateAction } from "react";
 import { getWeather } from "./getWeather";
-// dotenv.config();
-// type Setter = (T: string) => void;
+
 
 export const getLocationWeather = async (
   setData: Dispatch<SetStateAction<IWeatherData>>

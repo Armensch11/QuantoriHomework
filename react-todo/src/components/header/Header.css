@@ -4,8 +4,12 @@
   justify-content: space-between;
 
   align-items: center;
-  margin-left: 8px;
-  margin-right: 8px;
+  margin-left: 174px;
+  margin-top: 68px;
+  margin-right: 174px;
+  margin-bottom: 64px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 .header__title {
   font-family: "Nunito";
