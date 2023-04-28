@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import "./Search.css";
 import AddTask from "../addTask/AddTask";
 
-const Search = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+const Search = ({
+  searchTermHandler,
+}: {
+  searchTermHandler: (value: string) => void;
+}) => {
   return (
     <React.Fragment>
       <div className="search-container">
@@ -11,8 +14,8 @@ const Search = () => {
           className="search__input"
           type="search"
           placeholder="Search Task"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          // value={searchTerm}
+          onChange={(e) => searchTermHandler(e.target.value)}
         />
         <AddTask />
       </div>

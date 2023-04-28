@@ -1,4 +1,3 @@
-import React from "react";
 import { ITodoItem } from "../../Interfaces/Interfaces";
 import "./TodoList.css";
 import TodoItem from "../todoItem/TodoItem";
@@ -19,7 +18,7 @@ const TodoList = ({
         <div className="list-container">
           <h2 className="list__title">{title}</h2>
           {todoToRender.map((todo) => (
-            <TodoItem {...todo} />
+            <TodoItem {...todo} key={todo.id} />
           ))}
         </div>
       )}
