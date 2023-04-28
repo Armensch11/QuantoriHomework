@@ -9,11 +9,12 @@ export interface ILocationCurrent {
   longitude: string;
 }
 export interface ITodoItem {
-  id: number;
+  id: string;
   title: string;
   type: string;
   dueDate: string;
   status: string;
+  task: string;
 }
 export interface ILoader {
   loaderHandler: () => void;

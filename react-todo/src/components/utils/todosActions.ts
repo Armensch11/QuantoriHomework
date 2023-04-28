@@ -8,6 +8,7 @@ export const getTodos = async (
     method: "GET",
   });
   const todos: ITodoItem[] = await fetchTodos.json();
+  console.log(todos);
   todos.length ? todoSetter([...todos]) : todoSetter([]);
 };
 
@@ -42,5 +43,5 @@ export const deleteTodos = async (
   } catch (error: any) {
     console.error(error.message);
   }
-  todoSetter((prevState) => [...prevState.filter((el) => el.id !== id)]);
+  todoSetter((prevState) => [...prevState.filter((el) => +el.id !== id)]);
 };
