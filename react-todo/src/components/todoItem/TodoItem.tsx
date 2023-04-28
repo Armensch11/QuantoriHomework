@@ -1,8 +1,11 @@
 import React from "react";
 import { ITodoItem } from "../../Interfaces/Interfaces";
+import "./TodoItem.css";
+import trashBin from "../../assets/trash_bin.svg";
+import { todoTypes } from "../utils/todoTypes";
 
 const TodoItem = (
-  { id, title, type, dueDate, status, task }: ITodoItem,
+  { id, title, type, date, status, task }: ITodoItem,
   statusHandler: (id: string) => void,
   deleteHandler: (id: string) => void
 ) => {
@@ -19,14 +22,22 @@ const TodoItem = (
         />
         <div className="todo-desc">
           <div className="todo__title">{task}</div>
-          <div className="type&date-container">
-            <div className="todo__type">{type}</div>
-            <div className="todo__date">{dueDate}</div>
+          <div className="typeDate-container">
+            <div
+              className="todo__type"
+              style={{
+                color: todoTypes[type].color,
+                backgroundColor: todoTypes[type].background,
+              }}
+            >
+              {type}
+            </div>
+            <div className="todo__date">{date}</div>
           </div>
         </div>
         <div className="todo-delete">
           <img
-            src=""
+            src={trashBin}
             alt="todo delete icon"
             onClick={() => {
               deleteHandler(id);

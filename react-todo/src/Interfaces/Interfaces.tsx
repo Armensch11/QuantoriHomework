@@ -12,10 +12,32 @@ export interface ITodoItem {
   id: string;
   title: string;
   type: string;
-  dueDate: string;
+  date: string;
   status: string;
   task: string;
 }
 export interface ILoader {
   loaderHandler: () => void;
+}
+export interface TodoTypes {
+  work: {
+    color: string;
+    background: string;
+  };
+  health: {
+    color: string;
+    background: string;
+  };
+  home: {
+    color: string;
+    background: string;
+  };
+  other: {
+    color: string;
+    background: string;
+  };
+  [key: string]: {
+    color: string;
+    background: string;
+  };
 }
