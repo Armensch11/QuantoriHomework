@@ -55,7 +55,7 @@ function App() {
           markHandler={markHandler}
         />
       )}
-      {/* <TodoAddModal /> */}
+      <TodoAddModal />
     </div>
   );
 }
