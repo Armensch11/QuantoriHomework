@@ -10,6 +10,7 @@ import {
 } from "./components/utils/todosActions";
 import TodoList from "./components/todoList/TodoList";
 import { searchResult } from "./components/utils/searchResult";
+import TodoAddModal from "./components/modals/todoAddModal/TodoAddModal";
 
 function App() {
   const [todos, setTodos] = useState<ITodoItem[] | []>([]);
@@ -33,7 +34,7 @@ function App() {
   useEffect(() => {
     const result = searchResult(searchTerm, todos);
     setSearchTodos([...result]);
-  }, [searchTerm]);
+  }, [searchTerm, todos]);
   return (
     <div className="App">
       <Header />
@@ -54,6 +55,7 @@ function App() {
           markHandler={markHandler}
         />
       )}
+      {/* <TodoAddModal /> */}
     </div>
   );
 }

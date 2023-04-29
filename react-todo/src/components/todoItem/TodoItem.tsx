@@ -1,5 +1,5 @@
-import React, { useRef, Dispatch, SetStateAction } from "react";
-import { ITodoItem } from "../../Interfaces/Interfaces";
+import React, { useRef } from "react";
+//import { ITodoItem } from "../../Interfaces/Interfaces";
 import "./TodoItem.css";
 import trashBin from "../../assets/trash_bin.svg";
 import { todoTypes } from "../utils/todoTypes";
@@ -33,6 +33,7 @@ const TodoItem = ({
     <>
       <div className="todo-container">
         <input
+          className="todo__checkbox"
           type="checkbox"
           checked={status === "completed" ? true : false}
           ref={checkbox}
