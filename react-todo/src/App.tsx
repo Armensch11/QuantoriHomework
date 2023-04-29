@@ -3,16 +3,24 @@ import "./App.css";
 import { ITodoItem } from "./Interfaces/Interfaces";
 import Header from "./components/header/";
 import Search from "./components/search/Search";
-import { getTodos } from "./components/utils/todosActions";
+import {
+  getTodos,
+  deleteTodos,
+  markTodos,
+} from "./components/utils/todosActions";
 import TodoList from "./components/todoList/TodoList";
 import { searchResult } from "./components/utils/searchResult";
-import { deleteTodos } from "./components/utils/todosActions";
 
 function App() {
   const [todos, setTodos] = useState<ITodoItem[] | []>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTodos, setSearchTodos] = useState<ITodoItem[] | []>([]);
-  const deleteHandler =(id:number)=> {deleteTodos(setTodos,id)};
+  const deleteHandler = (id: number) => {
+    deleteTodos(setTodos, id);
+  };
+  const markHandler = (id: number, checked: boolean | null) => {
+    markTodos(setTodos, todos, id, checked);
+  };
   const searchTermHandler = (value: string) => {
     setSearchTerm(value);
   };
@@ -34,6 +42,7 @@ function App() {
         <TodoList
           todos={searchTerm.length ? searchTodos : todos}
           deleteHandler={deleteHandler}
+          markHandler={markHandler}
         />
       )}
       {todos.length && (
@@ -42,6 +51,7 @@ function App() {
           status="completed"
           title="Completed Tasks"
           deleteHandler={deleteHandler}
+          markHandler={markHandler}
         />
       )}
     </div>

@@ -8,6 +8,7 @@ const TodoList = ({
   status = "pending",
   todos,
   deleteHandler,
+  markHandler,
 }: {
   title?: string;
   status?: string;
@@ -16,6 +17,7 @@ const TodoList = ({
     // setter: Dispatch<SetStateAction<ITodoItem[] | []>>,
     id: number
   ) => void;
+  markHandler: (id: number, checked: boolean | null) => void;
 }) => {
   const todoToRender = todos.filter((todo) => todo.status === status);
   return (
@@ -24,7 +26,12 @@ const TodoList = ({
         <div className="list-container">
           <h2 className="list__title">{title}</h2>
           {todoToRender.map((todo) => (
-            <TodoItem {...todo} key={todo.id} deleteHandler={deleteHandler} />
+            <TodoItem
+              {...todo}
+              key={todo.id}
+              deleteHandler={deleteHandler}
+              markHandler={markHandler}
+            />
           ))}
         </div>
       )}

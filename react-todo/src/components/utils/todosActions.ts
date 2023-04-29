@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { ITodoItem } from "../../Interfaces/Interfaces";
-
+import { dbPut } from "./dbPut";
 export const getTodos = async (
   todoSetter: Dispatch<SetStateAction<ITodoItem[] | []>>
 ) => {
@@ -44,4 +44,26 @@ export const deleteTodos = async (
     console.error(error.message);
   }
   todoSetter((prevState) => [...prevState.filter((el) => +el.id !== id)]);
+};
+
+export const markTodos = async (
+  todoSetter: Dispatch<SetStateAction<ITodoItem[] | []>>,
+  todos: ITodoItem[] | [],
+  id: number,
+  checked: boolean | null
+) => {
+  const updatedTodos = [...todos];
+  let updatedTodo = <ITodoItem>{};
+  updatedTodos.forEach((todo) => {
+    if (todo.id === id.toString()) {
+      checked ? (todo.status = "completed") : (todo.status = "pending");
+      updatedTodo = todo;
+    }
+  });
+
+  todoSetter(updatedTodos);
+
+  await dbPut(id.toString(), updatedTodo);
+
+  return updatedTodos;
 };

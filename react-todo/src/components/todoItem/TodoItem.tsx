@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { useRef, Dispatch, SetStateAction } from "react";
 import { ITodoItem } from "../../Interfaces/Interfaces";
 import "./TodoItem.css";
 import trashBin from "../../assets/trash_bin.svg";
@@ -13,6 +13,7 @@ const TodoItem = ({
   task,
   //statusHandler?: (id: string) => void,
   deleteHandler,
+  markHandler,
 }: {
   id: string;
   title: string;
@@ -25,16 +26,21 @@ const TodoItem = ({
     // setter: Dispatch<SetStateAction<ITodoItem[] | []>>,
     id: number
   ) => void;
+  markHandler: (id: number, checked: boolean | null) => void;
 }) => {
+  const checkbox = useRef<HTMLInputElement>(null);
   return (
     <>
       <div className="todo-container">
         <input
           type="checkbox"
           checked={status === "completed" ? true : false}
-          onChange={(e) => {
-            e.preventDefault();
-            // statusHandler(id);
+          ref={checkbox}
+          onChange={() => {
+            console.log(checkbox.current?.checked);
+            if (checkbox.current) {
+              markHandler(+id, checkbox.current?.checked);
+            }
           }}
         />
         <div className="todo-desc">
