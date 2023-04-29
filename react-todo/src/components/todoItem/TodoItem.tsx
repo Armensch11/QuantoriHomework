@@ -1,14 +1,31 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { ITodoItem } from "../../Interfaces/Interfaces";
 import "./TodoItem.css";
 import trashBin from "../../assets/trash_bin.svg";
 import { todoTypes } from "../utils/todoTypes";
 
-const TodoItem = (
-  { id, title, type, date, status, task }: ITodoItem,
-  statusHandler: (id: string) => void,
-  deleteHandler: (id: string) => void
-) => {
+const TodoItem = ({
+  id,
+  title,
+  type,
+  date,
+  status,
+  task,
+  //statusHandler?: (id: string) => void,
+  deleteHandler,
+}: {
+  id: string;
+  title: string;
+  type: string;
+  date: string;
+  status: string;
+  task: string;
+  //statusHandler?: (id: string) => void,
+  deleteHandler: (
+    // setter: Dispatch<SetStateAction<ITodoItem[] | []>>,
+    id: number
+  ) => void;
+}) => {
   return (
     <>
       <div className="todo-container">
@@ -17,17 +34,26 @@ const TodoItem = (
           checked={status === "completed" ? true : false}
           onChange={(e) => {
             e.preventDefault();
-            statusHandler(id);
+            // statusHandler(id);
           }}
         />
         <div className="todo-desc">
-          <div className="todo__title">{task}</div>
+          <div
+            className="todo__title"
+            style={{ color: status === "completed" ? "#838383" : "#1D1D1D" }}
+          >
+            {task}
+          </div>
           <div className="typeDate-container">
             <div
               className="todo__type"
               style={{
-                color: todoTypes[type].color,
-                backgroundColor: todoTypes[type].background,
+                color:
+                  status === "completed" ? "#838383" : todoTypes[type].color,
+                backgroundColor:
+                  status === "completed"
+                    ? "#F5F5F5"
+                    : todoTypes[type].background,
               }}
             >
               {type}
@@ -40,7 +66,7 @@ const TodoItem = (
             src={trashBin}
             alt="todo delete icon"
             onClick={() => {
-              deleteHandler(id);
+              deleteHandler(+id);
             }}
           />
         </div>

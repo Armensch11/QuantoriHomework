@@ -6,11 +6,13 @@ import Search from "./components/search/Search";
 import { getTodos } from "./components/utils/todosActions";
 import TodoList from "./components/todoList/TodoList";
 import { searchResult } from "./components/utils/searchResult";
+import { deleteTodos } from "./components/utils/todosActions";
 
 function App() {
   const [todos, setTodos] = useState<ITodoItem[] | []>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTodos, setSearchTodos] = useState<ITodoItem[] | []>([]);
+  const deleteHandler =(id:number)=> {deleteTodos(setTodos,id)};
   const searchTermHandler = (value: string) => {
     setSearchTerm(value);
   };
@@ -29,10 +31,18 @@ function App() {
       <Header />
       <Search searchTermHandler={searchTermHandler} />
       {todos.length && (
-        <TodoList todos={searchTerm.length ? searchTodos : todos} />
+        <TodoList
+          todos={searchTerm.length ? searchTodos : todos}
+          deleteHandler={deleteHandler}
+        />
       )}
       {todos.length && (
-        <TodoList todos={todos} status="completed" title="Completed Tasks" />
+        <TodoList
+          todos={todos}
+          status="completed"
+          title="Completed Tasks"
+          deleteHandler={deleteHandler}
+        />
       )}
     </div>
   );
