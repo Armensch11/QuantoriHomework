@@ -19,7 +19,7 @@ export interface ITodoItem {
 export interface ILoader {
   loaderHandler: () => void;
 }
-export interface TodoTypes {
+export interface ITodoTypes {
   work: {
     color: string;
     background: string;
@@ -40,4 +40,11 @@ export interface TodoTypes {
     color: string;
     background: string;
   };
+}
+export interface IBorders {
+  work: string;
+  health: string;
+  home: string;
+  other: string;
+  [key: string]: string;
 }

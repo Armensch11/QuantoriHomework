@@ -4,8 +4,10 @@ import AddTask from "../addTask/AddTask";
 
 const Search = ({
   searchTermHandler,
+  modalHandler,
 }: {
   searchTermHandler: (value: string) => void;
+  modalHandler: () => void;
 }) => {
   return (
     <React.Fragment>
@@ -17,7 +19,7 @@ const Search = ({
           // value={searchTerm}
           onChange={(e) => searchTermHandler(e.target.value)}
         />
-        <AddTask />
+        <AddTask modalHandler={modalHandler} />
       </div>
     </React.Fragment>
   );

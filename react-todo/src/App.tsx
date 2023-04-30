@@ -16,6 +16,8 @@ function App() {
   const [todos, setTodos] = useState<ITodoItem[] | []>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTodos, setSearchTodos] = useState<ITodoItem[] | []>([]);
+  const [showAddModal, setShowAddModal] = useState(false);
+
   const deleteHandler = (id: number) => {
     deleteTodos(setTodos, id);
   };
@@ -28,6 +30,9 @@ function App() {
   const fetchWrapper = async () => {
     await getTodos(setTodos);
   };
+  const modalHandler = () => {
+    setShowAddModal(!showAddModal);
+  };
   useEffect(() => {
     fetchWrapper();
   }, []);
@@ -38,7 +43,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Search searchTermHandler={searchTermHandler} />
+      <Search
+        searchTermHandler={searchTermHandler}
+        modalHandler={modalHandler}
+      />
       {todos.length && (
         <TodoList
           todos={searchTerm.length ? searchTodos : todos}
@@ -55,7 +63,7 @@ function App() {
           markHandler={markHandler}
         />
       )}
-      <TodoAddModal />
+      {showAddModal && <TodoAddModal modalHandler={modalHandler} />}
     </div>
   );
 }

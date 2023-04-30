@@ -1,5 +1,6 @@
 import React from "react";
 import "./AddTaskBody.css";
+import TaskTypes from "../taskTypes/TaskTypes";
 
 const AddTaskBody = () => {
   return (
@@ -7,7 +8,7 @@ const AddTaskBody = () => {
       <div className=" addTask-container">
         <input type="text" className="addTask__input" />
         <div className="typeDate-container">
-          <div className="addTask__type-container"></div>
+          <TaskTypes  />
           <div className="addTask__date-container">
             <input type="date" className="addTask__date" />
           </div>

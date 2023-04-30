@@ -11,7 +11,7 @@ const ModalFooter = ({
   buttonCancel?: string;
   buttonAdd?: string;
   buttonOK?: string;
-  cancelHandler?: () => void;
+  cancelHandler: () => void;
   addHandler?: () => void;
 }) => {
   return (
@@ -25,7 +25,13 @@ const ModalFooter = ({
       )}
       {!buttonOK && (
         <div className="btn-container">
-          <button className="btn-cancel btn" onClick={cancelHandler}>
+          <button
+            className="btn-cancel btn"
+            onClick={(e) => {
+              e.preventDefault();
+              cancelHandler();
+            }}
+          >
             {buttonCancel}
           </button>
           <button className="btn-add btn" disabled={true} onClick={addHandler}>
