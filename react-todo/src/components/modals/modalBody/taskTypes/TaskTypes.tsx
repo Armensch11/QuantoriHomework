@@ -6,7 +6,13 @@ import { IBorders } from "../../../../Interfaces/Interfaces";
 
 const types = ["health", "work", "home", "other"];
 
-const TaskTypes = ({ getTypeHandler }: { getTypeHandler?: () => void }) => {
+const TaskTypes = ({
+  typeHandler,
+  focusOutHandler,
+}: {
+  typeHandler: (type: string) => void;
+  focusOutHandler: () => void;
+}) => {
   const [selected, setSelected] = useState<IBorders>({
     work: "none",
     home: "none",
@@ -17,6 +23,7 @@ const TaskTypes = ({ getTypeHandler }: { getTypeHandler?: () => void }) => {
     const target = e.target as HTMLElement;
     const type = target.innerText;
     setSelected(typeSelector(type));
+    typeHandler(type);
   };
   return (
     <React.Fragment>
@@ -31,6 +38,7 @@ const TaskTypes = ({ getTypeHandler }: { getTypeHandler?: () => void }) => {
               border: selected[type],
             }}
             onClick={onClickHandler}
+            onMouseLeave={focusOutHandler}
           >
             {type}
           </div>

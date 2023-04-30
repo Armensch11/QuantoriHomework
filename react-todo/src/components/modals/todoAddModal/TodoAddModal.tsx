@@ -7,17 +7,42 @@ import { ITodoItem } from "../../../Interfaces/Interfaces";
 
 const TodoAddModal = ({ modalHandler }: { modalHandler: () => void }) => {
   const [newTask, setNewTask] = useState<ITodoItem>();
-  const modalEntriesHandler = (title: string, type: string, date: string) => {};
+  const [buttonDisabled,setButtonDisabled]=useState(true)
+  const checkEntries = (input: string, date: string, taskType: string) => {
+    if (input.length && date.length && taskType.length) {
+      console.log("entries are ok");
+      setButtonDisabled(false)
+      setNewTask({
+        title: input,
+        task: input,
+        date: date,
+        type: taskType,
+        status: "pending",
+        id: new Date().valueOf().toString(),
+      });
+    } else {
+      setButtonDisabled(true)
+      console.log("some entries are invalid");
+    }
+  };
+  const addHandler = () => {
+    
+    console.log("add something");
+    console.log(newTask);
+  }
+
   return (
     <>
       <div className="modal-overlay">
         <div className="modal-container">
           <ModalTitle title="Add New Task" />
-          <AddTaskBody />
+          <AddTaskBody checkEntries={checkEntries} />
           <ModalFooter
             buttonCancel="Cancel"
             buttonAdd="Add Task"
             cancelHandler={modalHandler}
+            addHandler={addHandler}
+            buttonStatus={buttonDisabled}
           />
         </div>
       </div>
