@@ -4,14 +4,21 @@ import ModalTitle from "../modalTitle";
 import ModalFooter from "../modalFooter";
 import AddTaskBody from "../modalBody/addTaskBody/AddTaskBody";
 import { ITodoItem } from "../../../Interfaces/Interfaces";
+import { dbPost } from "../../utils/dbPost";
 
-const TodoAddModal = ({ modalHandler }: { modalHandler: () => void }) => {
+const TodoAddModal = ({
+  modalHandler,
+  addHandler,
+}: {
+  modalHandler: () => void;
+  addHandler: (newTodo: ITodoItem) => void;
+}) => {
   const [newTask, setNewTask] = useState<ITodoItem>();
-  const [buttonDisabled,setButtonDisabled]=useState(true)
+  const [buttonDisabled, setButtonDisabled] = useState(true);
   const checkEntries = (input: string, date: string, taskType: string) => {
     if (input.length && date.length && taskType.length) {
       console.log("entries are ok");
-      setButtonDisabled(false)
+      setButtonDisabled(false);
       setNewTask({
         title: input,
         task: input,
@@ -21,16 +28,19 @@ const TodoAddModal = ({ modalHandler }: { modalHandler: () => void }) => {
         id: new Date().valueOf().toString(),
       });
     } else {
-      setButtonDisabled(true)
+      setButtonDisabled(true);
       console.log("some entries are invalid");
     }
   };
-  const addHandler = () => {
-    
-    console.log("add something");
-    console.log(newTask);
-  }
+  // const addHandler = async () => {
+  //   if (newTask) await dbPost(newTask);
 
+  //   console.log("add something");
+  //   console.log(newTask);
+  // };
+  const addButtonClickHandler = async () => {
+    if (newTask) addHandler(newTask);
+  };
   return (
     <>
       <div className="modal-overlay">
@@ -41,7 +51,7 @@ const TodoAddModal = ({ modalHandler }: { modalHandler: () => void }) => {
             buttonCancel="Cancel"
             buttonAdd="Add Task"
             cancelHandler={modalHandler}
-            addHandler={addHandler}
+            addHandler={addButtonClickHandler}
             buttonStatus={buttonDisabled}
           />
         </div>

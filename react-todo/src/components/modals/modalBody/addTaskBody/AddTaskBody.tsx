@@ -15,7 +15,11 @@ const AddTaskBody = ({
   };
   const focusOutHandler = () => {
     if (taskInput.current && taskDate.current) {
-      checkEntries(taskInput.current?.value, taskDate.current?.value, taskType);
+      checkEntries(
+        taskInput.current?.value.trim(),
+        taskDate.current?.value,
+        taskType
+      );
     }
   };
   return (
@@ -28,7 +32,7 @@ const AddTaskBody = ({
           onMouseLeave={() => {
             if (taskInput.current && taskDate.current) {
               checkEntries(
-                taskInput.current.value,
+                taskInput.current.value.trim(),
                 taskDate.current.value,
                 taskType
               );
@@ -48,7 +52,7 @@ const AddTaskBody = ({
               onMouseLeave={() => {
                 if (taskInput.current && taskDate.current) {
                   checkEntries(
-                    taskInput.current.value,
+                    taskInput.current.value.trim(),
                     taskDate.current.value,
                     taskType
                   );

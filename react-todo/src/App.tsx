@@ -11,6 +11,7 @@ import {
 import TodoList from "./components/todoList/TodoList";
 import { searchResult } from "./components/utils/searchResult";
 import TodoAddModal from "./components/modals/todoAddModal/TodoAddModal";
+import { dbPost } from "./components/utils/dbPost";
 
 function App() {
   const [todos, setTodos] = useState<ITodoItem[] | []>([]);
@@ -18,6 +19,10 @@ function App() {
   const [searchTodos, setSearchTodos] = useState<ITodoItem[] | []>([]);
   const [showAddModal, setShowAddModal] = useState(false);
 
+  const addHandler = async (newItem: ITodoItem) => {
+    setTodos((prevTodos) => [...prevTodos, newItem]);
+    await dbPost(newItem);
+  };
   const deleteHandler = (id: number) => {
     deleteTodos(setTodos, id);
   };
@@ -63,7 +68,9 @@ function App() {
           markHandler={markHandler}
         />
       )}
-      {showAddModal && <TodoAddModal modalHandler={modalHandler} />}
+      {showAddModal && (
+        <TodoAddModal modalHandler={modalHandler} addHandler={addHandler} />
+      )}
     </div>
   );
 }

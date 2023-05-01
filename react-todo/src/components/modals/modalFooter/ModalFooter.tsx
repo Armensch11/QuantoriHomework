@@ -42,6 +42,7 @@ const ModalFooter = ({
             onClick={(e) => {
               e.preventDefault();
               addHandler();
+              cancelHandler();
             }}
           >
             {buttonAdd}

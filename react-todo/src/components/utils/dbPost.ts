@@ -1,7 +1,7 @@
 import { ITodoItem } from "../../Interfaces/Interfaces";
 
-export const dbPut = async (id: string, item: ITodoItem) => {
-  const putConfig = {
+export const dbPost = async (item: ITodoItem) => {
+  const postConfig = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -10,11 +10,8 @@ export const dbPut = async (id: string, item: ITodoItem) => {
   };
 
   try {
-    const responce = await fetch(
-      `http://localhost:3005/tasks/${id}`,
-      putConfig
-    );
-    if (responce.ok) console.log("patched successfully");
+    const responce = await fetch(`http://localhost:3005/tasks/`, postConfig);
+    if (responce.ok) console.log("posted successfully");
   } catch (error: any) {
     console.error(error.message);
   }
