@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import { ITodoItem } from "./Interfaces/Interfaces";
 import Header from "./components/header/";
@@ -45,8 +45,12 @@ function App() {
     // console.log(type);
   };
 
+  const localStorageVisited = useRef(false);
   const checkDate = () => {
-    setShowDaylyModal(!checkLocalStorage());
+    if (!localStorageVisited.current) {
+      setShowDaylyModal(!checkLocalStorage());
+    }
+    return (localStorageVisited.current = true);
   };
   // checkDate();
   useEffect(() => {
