@@ -1,8 +1,5 @@
-export function closeModal() {
-  const modalContainer = document.getElementsByClassName("modal__container")[0];
-  modalContainer.style.display = "none";
-  console.log("modal window closed");
-}
+import { popup } from "./popup.js";
+
 export function modalCancelAction() {
   const cancelButton = document.getElementsByClassName(
     "modal__container__inside__buttons__cancel"
@@ -10,28 +7,18 @@ export function modalCancelAction() {
 
   let modalContainer = document.getElementsByClassName("modal__container")[0];
 
-  // cancelButton.onclick = (e) => {
-  //   e.preventDefault();
-  //   modalContainer.style.display = "none";
-  // };
   cancelButton.addEventListener("click", () => {
-    modalContainer.style.display = "none";
+    modalContainer.remove();
   });
-  // const modal = document.getElementsByClassName("modal__container__inside")[0];
-  // document.addEventListener("click", (e) => {
-  //   if (!modal.contains(e.target)) {
-  //     modalContainer.style.display = "none";
-  //   }
-  // });
 }
 export function showModal() {
   let modalContainer = document.getElementsByClassName("modal__container")[0];
   modalContainer.style.display = "flex";
 }
-export function hideModal() {
-  let modalContainer = document.getElementsByClassName("modal__container")[0];
-  modalContainer.style.display = "none";
-}
+// export function hideModal() {
+//   let modalContainer = document.getElementsByClassName("modal__container")[0];
+//   modalContainer.style.display = "none";
+// }
 export function checkTodoType(check) {
   const todoTypes = document.getElementsByClassName(
     "modal__container__input__options__type"
@@ -51,7 +38,7 @@ export function checkTodoType(check) {
   });
 }
 
-export function getTodo() {
+function getTodo() {
   const input = document.getElementsByClassName(
     "modal__container__input__todo"
   )[0].firstChild;
@@ -61,22 +48,21 @@ export function getTodo() {
   }
   return null;
 }
-export function getType() {
+function getType() {
   const todoTypes = document.getElementsByClassName(
     "modal__container__input__options__type"
   );
-  const selectedType = [...todoTypes].filter(
+  const selectedType = [...todoTypes]?.filter(
     (type) => type.getAttribute("selected") === "true"
   );
 
-  return selectedType[0].innerHTML;
+  return selectedType[0]?.innerHTML;
 }
-export function getDueDate() {
+function getDueDate() {
   const input = document.getElementsByClassName(
     "modal__container__input__options__date"
   )[0];
   // console.log(input.value);
-
   return formatDate(input.value);
 }
 export function validateEntries() {
@@ -89,7 +75,7 @@ export function validateEntries() {
   )[0];
 
   if (todo && dueDate && todoType) {
-    console.log("validating ");
+    // console.log("validating ");
     todoItem.task = todo;
     todoItem.date = dueDate;
     todoItem.type = todoType;
@@ -99,21 +85,33 @@ export function validateEntries() {
     addButton.style.backgroundColor = "#3C86F4";
     addButton.onclick = (e) => {
       e.preventDefault();
+
       addTask(todoItem);
       closeModal();
-      document.location.reload(true);
     };
   } else console.log("some entries invalid");
   console.log(todoItem);
 }
-export function addTask(todoItem) {
-  const existingTodos = JSON.parse(localStorage.getItem("todos")) || [];
-  existingTodos.push(todoItem);
-  localStorage.setItem("todos", JSON.stringify(existingTodos));
-  // console.log(existingTodos);
+async function addTask(todoItem) {
+  try {
+    const saveToRemote = await fetch("http://localhost:3005/tasks", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify(todoItem),
+    });
+    popup("Task added");
+  } catch (error) {
+    popup(error, "error");
+    // console.error(error);
+  }
 }
 
 function formatDate(dateString) {
+  if (!dateString) {
+    return null;
+  }
   const date = new Date(dateString);
   const now = new Date();
   const day = date.toLocaleString(window.navigator.language, {
@@ -128,14 +126,7 @@ function formatDate(dateString) {
   });
   const monthDate = date.getDate();
   const monthDateNow = now.getDate();
-  if (monthNow === month) {
-    if (monthDate === monthDateNow) {
-      return "Today";
-    }
-    if (monthDate - monthDateNow === 1) {
-      return "Tomorrow";
-    }
-  }
+
   const formatedDate = `${day}, ${monthDate}  ${month}`;
   return formatedDate;
 }

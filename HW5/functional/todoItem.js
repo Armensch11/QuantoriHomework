@@ -1,4 +1,5 @@
 import { tasksRender } from "./app.js";
+import { popup } from "./popup.js";
 export function todoItem(todo) {
   const todoContainer = document.createElement("div");
   todoContainer.setAttribute(
@@ -15,13 +16,8 @@ export function todoItem(todo) {
     "change",
 
     function () {
-      // if (this.checked) {
-      //   markCompleted(this);
-      // } else {
-      //   notCompleted(this);
-      // }
       this.checked ? markCompleted(this) : notCompleted(this);
-      removeAllChildNodes();
+      // removeAllChildNodes();
     }
   );
   const todoContent = document.createElement("div");
@@ -66,7 +62,7 @@ export function todoItem(todo) {
     const id = deleteTodo.getAttribute("serial");
     removeTodo(id);
 
-    removeAllChildNodes();
+    // removeAllChildNodes();
   };
   const deleteIcon = document.createElement("img");
   deleteIcon.setAttribute("src", "./images/trash_bin.svg");
@@ -78,80 +74,88 @@ export function todoItem(todo) {
   return todoContainer;
 }
 
-export function renderTaskList(status) {
-  const todos = JSON.parse(localStorage.getItem("todos"));
+export async function renderTaskList(status) {
+  const getTodos = await fetch("http://localhost:3005/tasks", {
+    method: "GET",
+  });
+  const todos = await getTodos.json();
+  // console.log(todos);
   const filtered = todos.filter((todo) => todo.status === status);
   const listContainer = document.getElementsByClassName(
     `main__container__tasks__${status}`
   )[0];
   filtered.forEach((todo) => listContainer.appendChild(todoItem(todo)));
+  return filtered;
 }
-export function markCompleted(object) {
+export async function markCompleted(object) {
+  const idToMark = object.getAttribute("serial");
+
+  const getTodos = await fetch(`http://localhost:3005/tasks`);
+  const todos = await getTodos.json();
+
+  // debugger;
+  const todoToMark = todos.filter(
+    (el) => el.id.toString() === idToMark.toString()
+  );
+
+  const updatedTodo = { ...todoToMark[0], status: "completed" };
+  const configPut = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedTodo),
+  };
+  try {
+    await fetch(`http://localhost:3005/tasks/${idToMark}`, configPut);
+    // debugger;
+    // tasksRender();
+    popup("marked completed successfully");
+  } catch (error) {
+    popup(error.message, "error");
+  }
+
+  tasksRender();
+}
+export async function notCompleted(object) {
   const idToMark = object.getAttribute("serial");
   console.log(idToMark.trim());
+  const getTodos = await fetch(`http://localhost:3005/tasks`);
+  const todos = await getTodos.json();
 
-  const todos = JSON.parse(localStorage.getItem("todos"));
-  todos.forEach((todo) => {
-    console.log(todo.id);
-    if (todo.id.toString() === idToMark) {
-      todo.status = "completed";
-      console.log(todo);
-    }
-  });
-  localStorage.setItem("todos", JSON.stringify(todos));
-  removeBodyChildren();
+  // debugger;
+  const todoToMark = todos.filter(
+    (el) => el.id.toString() === idToMark.toString()
+  );
+  console.log(todoToMark);
+  const updatedTodo = { ...todoToMark[0], status: "pending" };
+  const configPut = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedTodo),
+  };
+  try {
+    await fetch(`http://localhost:3005/tasks/${idToMark}`, configPut);
+
+    popup("marked pending");
+  } catch (error) {
+    popup(error.message, "error");
+  }
 
   tasksRender();
-  document.location.reload(true);
 }
-export function notCompleted(object) {
-  const idToMark = object.getAttribute("serial");
-  console.log(idToMark.trim());
-
-  const todos = JSON.parse(localStorage.getItem("todos"));
-  todos.forEach((todo) => {
-    console.log(todo.id);
-    if (todo.id.toString() === idToMark) {
-      todo.status = "pending";
-      console.log(todo);
-    }
-  });
-  localStorage.setItem("todos", JSON.stringify(todos));
-  removeBodyChildren();
+export async function removeTodo(id) {
+  const config = {
+    method: "DELETE",
+  };
+  try {
+    await fetch(`http://localhost:3005/tasks/${id}`, config);
+    popup("task deleted successfully");
+  } catch (error) {
+    popup(error.message, "does not matter");
+  }
 
   tasksRender();
-  document.location.reload(true);
-}
-export function removeTodo(id) {
-  const todos = JSON.parse(localStorage.getItem("todos"));
-  const filtered = todos.filter((todo) => todo.id.toString() !== id);
-  localStorage.setItem("todos", JSON.stringify(filtered));
-  removeBodyChildren();
-
-  tasksRender();
-  document.location.reload(true);
-}
-export function removeAllChildNodes() {
-  const pendingContainer = document.getElementsByClassName(
-    "main__container__tasks__pending"
-  )[0];
-  const completedContainer = document.getElementsByClassName(
-    "main__container__tasks__completed"
-  )[0];
-  while (pendingContainer.firstChild) {
-    pendingContainer.removeChild(pendingContainer.lastChild);
-  }
-  while (completedContainer.firstChild) {
-    completedContainer.removeChild(completedContainer.lastChild);
-  }
-}
-export function removeBodyChildren() {
-  const body = document.getElementsByTagName("body");
-  // console.log(body);
-  // const main = document.getElementsByClassName("main__container")[0];
-  // const modal = document.getElementsByClassName("modal__container")[0];
-  // [main, modal].forEach((el) => body.removeChild(el));
-  while (body.firstChild) {
-    body.removeChild(body.lastChild);
-  }
 }
