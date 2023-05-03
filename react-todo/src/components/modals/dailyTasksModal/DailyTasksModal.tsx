@@ -4,10 +4,10 @@ import ModalTitle from "../modalTitle/ModalTitle";
 import { ITodoItem } from "../../../Interfaces/Interfaces";
 import { compareDate } from "../../utils/compareDate";
 import { getTodos } from "../../utils/todosActions";
-import "./DaylyTasksModal.css";
-type DaylyModalProps = { modalHandler: () => void };
+import "./DailyTasksModal.css";
+type DailyModalProps = { modalHandler: () => void };
 
-const DaylyTasksModal: FC<DaylyModalProps> = ({ modalHandler }) => {
+const DaylyTasksModal: FC<DailyModalProps> = ({ modalHandler }) => {
   const [todos, setTodos] = useState<ITodoItem[] | []>([]);
   const fetchTodos = async () => {
     await getTodos(setTodos);

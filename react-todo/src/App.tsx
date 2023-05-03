@@ -12,7 +12,7 @@ import TodoList from "./components/todoList/TodoList";
 import { searchResult } from "./components/utils/searchResult";
 import TodoAddModal from "./components/modals/todoAddModal/TodoAddModal";
 import { dbPost } from "./components/utils/dbPost";
-import DaylyTasksModal from "./components/modals/daylyTasksModal/DaylyTasksModal";
+import DailyTasksModal from "./components/modals/dailyTasksModal/DailyTasksModal";
 import { checkLocalStorage } from "./components/utils/checkLocalStorage";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTodos, setSearchTodos] = useState<ITodoItem[] | []>([]);
   const [showAddModal, setShowAddModal] = useState(false);
-  const [showDaylyModal, setShowDaylyModal] = useState(false);
+  const [showDailyModal, setShowDailyModal] = useState(false);
   const addHandler = async (newItem: ITodoItem) => {
     setTodos((prevTodos) => [...prevTodos, newItem]);
     await dbPost(newItem);
@@ -41,14 +41,14 @@ function App() {
   const modalHandler = (type = "add") => {
     type === "add"
       ? setShowAddModal(!showAddModal)
-      : setShowDaylyModal(!showDaylyModal);
+      : setShowDailyModal(!showDailyModal);
     // console.log(type);
   };
 
   const localStorageVisited = useRef(false);
   const checkDate = () => {
     if (!localStorageVisited.current) {
-      setShowDaylyModal(!checkLocalStorage());
+      setShowDailyModal(!checkLocalStorage());
     }
     return (localStorageVisited.current = true);
   };
@@ -90,7 +90,7 @@ function App() {
       {showAddModal && (
         <TodoAddModal modalHandler={modalHandler} addHandler={addHandler} />
       )}
-      {showDaylyModal && <DaylyTasksModal modalHandler={modalHandler} />}
+      {showDailyModal && <DailyTasksModal modalHandler={modalHandler} />}
     </div>
   );
 }
