@@ -1,6 +1,11 @@
-import { tasksRender } from "./app.js";
-import { popup } from "./popup.js";
-export function todoItem(todo) {
+// import { tasksRender } from "../main/app";
+import { popup } from "../popup/popup";
+import { ITodoItem } from "../Interfaces/Interfaces";
+import "./todoItem.css";
+import trashBinSvg from "../images/trash_bin.svg";
+//
+
+function todoItem(todo: ITodoItem) {
   const todoContainer = document.createElement("div");
   todoContainer.setAttribute(
     "class",
@@ -20,11 +25,13 @@ export function todoItem(todo) {
       // removeAllChildNodes();
     }
   );
+
   const todoContent = document.createElement("div");
   todoContent.setAttribute(
     "class",
     "main__container__tasks__pending__list__item__content"
   );
+
   const todoDesc = document.createElement("div");
   todoDesc.setAttribute(
     "class",
@@ -32,11 +39,13 @@ export function todoItem(todo) {
   );
   todoDesc.setAttribute("status", todo?.status);
   todoDesc.innerHTML = todo?.task;
+
   const typeAndDate = document.createElement("div");
   typeAndDate.setAttribute(
     "class",
     "main__container__tasks__pending__list__item__content__dateType"
   );
+
   const type = document.createElement("div");
   type.setAttribute(
     "class",
@@ -44,14 +53,18 @@ export function todoItem(todo) {
   );
   type.setAttribute("class", `${todo.type}`);
   type.innerText = todo?.type;
+
   const date = document.createElement("div");
   date.setAttribute(
     "class",
     "main__container__tasks__pending__list__item__content__date"
   );
   date.innerText = todo?.date;
+
   [type, date].forEach((el) => typeAndDate.appendChild(el));
+
   [todoDesc, typeAndDate].forEach((el) => todoContent.appendChild(el));
+
   const deleteTodo = document.createElement("div");
   deleteTodo.setAttribute(
     "class",
@@ -59,13 +72,15 @@ export function todoItem(todo) {
   );
   deleteTodo.setAttribute("serial", `${todo?.id}`);
   deleteTodo.onclick = () => {
-    const id = deleteTodo.getAttribute("serial");
+    const id = deleteTodo.getAttribute("serial")!;
+
     removeTodo(id);
 
     // removeAllChildNodes();
   };
   const deleteIcon = document.createElement("img");
-  deleteIcon.setAttribute("src", "./images/trash_bin.svg");
+  // deleteIcon.setAttribute("src", "./images/trash_bin.svg");
+  deleteIcon.src = trashBinSvg;
   deleteIcon.setAttribute("alt", "trash bin icon");
   deleteTodo.appendChild(deleteIcon);
   [checkBox, todoContent, deleteTodo].forEach((el) =>
@@ -74,28 +89,41 @@ export function todoItem(todo) {
   return todoContainer;
 }
 
-export async function renderTaskList(status) {
+export async function renderTaskList(status: string) {
   const getTodos = await fetch("http://localhost:3005/tasks", {
     method: "GET",
   });
-  const todos = await getTodos.json();
+  const todos: ITodoItem[] = await getTodos.json();
   // console.log(todos);
-  const filtered = todos.filter((todo) => todo.status === status);
+  const filtered = todos.filter((todo: ITodoItem) => todo.status === status);
   const listContainer = document.getElementsByClassName(
     `main__container__tasks__${status}`
-  )[0];
+  )[0] as HTMLDivElement;
+
+  const containerTitle = document.createElement("p");
+
+  status === "pending"
+    ? (containerTitle.innerText = "All Tasks")
+    : (containerTitle.innerText = "Completed Tasks");
+
+  listContainer.innerHTML = "";
+
+  listContainer.appendChild(containerTitle);
+
   filtered.forEach((todo) => listContainer.appendChild(todoItem(todo)));
+
   return filtered;
 }
-export async function markCompleted(object) {
+
+export async function markCompleted(object: HTMLDivElement) {
   const idToMark = object.getAttribute("serial");
 
   const getTodos = await fetch(`http://localhost:3005/tasks`);
-  const todos = await getTodos.json();
+  const todos: ITodoItem[] = await getTodos.json();
 
   // debugger;
   const todoToMark = todos.filter(
-    (el) => el.id.toString() === idToMark.toString()
+    (el) => el.id.toString() === idToMark?.toString()
   );
 
   const updatedTodo = { ...todoToMark[0], status: "completed" };
@@ -112,20 +140,25 @@ export async function markCompleted(object) {
     // tasksRender();
     popup("marked completed successfully");
   } catch (error) {
-    popup(error.message, "error");
+    let message;
+    if (error instanceof Error) message = error.message;
+    else message = String(error);
+    popup(message, "error");
   }
-
-  tasksRender();
+  renderTaskList("pending");
+  renderTaskList("completed");
+  // tasksRender();
 }
-export async function notCompleted(object) {
+
+export async function notCompleted(object: HTMLDivElement) {
   const idToMark = object.getAttribute("serial");
-  console.log(idToMark.trim());
+  console.log(idToMark?.trim());
   const getTodos = await fetch(`http://localhost:3005/tasks`);
-  const todos = await getTodos.json();
+  const todos: ITodoItem[] = await getTodos.json();
 
   // debugger;
   const todoToMark = todos.filter(
-    (el) => el.id.toString() === idToMark.toString()
+    (el) => el.id.toString() === idToMark?.toString()
   );
   console.log(todoToMark);
   const updatedTodo = { ...todoToMark[0], status: "pending" };
@@ -141,12 +174,16 @@ export async function notCompleted(object) {
 
     popup("marked pending");
   } catch (error) {
-    popup(error.message, "error");
+    let message;
+    if (error instanceof Error) message = error.message;
+    else message = String(error);
+    popup(message, "error");
   }
 
-  tasksRender();
+  renderTaskList("pending");
+  renderTaskList("completed");
 }
-export async function removeTodo(id) {
+export async function removeTodo(id: string) {
   const config = {
     method: "DELETE",
   };
@@ -154,8 +191,12 @@ export async function removeTodo(id) {
     await fetch(`http://localhost:3005/tasks/${id}`, config);
     popup("task deleted successfully");
   } catch (error) {
-    popup(error.message, "does not matter");
+    let message;
+    if (error instanceof Error) message = error.message;
+    else message = String(error);
+    popup(message, "error");
   }
 
-  tasksRender();
+  renderTaskList("pending");
+  renderTaskList("completed");
 }

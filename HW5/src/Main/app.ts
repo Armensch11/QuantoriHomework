@@ -1,16 +1,17 @@
-import { modal } from "./modal.js";
-import { showModal } from "./modalActions.js";
-import { renderTaskList } from "./todoItem.js";
-import { search } from "./search.js";
-import { weatherWidget } from "./weatherWidget.js";
-import { daylyTaskModal, isShownToday } from "./daylyTaskModal.js";
+import { modal } from "../modals/modal";
+import { showModal } from "../modals/modalActions";
+import { renderTaskList } from "../todo/todoItem";
+import { search } from "../search/search";
+import { weatherWidget } from "../widgets/weatherWidget";
+import { daylyTaskModal, isShownToday } from "../modals/daylyTaskModal";
+import "./app.css";
 
 export function tasksRender() {
   const body = document.querySelector("body");
 
   const main = document.createElement("section");
   main.setAttribute("class", "main__container");
-  body.appendChild(main);
+  body?.appendChild(main);
 
   const header = document.createElement("header");
   header.setAttribute("class", "header");
@@ -25,9 +26,8 @@ export function tasksRender() {
   searchField.setAttribute("class", "main__container__searchfield");
   searchField.setAttribute("placeholder", "Search Task");
 
-  searchField.addEventListener("keyup", (event) => {
-    console.log(event.target.value);
-    search(event.target.value);
+  searchField.addEventListener("keyup", (event: KeyboardEvent) => {
+    search((event.target as HTMLInputElement).value);
   });
 
   const newTaskButton = document.createElement("button");
@@ -63,12 +63,16 @@ export function tasksRender() {
     main.appendChild(el)
   );
 
-  const pendingTodos = renderTaskList("pending");
-  const completedTodos = renderTaskList("completed");
+  // const pendingTodos = renderTaskList("pending");
+  // renderTaskList("completed");
 
-  !isShownToday() ? setTimeout(() => daylyTaskModal(pendingTodos), 1500) : null;
+  // !isShownToday() ? setTimeout(() => daylyTaskModal(pendingTodos), 1500) : null;
 }
 
 tasksRender();
+const pendingTodos = renderTaskList("pending");
+renderTaskList("completed");
+
+!isShownToday() ? setTimeout(() => daylyTaskModal(pendingTodos), 1500) : null;
 
 weatherWidget();

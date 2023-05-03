@@ -1,0 +1,21 @@
+.popup {
+  width: 160px;
+  height: 40px;
+  z-index: 100;
+  background-color: #ffffff;
+  color: #34eb37;
+
+  border-radius: 8px;
+  position: absolute;
+  top: calc(100% - 30px);
+  left: 80%;
+  display: block;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  line-height: 16px;
+  font-size: 16px;
+  padding: 4px 8px;
+  box-shadow: -9px 11px 20px -7px rgba(66, 63, 63, 0.73);
+  -webkit-box-shadow: -9px 11px 20px -7px rgba(66, 63, 63, 0.73);
+  -moz-box-shadow: -9px 11px 20px -7px rgba(66, 63, 63, 0.73);
+}

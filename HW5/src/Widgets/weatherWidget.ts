@@ -1,8 +1,11 @@
+import { ILocationCurrent } from "../Interfaces/Interfaces";
+import "./weatherWidget.css";
+
 export async function weatherWidget() {
   navigator.geolocation.getCurrentPosition(locationSuccess, locationError);
 }
 
-function widgetFrame(icon, temp, name) {
+function widgetFrame(icon: string, temp: string, name: string) {
   const container = document.getElementsByClassName("header")[0];
   const weatherContainer = document.createElement("div");
   weatherContainer.setAttribute("class", "weather-wrapper");
@@ -19,11 +22,11 @@ function widgetFrame(icon, temp, name) {
   [image, temperature, city].forEach((el) => weatherContainer?.appendChild(el));
 }
 
-const locationSuccess = async (pos) => {
+const locationSuccess = async (pos: GeolocationPosition) => {
   const apiKey = "8865504129134593933100446231304";
-  const locationCurrent = {};
+  const locationCurrent: ILocationCurrent = { latitude: "", longitude: "" };
   let reqParam = "";
-  let weather = {};
+
   locationCurrent.latitude = pos.coords.latitude.toFixed(4);
   locationCurrent.longitude = pos.coords.longitude.toFixed(4);
   reqParam = locationCurrent.latitude + "," + locationCurrent.longitude;
@@ -31,7 +34,7 @@ const locationSuccess = async (pos) => {
     const weatherData = await fetch(
       `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${reqParam}&aqi=no`
     );
-    weather = await weatherData.json();
+    const weather: Record<string, any> = await weatherData.json();
     console.log(weather);
     const [icon, temp, city] = [
       weather.current.condition.icon,
@@ -43,7 +46,7 @@ const locationSuccess = async (pos) => {
     console.error(error);
   }
 };
-const locationError = async (pos) => {
+const locationError = async () => {
   const apiKey = "8865504129134593933100446231304";
   const locationDefault = "Tbilisi";
   try {

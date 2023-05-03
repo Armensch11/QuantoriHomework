@@ -2,14 +2,15 @@ import {
   modalCancelAction,
   checkTodoType,
   validateEntries,
-} from "./modalActions.js";
+} from "./modalActions";
+import "./modal.css";
 
 export const modal = () => {
   const body = document.querySelector("body");
 
   const modalContainer = document.createElement("div");
   modalContainer.setAttribute("class", "modal__container");
-  body.appendChild(modalContainer);
+  body?.appendChild(modalContainer);
   modalContainer.style.display = "flex";
 
   const containerInside = document.createElement("div");
@@ -56,10 +57,13 @@ export const modal = () => {
 
   const optionTypesArr = [health, work, home, other];
   optionTypesArr.forEach((type) => optionsTypes.appendChild(type));
+
+  // adding listener for marking selected todo type with 1px border
+  // in the same color as is the selected todo type, and remove border from the previous selection
   optionTypesArr.forEach((type) =>
     type.addEventListener("click", (event) => {
       event.preventDefault();
-      checkTodoType(event);
+      checkTodoType(type);
       validateEntries();
     })
   );
