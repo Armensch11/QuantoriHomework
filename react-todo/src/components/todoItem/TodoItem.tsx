@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-//import { ITodoItem } from "../../Interfaces/Interfaces";
+
 import "./TodoItem.css";
 import trashBin from "../../assets/trash_bin.svg";
 import { todoTypes } from "../utils/todoTypes";
@@ -12,7 +12,7 @@ const TodoItem = ({
   date,
   status,
   task,
-  //statusHandler?: (id: string) => void,
+
   deleteHandler,
   markHandler,
 }: {
@@ -22,11 +22,8 @@ const TodoItem = ({
   date: string;
   status: string;
   task: string;
-  //statusHandler?: (id: string) => void,
-  deleteHandler: (
-    // setter: Dispatch<SetStateAction<ITodoItem[] | []>>,
-    id: number
-  ) => void;
+
+  deleteHandler: (id: number) => void;
   markHandler: (id: number, checked: boolean | null) => void;
 }) => {
   const checkbox = useRef<HTMLInputElement>(null);
@@ -39,7 +36,6 @@ const TodoItem = ({
           checked={status === "completed" ? true : false}
           ref={checkbox}
           onChange={() => {
-            console.log(checkbox.current?.checked);
             if (checkbox.current) {
               markHandler(+id, checkbox.current?.checked);
             }

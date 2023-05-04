@@ -8,7 +8,7 @@ export const getTodos = async (
     method: "GET",
   });
   const todos: ITodoItem[] = await fetchTodos.json();
-  console.log(todos);
+
   todos.length ? todoSetter([...todos]) : todoSetter([]);
 };
 
@@ -25,10 +25,10 @@ export const addTodos = async (
   };
   try {
     await fetch("http://localhost:3005/tasks", fetchConfig);
-    console.log("added successfully");
   } catch (error: any) {
     console.error(error.message);
   }
+
   todoSetter((prevState) => [...prevState, newTodo]);
 };
 
@@ -39,7 +39,7 @@ export const deleteTodos = async (
   const fetchConfig = { method: "DELETE" };
   try {
     await fetch(`http://localhost:3005/tasks/${id}`, fetchConfig);
-    console.log("deleted successfully");
+    
   } catch (error: any) {
     console.error(error.message);
   }

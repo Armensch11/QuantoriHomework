@@ -10,8 +10,7 @@ export const dbPost = async (item: ITodoItem) => {
   };
 
   try {
-    const responce = await fetch(`http://localhost:3005/tasks/`, postConfig);
-    if (responce.ok) console.log("posted successfully");
+    await fetch(`http://localhost:3005/tasks/`, postConfig);
   } catch (error: any) {
     console.error(error.message);
   }

@@ -2,7 +2,6 @@ import { ILocationCurrent, IWeatherData } from "../../Interfaces/Interfaces";
 import { Dispatch, SetStateAction } from "react";
 import { getWeather } from "./getWeather";
 
-
 export const getLocationWeather = async (
   setData: Dispatch<SetStateAction<IWeatherData>>
 ) => {
@@ -12,7 +11,7 @@ export const getLocationWeather = async (
     locationCurrent.latitude = pos.coords.latitude.toFixed(4);
     locationCurrent.longitude = pos.coords.longitude.toFixed(4);
     const reqParam = locationCurrent.latitude + "," + locationCurrent.longitude;
-    console.log(reqParam);
+
     await getWeather(reqParam, setData);
   };
 

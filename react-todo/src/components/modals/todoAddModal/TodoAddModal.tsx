@@ -6,7 +6,7 @@ import AddTaskBody from "../modalBody/addTaskBody/AddTaskBody";
 import { ITodoItem } from "../../../Interfaces/Interfaces";
 
 type TodoModalProps = {
-  modalHandler: (type:string) => void;
+  modalHandler: (type: string) => void;
   addHandler: (newTodo: ITodoItem) => void;
 };
 
@@ -15,7 +15,6 @@ const TodoAddModal: FC<TodoModalProps> = ({ modalHandler, addHandler }) => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const checkEntries = (input: string, date: string, taskType: string) => {
     if (input.length && date.length && taskType.length) {
-      console.log("entries are ok");
       setButtonDisabled(false);
       setNewTask({
         title: input,
@@ -27,15 +26,9 @@ const TodoAddModal: FC<TodoModalProps> = ({ modalHandler, addHandler }) => {
       });
     } else {
       setButtonDisabled(true);
-      console.log("some entries are invalid");
     }
   };
-  // const addHandler = async () => {
-  //   if (newTask) await dbPost(newTask);
 
-  //   console.log("add something");
-  //   console.log(newTask);
-  // };
   const addButtonClickHandler = () => {
     if (newTask) addHandler(newTask);
   };

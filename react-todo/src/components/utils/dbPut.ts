@@ -10,11 +10,7 @@ export const dbPut = async (id: string, item: ITodoItem) => {
   };
 
   try {
-    const responce = await fetch(
-      `http://localhost:3005/tasks/${id}`,
-      putConfig
-    );
-    if (responce.ok) console.log("patched successfully");
+    await fetch(`http://localhost:3005/tasks/${id}`, putConfig);
   } catch (error: any) {
     console.error(error.message);
   }
