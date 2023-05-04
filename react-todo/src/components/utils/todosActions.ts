@@ -39,7 +39,6 @@ export const deleteTodos = async (
   const fetchConfig = { method: "DELETE" };
   try {
     await fetch(`http://localhost:3005/tasks/${id}`, fetchConfig);
-    
   } catch (error: any) {
     console.error(error.message);
   }
