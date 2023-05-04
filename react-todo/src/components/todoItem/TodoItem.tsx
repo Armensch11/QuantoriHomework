@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 import "./TodoItem.css";
 import trashBin from "../../assets/trash_bin.svg";
 import { todoTypes } from "../utils/todoTypes";
+import { formatDate } from "../utils/formatDate";
 
 const TodoItem = ({
   id,
@@ -65,7 +66,7 @@ const TodoItem = ({
             >
               {type}
             </div>
-            <div className="todo__date">{date}</div>
+            <div className="todo__date">{formatDate(date)}</div>
           </div>
         </div>
         <div className="todo-delete">

@@ -2,7 +2,7 @@ import { ITodoItem } from "../../Interfaces/Interfaces";
 
 export const dbPut = async (id: string, item: ITodoItem) => {
   const putConfig = {
-    method: "POST",
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },

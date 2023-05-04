@@ -12,13 +12,15 @@ import TodoList from "./components/todoList/TodoList";
 import { searchResult } from "./components/utils/searchResult";
 import TodoAddModal from "./components/modals/todoAddModal/TodoAddModal";
 import { dbPost } from "./components/utils/dbPost";
+import DaylyTasksModal from "./components/modals/daylyTasksModal/DaylyTasksModal";
+import { checkLocalStorage } from "./components/utils/checkLocalStorage";
 
 function App() {
   const [todos, setTodos] = useState<ITodoItem[] | []>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTodos, setSearchTodos] = useState<ITodoItem[] | []>([]);
   const [showAddModal, setShowAddModal] = useState(false);
-
+  const [showDaylyModal, setShowDaylyModal] = useState(false);
   const addHandler = async (newItem: ITodoItem) => {
     setTodos((prevTodos) => [...prevTodos, newItem]);
     await dbPost(newItem);
@@ -35,9 +37,21 @@ function App() {
   const fetchWrapper = async () => {
     await getTodos(setTodos);
   };
-  const modalHandler = () => {
-    setShowAddModal(!showAddModal);
+
+  const modalHandler = (type = "add") => {
+    type === "add"
+      ? setShowAddModal(!showAddModal)
+      : setShowDaylyModal(!showDaylyModal);
+    // console.log(type);
   };
+
+  const checkDate = () => {
+    setShowDaylyModal(!checkLocalStorage());
+  };
+  // checkDate();
+  useEffect(() => {
+    checkDate();
+  }, []);
   useEffect(() => {
     fetchWrapper();
   }, []);
@@ -68,9 +82,11 @@ function App() {
           markHandler={markHandler}
         />
       )}
+
       {showAddModal && (
         <TodoAddModal modalHandler={modalHandler} addHandler={addHandler} />
       )}
+      {showDaylyModal && <DaylyTasksModal modalHandler={modalHandler} />}
     </div>
   );
 }

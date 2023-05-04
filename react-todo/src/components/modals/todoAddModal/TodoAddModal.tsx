@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import "./TodoAddModal.css";
 import ModalTitle from "../modalTitle";
 import ModalFooter from "../modalFooter";
 import AddTaskBody from "../modalBody/addTaskBody/AddTaskBody";
 import { ITodoItem } from "../../../Interfaces/Interfaces";
-import { dbPost } from "../../utils/dbPost";
 
-const TodoAddModal = ({
-  modalHandler,
-  addHandler,
-}: {
-  modalHandler: () => void;
+type TodoModalProps = {
+  modalHandler: (type:string) => void;
   addHandler: (newTodo: ITodoItem) => void;
-}) => {
+};
+
+const TodoAddModal: FC<TodoModalProps> = ({ modalHandler, addHandler }) => {
   const [newTask, setNewTask] = useState<ITodoItem>();
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const checkEntries = (input: string, date: string, taskType: string) => {
@@ -38,7 +36,7 @@ const TodoAddModal = ({
   //   console.log("add something");
   //   console.log(newTask);
   // };
-  const addButtonClickHandler = async () => {
+  const addButtonClickHandler = () => {
     if (newTask) addHandler(newTask);
   };
   return (
