@@ -1,0 +1,12 @@
+.list-container {
+  margin-left: 174px;
+  margin-right: 174px;
+  margin-bottom: 48px;
+}
+.list__title {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 33px;
+}

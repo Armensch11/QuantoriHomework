@@ -1,0 +1,39 @@
+{
+  "name": "quantorihomework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently --kill-others \"json-server --watch  ./HW5/server/db.json -p 3005 \" \"webpack-dev-server\"",
+    "build:prod": "webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Armensch11/QuantoriHomework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Armensch11/QuantoriHomework/issues"
+  },
+  "homepage": "https://github.com/Armensch11/QuantoriHomework#readme",
+  "dependencies": {
+    "json-server": "^0.17.3",
+    "svg-url-loader": "^8.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1",
+    "css-loader": "^6.7.3",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.1",
+    "style-loader": "^3.3.2",
+    "svg-inline-loader": "^0.8.2",
+    "svg-loader": "^0.0.2",
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.4",
+    "webpack": "^5.80.0",
+    "webpack-cli": "^5.0.2",
+    "webpack-dev-server": "^4.13.3"
+  }
+}

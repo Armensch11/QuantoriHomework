@@ -1,0 +1,12 @@
+.daylyTask-modal-container {
+  width: 100%;
+  padding: 4px 24px;
+  margin-top: 16px;
+  margin-bottom: auto;
+  overflow: scroll;
+}
+
+.daylyTask__titles {
+  word-break: break-all;
+  margin-left: 32px;
+}

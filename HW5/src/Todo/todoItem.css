@@ -1,0 +1,53 @@
+.main__container__tasks__pending__list__item,
+.main__container__tasks__completed__list__item {
+  display: flex;
+  flex-direction: row;
+  width: 382px;
+  justify-content: flex-start;
+  align-items: center;
+}
+.main__container__tasks__pending__list__item input,
+.main__container__tasks__completed__list__item input {
+  margin-right: 20px;
+  height: 68px;
+}
+.main__container__tasks__pending__list__item__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.main__container__tasks__pending__list__item__content__title {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+
+  color: #1d1d1d;
+}
+.main__container__tasks__pending__list__item__content__dateType {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.main__container__tasks__pending__list__item__content__type {
+  margin-right: 10px;
+}
+.main__container__tasks__pending__list__item__content__date {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+
+  color: #838383;
+}
+.main__container__tasks__pending__list__item__removeIcon {
+  margin-right: 8px;
+  margin-left: auto;
+}

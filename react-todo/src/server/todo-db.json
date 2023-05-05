@@ -1,0 +1,68 @@
+{
+  "tasks": [
+    {
+      "title": "new task 3",
+      "task": "new task 3",
+      "date": "2023-05-02",
+      "type": "other",
+      "status": "pending",
+      "id": "1683046707805"
+    },
+    {
+      "title": "new task 4",
+      "task": "new task 4",
+      "date": "2023-05-02",
+      "type": "home",
+      "status": "pending",
+      "id": "1683046721462"
+    },
+    {
+      "title": "new task 5",
+      "task": "new task 5",
+      "date": "2023-05-02",
+      "type": "other",
+      "status": "completed",
+      "id": "1683046733773"
+    },
+    {
+      "title": "some task for tommorow",
+      "task": "some task for tommorow",
+      "date": "2023-05-03",
+      "type": "home",
+      "status": "completed",
+      "id": "1683050536385"
+    },
+    {
+      "title": "another task for tomorrow",
+      "task": "another task for tomorrow",
+      "date": "2023-05-03",
+      "type": "home",
+      "status": "pending",
+      "id": "1683050549099"
+    },
+    {
+      "title": "go play basketball",
+      "task": "go play basketball",
+      "date": "2023-05-02",
+      "type": "home",
+      "status": "pending",
+      "id": "1683050712830"
+    },
+    {
+      "title": "far date task",
+      "task": "far date task",
+      "date": "2023-05-05",
+      "type": "home",
+      "status": "pending",
+      "id": "1683091901095"
+    },
+    {
+      "title": "sdsdsdsd",
+      "task": "sdsdsdsd",
+      "date": "2023-05-05",
+      "type": "other",
+      "status": "pending",
+      "id": "1683221501582"
+    }
+  ]
+}

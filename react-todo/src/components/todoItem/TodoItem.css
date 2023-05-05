@@ -1,0 +1,58 @@
+.todo-container {
+  width: 55%;
+  min-width: 425px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 24px;
+}
+.todo__checkbox {
+  transform: scale(1.3);
+  accent-color: rgb(209, 208, 208);
+}
+.todo-desc {
+  margin-left: 20px;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.typeDate-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.todo__title {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  margin-bottom: 10px;
+  color: #1d1d1d;
+}
+.todo__type {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  border-radius: 6px;
+  padding: 2px 4px;
+}
+.todo__date {
+  margin-left: 10px;
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+
+  color: #838383;
+}

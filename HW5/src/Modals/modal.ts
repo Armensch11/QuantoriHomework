@@ -1,38 +1,47 @@
 import {
   modalCancelAction,
   checkTodoType,
-  getTodo,
-  getDueDate,
   validateEntries,
-  addTask,
-} from "./modalActions.js";
+} from "./modalActions";
+import "./modal.css";
 
 export const modal = () => {
   const body = document.querySelector("body");
+
   const modalContainer = document.createElement("div");
   modalContainer.setAttribute("class", "modal__container");
-  body.appendChild(modalContainer);
+  body?.appendChild(modalContainer);
   modalContainer.style.display = "flex";
+
   const containerInside = document.createElement("div");
   containerInside.setAttribute("class", "modal__container__inside");
   modalContainer.appendChild(containerInside);
 
   const title = document.createElement("div");
   title.setAttribute("class", "modal__container__inside__title");
+
   const titleText = document.createElement("h2");
   titleText.innerText = "Add New Task";
   title.appendChild(titleText);
+
   const todo = document.createElement("div");
   todo.setAttribute("class", "modal__container__input__todo");
   const input = document.createElement("input");
   input.setAttribute("type", "text");
+
   input.addEventListener("click", () => (input.value = ""));
-  input.addEventListener("blur", getTodo);
+
+  input.addEventListener("blur", () => {
+    validateEntries();
+  });
+
   todo.appendChild(input);
+
   const options = document.createElement("div");
   options.setAttribute("class", "modal__container__input__options");
   const optionsTypes = document.createElement("div");
   optionsTypes.setAttribute("class", "modal__container__input__options__type");
+
   const health = document.createElement("div");
   health.setAttribute("class", "modal__container__input__options__type health");
   health.innerText = "health";
@@ -45,25 +54,35 @@ export const modal = () => {
   const other = document.createElement("div");
   other.setAttribute("class", "modal__container__input__options__type other");
   other.innerText = "other";
+
   const optionTypesArr = [health, work, home, other];
   optionTypesArr.forEach((type) => optionsTypes.appendChild(type));
+
+  // adding listener for marking selected todo type with 1px border
+  // in the same color as is the selected todo type, and remove border from the previous selection
   optionTypesArr.forEach((type) =>
     type.addEventListener("click", (event) => {
       event.preventDefault();
-      checkTodoType(event);
+      checkTodoType(type);
+      validateEntries();
     })
   );
+
   const optionsDate = document.createElement("input");
   optionsDate.setAttribute("type", "date");
   optionsDate.setAttribute("class", "modal__container__input__options__date");
-  optionsDate.addEventListener("mouseleave", () => {
-    // getDueDate();
+  optionsDate.setAttribute("required", "true");
+
+  optionsDate.addEventListener("focusout", () => {
     validateEntries();
   });
+
   options.appendChild(optionsTypes);
   options.appendChild(optionsDate);
+
   const buttons = document.createElement("div");
   buttons.setAttribute("class", "modal__container__inside__buttons");
+
   const buttonCancel = document.createElement("button");
   buttonCancel.setAttribute(
     "class",
@@ -72,6 +91,7 @@ export const modal = () => {
   const cancelText = document.createElement("h3");
   cancelText.innerText = "Cancel";
   buttonCancel.appendChild(cancelText);
+
   const buttonAdd = document.createElement("button");
   buttonAdd.setAttribute("class", "modal__container__inside__buttons__add");
   buttonAdd.disabled = true;
@@ -79,8 +99,10 @@ export const modal = () => {
   const addText = document.createElement("h3");
   addText.innerText = "Add task";
   buttonAdd.appendChild(addText);
+
   buttons.appendChild(buttonCancel);
   buttons.appendChild(buttonAdd);
+
   const insideNodes = [title, todo, options, buttons];
   insideNodes.forEach((child) => containerInside.appendChild(child));
 
