@@ -1,0 +1,18 @@
+ul.dayly-list {
+  list-style-type: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  column-gap: 24px;
+
+  margin-top: 24px;
+  margin-bottom: auto;
+}
+.dayly__item {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+}

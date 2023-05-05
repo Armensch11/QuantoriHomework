@@ -1,0 +1,43 @@
+.weather-wrapper {
+  width: 332px;
+  height: 65px;
+  padding: 10px 22px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.weather-wrapper__image {
+  width: 57px;
+
+  margin-right: 23px;
+}
+.weather-wrapper__temperature {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 36px;
+
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+  margin-right: 82px;
+}
+.weather-wrapper__temperature::after {
+  content: "\00B0";
+}
+.weather-wrapper__city {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 36px;
+  /* or 200% */
+
+  display: flex;
+  align-items: center;
+
+  color: #838383;
+}
