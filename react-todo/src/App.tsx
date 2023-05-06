@@ -16,33 +16,19 @@ import DailyTasksModal from "./components/modals/dailyTasksModal/DailyTasksModal
 import { checkLocalStorage } from "./components/utils/checkLocalStorage";
 
 function App() {
-  const [todos, setTodos] = useState<ITodoItem[] | []>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTodos, setSearchTodos] = useState<ITodoItem[] | []>([]);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDailyModal, setShowDailyModal] = useState(false);
-  const addHandler = async (newItem: ITodoItem) => {
-    setTodos((prevTodos) => [...prevTodos, newItem]);
-    await dbPost(newItem);
-  };
-  const deleteHandler = (id: number) => {
-    deleteTodos(setTodos, id);
-  };
-  const markHandler = (id: number, checked: boolean | null) => {
-    markTodos(setTodos, todos, id, checked);
-  };
+
   const searchTermHandler = (value: string) => {
     setSearchTerm(value);
-  };
-  const fetchWrapper = async () => {
-    await getTodos(setTodos);
   };
 
   const modalHandler = (type = "add") => {
     type === "add"
       ? setShowAddModal(!showAddModal)
       : setShowDailyModal(!showDailyModal);
-    // console.log(type);
   };
 
   const localStorageVisited = useRef(false);
@@ -52,17 +38,11 @@ function App() {
     }
     return (localStorageVisited.current = true);
   };
-  // checkDate();
+
   useEffect(() => {
     checkDate();
   }, []);
-  useEffect(() => {
-    fetchWrapper();
-  }, []);
-  useEffect(() => {
-    const result = searchResult(searchTerm, todos);
-    setSearchTodos([...result]);
-  }, [searchTerm, todos]);
+
   return (
     <div className="App">
       <Header />
@@ -70,25 +50,16 @@ function App() {
         searchTermHandler={searchTermHandler}
         modalHandler={modalHandler}
       />
-      {todos.length && (
-        <TodoList
-          todos={searchTerm.length ? searchTodos : todos}
-          deleteHandler={deleteHandler}
-          markHandler={markHandler}
-        />
-      )}
-      {todos.length && (
-        <TodoList
-          todos={todos}
-          status="completed"
-          title="Completed Tasks"
-          deleteHandler={deleteHandler}
-          markHandler={markHandler}
-        />
-      )}
+      <TodoList searchTerm={searchTerm} />
+
+      <TodoList
+        searchTerm={searchTerm}
+        status="completed"
+        title="Completed Tasks"
+      />
 
       {showAddModal && (
-        <TodoAddModal modalHandler={modalHandler} addHandler={addHandler} />
+        <TodoAddModal modalHandler={modalHandler}  />
       )}
       {showDailyModal && <DailyTasksModal modalHandler={modalHandler} />}
     </div>

@@ -3,6 +3,7 @@ import "./TaskTypes.css";
 import { todoTypes } from "../../../utils/todoTypes";
 import { typeSelector } from "../../../utils/typeSelector";
 import { IBorders } from "../../../../Interfaces/Interfaces";
+import nextId from "react-id-generator";
 
 const types = ["health", "work", "home", "other"];
 
@@ -25,12 +26,13 @@ const TaskTypes = ({
     setSelected(typeSelector(type));
     typeHandler(type);
   };
+
   return (
     <React.Fragment>
       <div className="types-container">
         {types.map((type, index) => (
           <div
-            key={index}
+            key={nextId()}
             className="type"
             style={{
               color: todoTypes[type].color,

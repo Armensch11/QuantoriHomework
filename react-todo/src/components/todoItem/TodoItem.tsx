@@ -1,9 +1,12 @@
 import React, { useRef } from "react";
 
 import "./TodoItem.css";
-import trashBin from "../../assets/trash_bin.svg";
+import trashBin from "./assets/trash_bin.svg";
+import editIcon from "./assets/edit-icon.svg";
 import { todoTypes } from "../utils/todoTypes";
 import { formatDate } from "../utils/formatDate";
+import { useAppDispatch } from "../../hooks/reduxHooks";
+import { markTodo, deleteTodo } from "../../features/todos/todosSlice";
 
 const TodoItem = ({
   id,
@@ -13,8 +16,7 @@ const TodoItem = ({
   status,
   task,
 
-  deleteHandler,
-  markHandler,
+  
 }: {
   id: string;
   title: string;
@@ -23,10 +25,10 @@ const TodoItem = ({
   status: string;
   task: string;
 
-  deleteHandler: (id: number) => void;
-  markHandler: (id: number, checked: boolean | null) => void;
+ 
 }) => {
   const checkbox = useRef<HTMLInputElement>(null);
+  const dispatch = useAppDispatch();
   return (
     <>
       <div className="todo-container">
@@ -37,7 +39,8 @@ const TodoItem = ({
           ref={checkbox}
           onChange={() => {
             if (checkbox.current) {
-              markHandler(+id, checkbox.current?.checked);
+              // markHandler(+id, checkbox.current?.checked);
+              dispatch(markTodo(id));
             }
           }}
         />
@@ -65,12 +68,21 @@ const TodoItem = ({
             <div className="todo__date">{formatDate(date)}</div>
           </div>
         </div>
+        <div className="todo-edit">
+          <img
+            src={editIcon}
+            alt="todo edit icon"
+            onClick={() => {
+              // editHandler(+id);
+            }}
+          />
+        </div>
         <div className="todo-delete">
           <img
             src={trashBin}
             alt="todo delete icon"
             onClick={() => {
-              deleteHandler(+id);
+              dispatch(deleteTodo(id));
             }}
           />
         </div>
