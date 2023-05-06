@@ -8,7 +8,7 @@ export const fetchTodosFromServer = async () => {
   return todos;
 };
 
-export const postTodo = async (todo: ITodoItem) => {
+export const postTodoToServer = async (todo: ITodoItem) => {
   const postConfig = {
     method: "POST",
     headers: {
@@ -26,7 +26,11 @@ export const postTodo = async (todo: ITodoItem) => {
   }
 };
 
-export const updateTodo = async (id: string, todo: ITodoItem) => {
+export const changeTodoStatus = async (todo: ITodoItem) => {
+  todo.status === "pending"
+    ? (todo.status = "completed")
+    : (todo.status = "pending");
+
   const patchConfig = {
     method: "PATCH",
     headers: {
@@ -36,10 +40,11 @@ export const updateTodo = async (id: string, todo: ITodoItem) => {
   };
   try {
     const response = await fetch(
-      `http://localhost:3005/tasks/${id}`,
+      `http://localhost:3005/tasks/${todo.id}`,
       patchConfig
     );
-    return response.json();
+    const markedTodo: ITodoItem = await response.json();
+    return markedTodo;
   } catch (error: any) {
     console.error(error.message);
   }

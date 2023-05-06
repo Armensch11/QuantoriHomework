@@ -7,6 +7,7 @@ import { todoTypes } from "../utils/todoTypes";
 import { formatDate } from "../utils/formatDate";
 import { useAppDispatch } from "../../hooks/reduxHooks";
 import { markTodo, deleteTodo } from "../../features/todos/todosSlice";
+import { ITodoItem } from "../../Interfaces/Interfaces";
 
 const TodoItem = ({
   id,
@@ -15,8 +16,6 @@ const TodoItem = ({
   date,
   status,
   task,
-
-  
 }: {
   id: string;
   title: string;
@@ -24,11 +23,10 @@ const TodoItem = ({
   date: string;
   status: string;
   task: string;
-
- 
 }) => {
   const checkbox = useRef<HTMLInputElement>(null);
   const dispatch = useAppDispatch();
+
   return (
     <>
       <div className="todo-container">
@@ -38,10 +36,15 @@ const TodoItem = ({
           checked={status === "completed" ? true : false}
           ref={checkbox}
           onChange={() => {
-            if (checkbox.current) {
-              // markHandler(+id, checkbox.current?.checked);
-              dispatch(markTodo(id));
-            }
+            const todo: ITodoItem = {
+              id: id,
+              title: title,
+              type: type,
+              date: date,
+              status: status,
+              task: task,
+            };
+            dispatch(markTodo(todo));
           }}
         />
         <div className="todo-desc">

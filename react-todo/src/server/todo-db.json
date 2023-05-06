@@ -21,7 +21,7 @@
       "task": "new task 5",
       "date": "2023-05-02",
       "type": "other",
-      "status": "completed",
+      "status": "pending",
       "id": "1683046733773"
     },
     {
@@ -29,7 +29,7 @@
       "task": "some task for tommorow",
       "date": "2023-05-03",
       "type": "home",
-      "status": "completed",
+      "status": "pending",
       "id": "1683050536385"
     },
     {
@@ -61,7 +61,7 @@
       "task": "sdsdsdsd",
       "date": "2023-05-05",
       "type": "other",
-      "status": "pending",
+      "status": "completed",
       "id": "1683221501582"
     },
     {
@@ -69,7 +69,7 @@
       "task": "task for today",
       "date": "2023-05-06",
       "type": "work",
-      "status": "pending",
+      "status": "completed",
       "id": "1683402999814"
     },
     {
@@ -77,8 +77,24 @@
       "task": "another task for 6 minutes late",
       "date": "2023-05-07",
       "type": "other",
-      "status": "pending",
+      "status": "completed",
       "id": "1683403032301"
+    },
+    {
+      "title": "some other task fo rnow",
+      "task": "some other task fo rnow",
+      "date": "2023-05-07",
+      "type": "home",
+      "status": "completed",
+      "id": "1683404365978"
+    },
+    {
+      "title": "anothewr task for today",
+      "task": "anothewr task for today",
+      "date": "2023-05-07",
+      "type": "home",
+      "status": "completed",
+      "id": "1683407973795"
     }
   ]
 }

@@ -2,7 +2,8 @@ import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { ITodoItem } from "../../Interfaces/Interfaces";
 import {
   fetchTodosFromServer,
-  postTodo,
+  postTodoToServer,
+  changeTodoStatus,
 } from "../../components/utils/reduxHelpers";
 
 type SliceState = {
@@ -22,11 +23,19 @@ export const fetchTodos = createAsyncThunk(
   fetchTodosFromServer
 );
 
-export const post = createAsyncThunk(
+export const postTodo = createAsyncThunk(
   "todos/postTodo",
   async (todo: ITodoItem) => {
-    const updatedTodo = await postTodo(todo);
-    return updatedTodo;
+    const postedTodo = await postTodoToServer(todo);
+    return postedTodo;
+  }
+);
+
+export const markTodo = createAsyncThunk(
+  "todos/markTodo",
+  async (todo: ITodoItem) => {
+    const markedTodo = await changeTodoStatus(todo);
+    return markedTodo;
   }
 );
 
@@ -34,23 +43,23 @@ export const todosSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
-    addTodo: (state, action: PayloadAction<ITodoItem>) => {
-      const newTodo = action.payload;
-      state.todos.push(newTodo);
-    },
+    // addTodo: (state, action: PayloadAction<ITodoItem>) => {
+    //   const newTodo = action.payload;
+    //   state.todos.push(newTodo);
+    // },
 
-    markTodo: (state, action: PayloadAction<string>) => {
-      const id = action.payload;
-      state.todos.forEach((todo) => {
-        if (todo.id === id) {
-          if (todo.status === "completed") {
-            todo.status = "pending";
-          } else {
-            todo.status = "completed";
-          }
-        }
-      });
-    },
+    // markTodo: (state, action: PayloadAction<string>) => {
+    //   const id = action.payload;
+    //   state.todos.forEach((todo) => {
+    //     if (todo.id === id) {
+    //       if (todo.status === "completed") {
+    //         todo.status = "pending";
+    //       } else {
+    //         todo.status = "completed";
+    //       }
+    //     }
+    //   });
+    // },
 
     deleteTodo: (state, action: PayloadAction<string>) => {
       const id = action.payload;
@@ -83,29 +92,54 @@ export const todosSlice = createSlice({
       })
       .addCase(fetchTodos.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message ?? "Something went wrong.";
+        state.error =
+          action.error.message ?? "Something went wrong with fetching.";
       })
 
       // posting todo and updating state
-      .addCase(post.pending, (state) => {
+      .addCase(postTodo.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(post.fulfilled, (state, action) => {
-        const updatedTodo = action.payload;
-        if (updatedTodo) {
-          state.todos.push(updatedTodo);
+      .addCase(postTodo.fulfilled, (state, action) => {
+        const postedTodo = action.payload;
+        if (postedTodo) {
+          state.todos.push(postedTodo);
         }
         state.loading = false;
         state.error = null;
       })
-      .addCase(post.rejected, (state, action) => {
+      .addCase(postTodo.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message ?? "Something went wrong.";
+        state.error =
+          action.error.message ?? "Something went wrong with posting.";
+      })
+      // changing todo status in server and updating state
+      .addCase(markTodo.fulfilled, (state, action) => {
+        const markedTodo = action.payload;
+
+        if (markedTodo) {
+          const newTodos = state.todos.map((todo) => {
+            if (todo.id === markedTodo.id) {
+              return { ...markedTodo };
+            } else {
+              return todo;
+            }
+          });
+          state.todos = newTodos;
+        }
+
+        state.loading = false;
+        state.error = null;
+      })
+      .addCase(markTodo.rejected, (state, action) => {
+        state.loading = false;
+        state.error =
+          action.error.message ?? "Something went wrong with marking.";
       });
   },
 });
 
-export const { addTodo, markTodo, deleteTodo, editTodo } = todosSlice.actions;
+export const { deleteTodo, editTodo } = todosSlice.actions;
 
 export default todosSlice.reducer;

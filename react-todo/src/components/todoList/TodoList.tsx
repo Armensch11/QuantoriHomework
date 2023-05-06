@@ -17,7 +17,6 @@ const TodoList = ({
   const todosFromRedux = useAppSelector((state) => state.todos.todos);
   const todoToRender = todosFromRedux.filter((todo) => todo.status === status);
 
-  
   const dispatch = useAppDispatch();
 
   useEffect(() => {
