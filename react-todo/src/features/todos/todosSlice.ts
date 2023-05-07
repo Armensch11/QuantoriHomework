@@ -4,6 +4,7 @@ import {
   fetchTodosFromServer,
   postTodoToServer,
   changeTodoStatus,
+  deleteTodoInServer,
 } from "../../components/utils/reduxHelpers";
 
 type SliceState = {
@@ -39,33 +40,18 @@ export const markTodo = createAsyncThunk(
   }
 );
 
+export const deleteTodo = createAsyncThunk(
+  "todos/deleteTodo",
+  async (id: string) => {
+    const todoId = await deleteTodoInServer(id);
+    return todoId;
+  }
+);
+
 export const todosSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
-    // addTodo: (state, action: PayloadAction<ITodoItem>) => {
-    //   const newTodo = action.payload;
-    //   state.todos.push(newTodo);
-    // },
-
-    // markTodo: (state, action: PayloadAction<string>) => {
-    //   const id = action.payload;
-    //   state.todos.forEach((todo) => {
-    //     if (todo.id === id) {
-    //       if (todo.status === "completed") {
-    //         todo.status = "pending";
-    //       } else {
-    //         todo.status = "completed";
-    //       }
-    //     }
-    //   });
-    // },
-
-    deleteTodo: (state, action: PayloadAction<string>) => {
-      const id = action.payload;
-      state.todos = state.todos.filter((todo) => todo.id !== id);
-    },
-
     editTodo: (state, action: PayloadAction<ITodoItem>) => {
       const editedItem = action.payload;
       state.todos.forEach((todo) => {
@@ -136,10 +122,24 @@ export const todosSlice = createSlice({
         state.loading = false;
         state.error =
           action.error.message ?? "Something went wrong with marking.";
+      })
+
+      //delete todo from server and update state
+      .addCase(deleteTodo.fulfilled, (state, action) => {
+        const todoId = action.payload;
+        const newTodos = state.todos.filter((todo) => todo.id !== todoId);
+        state.todos = [...newTodos];
+        state.loading = false;
+        state.error = null;
+      })
+      .addCase(deleteTodo.rejected, (state, action) => {
+        state.loading = false;
+        state.error =
+          action.error.message ?? "Something went wrong with posting.";
       });
   },
 });
 
-export const { deleteTodo, editTodo } = todosSlice.actions;
+export const { editTodo } = todosSlice.actions;
 
 export default todosSlice.reducer;

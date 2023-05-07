@@ -49,3 +49,14 @@ export const changeTodoStatus = async (todo: ITodoItem) => {
     console.error(error.message);
   }
 };
+
+export const deleteTodoInServer = async (id: string) => {
+  const deleteConfig = { method: "DELETE" };
+  try {
+    await fetch(`http://localhost:3005/tasks/${id}`, deleteConfig);
+
+    return id;
+  } catch (error: any) {
+    console.error(error.message);
+  }
+};

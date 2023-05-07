@@ -1,14 +1,6 @@
 {
   "tasks": [
     {
-      "title": "new task 3",
-      "task": "new task 3",
-      "date": "2023-05-02",
-      "type": "other",
-      "status": "pending",
-      "id": "1683046707805"
-    },
-    {
       "title": "new task 4",
       "task": "new task 4",
       "date": "2023-05-02",
@@ -49,22 +41,6 @@
       "id": "1683050712830"
     },
     {
-      "title": "far date task",
-      "task": "far date task",
-      "date": "2023-05-05",
-      "type": "home",
-      "status": "pending",
-      "id": "1683091901095"
-    },
-    {
-      "title": "sdsdsdsd",
-      "task": "sdsdsdsd",
-      "date": "2023-05-05",
-      "type": "other",
-      "status": "completed",
-      "id": "1683221501582"
-    },
-    {
       "title": "task for today",
       "task": "task for today",
       "date": "2023-05-06",
@@ -89,12 +65,12 @@
       "id": "1683404365978"
     },
     {
-      "title": "anothewr task for today",
-      "task": "anothewr task for today",
-      "date": "2023-05-07",
-      "type": "home",
+      "title": "go swimming this month",
+      "task": "go swimming this month",
+      "date": "2023-05-09",
+      "type": "health",
       "status": "completed",
-      "id": "1683407973795"
+      "id": "1683440197467"
     }
   ]
 }
