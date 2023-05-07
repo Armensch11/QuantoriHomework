@@ -1,9 +1,9 @@
-import React, { FC, useEffect, useLayoutEffect, useState } from "react";
+import React, { FC, useEffect } from "react";
 import ModalFooter from "../modalFooter/ModalFooter";
 import ModalTitle from "../modalTitle/ModalTitle";
-import { ITodoItem } from "../../../Interfaces/Interfaces";
+
 import { compareDate } from "../../utils/compareDate";
-import { getTodos } from "../../utils/todosActions";
+
 import "./DailyTasksModal.css";
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
 import { fetchTodos } from "../../../features/todos/todosSlice";
@@ -15,7 +15,7 @@ const DaylyTasksModal: FC<DailyModalProps> = ({ modalHandler }) => {
 
   useEffect(() => {
     dispatch(fetchTodos());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

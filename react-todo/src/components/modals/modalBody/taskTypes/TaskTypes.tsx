@@ -11,8 +11,8 @@ const TaskTypes = ({
   typeHandler,
   focusOutHandler,
 }: {
-  typeHandler: (type: string) => void;
-  focusOutHandler: () => void;
+  typeHandler?: (type: string) => void;
+  focusOutHandler?: () => void;
 }) => {
   const [selected, setSelected] = useState<IBorders>({
     work: "none",
@@ -24,13 +24,15 @@ const TaskTypes = ({
     const target = e.target as HTMLElement;
     const type = target.innerText;
     setSelected(typeSelector(type));
-    typeHandler(type);
+    if (typeHandler) {
+      typeHandler(type);
+    }
   };
 
   return (
     <React.Fragment>
       <div className="types-container">
-        {types.map((type, index) => (
+        {types.map((type) => (
           <div
             key={nextId()}
             className="type"

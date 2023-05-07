@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Search.css";
 import AddTask from "../addTask/AddTask";
+import { useAppDispatch } from "../../hooks/reduxHooks";
+import { updateSearchTerm } from "../../features/search/searchSlice";
 
-const Search = ({
-  searchTermHandler,
-  modalHandler,
-}: {
-  searchTermHandler: (value: string) => void;
-  modalHandler: () => void;
-}) => {
+const Search = ({ modalHandler }: { modalHandler: () => void }) => {
+  const dispatch = useAppDispatch();
+
   return (
     <React.Fragment>
       <div className="search-container">
@@ -16,8 +14,7 @@ const Search = ({
           className="search__input"
           type="search"
           placeholder="Search Task"
-          // value={searchTerm}
-          onChange={(e) => searchTermHandler(e.target.value)}
+          onChange={(e) => dispatch(updateSearchTerm(e.target.value))}
         />
         <AddTask modalHandler={modalHandler} />
       </div>
