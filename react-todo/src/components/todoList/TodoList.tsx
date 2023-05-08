@@ -2,21 +2,27 @@ import "./TodoList.css";
 import TodoItem from "../todoItem/TodoItem";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { fetchTodos } from "../../features/todos/todosSlice";
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 
-const TodoList = ({
-  title = "All Tasks",
-  status = "pending",
-}: {
+type TodoListProps = {
   title?: string;
   status?: string;
+  typeFilter?: string | null;
+};
+
+const TodoList: FC<TodoListProps> = ({
+  title = "All Tasks",
+  status = "pending",
+  typeFilter,
 }) => {
   const todosFromRedux = useAppSelector((state) => state.todos.todos);
   const searchTerm = useAppSelector((state) => state.search.searchTerm);
   const dispatch = useAppDispatch();
 
-
   let todoToRender = todosFromRedux.filter((todo) => todo.status === status);
+  if (typeFilter) {
+    todoToRender = [...todoToRender.filter((todo) => todo.type === typeFilter)];
+  }
   if (searchTerm.length) {
     todoToRender = [
       ...todoToRender.filter((todo) =>
@@ -28,7 +34,7 @@ const TodoList = ({
   useEffect(() => {
     dispatch(fetchTodos());
   }, [dispatch]);
-  
+
   return (
     <>
       <div className="list-container">

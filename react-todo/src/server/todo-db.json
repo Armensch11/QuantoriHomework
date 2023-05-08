@@ -5,7 +5,7 @@
       "task": "new task 4",
       "date": "2023-05-02",
       "type": "home",
-      "status": "pending",
+      "status": "completed",
       "id": "1683046721462"
     },
     {
@@ -69,7 +69,7 @@
       "task": "go swimming this month",
       "date": "2023-05-09",
       "type": "health",
-      "status": "completed",
+      "status": "pending",
       "id": "1683440197467"
     },
     {

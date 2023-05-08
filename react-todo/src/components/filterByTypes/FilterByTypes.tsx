@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TodoList from "../todoList/TodoList";
+import { useParams } from "react-router-dom";
+import "./FilterByTypes.css";
 
 const FilterByTypes = () => {
+  const [filter, setFilter] = useState<string | null>("");
+  const { type } = useParams();
+
+  useEffect(() => {
+    if (type) {
+      setFilter(type);
+    }
+  }, [type]);
+
   return (
     <>
-      <div className="filters-container">
-        <span>health</span>
-        <span>work</span>
-        <span>home</span>
-        <span>other</span>
-      </div>
-      <TodoList />
-      <TodoList />
+      <TodoList title={`${filter} tasks`} typeFilter={filter} />
     </>
   );
 };

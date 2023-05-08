@@ -14,7 +14,7 @@ const Search = ({ modalHandler }: { modalHandler: () => void }) => {
           className="search__input"
           type="search"
           placeholder="Search Task"
-          onChange={(e) => dispatch(updateSearchTerm(e.target.value))}
+          onChange={(e) => dispatch(updateSearchTerm(e.target.value.trim()))}
         />
         <AddTask modalHandler={modalHandler} />
       </div>
