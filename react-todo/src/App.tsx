@@ -3,14 +3,15 @@ import "./App.css";
 
 import Header from "./components/header/";
 import Search from "./components/search/Search";
-import TodoList from "./components/todoList/TodoList";
+
 import TodoAddModal from "./components/modals/todoAddModal/TodoAddModal";
 import DailyTasksModal from "./components/modals/dailyTasksModal/DailyTasksModal";
 import { checkLocalStorage } from "./components/utils/checkLocalStorage";
 
-import FilterByTypes from "./components/filterByTypes/FilterByTypes";
-import { Routes, Route, Outlet } from "react-router-dom";
+import FilterByTypes from "./pages/filterByTypes/FilterByTypes";
+import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import Home from "./pages/home/Home";
+import TypeNav from "./components/typeNav/TypeNav";
 
 function App() {
   const [showAddModal, setShowAddModal] = useState(false);
@@ -38,17 +39,17 @@ function App() {
     <div className="App">
       <Header />
       <Search modalHandler={modalHandler} />
-      {/* <FilterByTypes /> */}
+      <TypeNav />
+
       <Outlet />
-      {/* <TodoList />
-      <TodoList status="completed" title="Completed Tasks" /> */}
 
       {showAddModal && <TodoAddModal modalHandler={modalHandler} />}
       {showDailyModal && <DailyTasksModal modalHandler={modalHandler} />}
+
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Navigate to="/tasks" />} />
+        <Route path="/tasks" element={<Home />} />
         <Route path="/tasks/:type" element={<FilterByTypes />} />
-        <Route path="*" element={<Home />} />
       </Routes>
     </div>
   );

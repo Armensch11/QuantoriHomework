@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import TodoList from "../todoList/TodoList";
+import TodoList from "../../components/todoList/TodoList";
 import { useParams } from "react-router-dom";
-import "./FilterByTypes.css";
 
 const FilterByTypes = () => {
   const [filter, setFilter] = useState<string | null>("");
