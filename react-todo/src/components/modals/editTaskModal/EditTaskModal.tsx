@@ -7,27 +7,18 @@ type EditModalProps = {
   [k: string]: string;
 };
 
-const EditTaskModal: FC<EditModalProps> = ({
-  id,
-  title,
-  type,
-  task,
-  date,
-  status,
-}) => {
+const EditTaskModal: FC<EditModalProps> = () => {
   return (
     <>
       <div className="modal-overlay">
         <div className="modal-container">
           <ModalTitle title="Edit Task" />
-          {/* <AddTaskBody checkEntries={checkEntries} />
-          <ModalFooter
-            buttonCancel="Cancel"
-            buttonAdd="Save Changes"
-            cancelHandler={modalHandler}
-            addTodo={addTodoOnClick}
-            buttonStatus={buttonDisabled}
-          /> */}
+          <form action="">
+            <input type="button" value="health" />
+            <input type="button" value="home" />
+            <input type="button" value="work" />
+            <input type="button" value="other" />
+          </form>
         </div>
       </div>
     </>

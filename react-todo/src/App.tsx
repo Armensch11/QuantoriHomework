@@ -12,6 +12,7 @@ import FilterByTypes from "./pages/filterByTypes/FilterByTypes";
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import Home from "./pages/home/Home";
 import TypeNav from "./components/typeNav/TypeNav";
+import EditTaskModal from "./components/modals/editTaskModal/EditTaskModal";
 
 function App() {
   const [showAddModal, setShowAddModal] = useState(false);
@@ -40,7 +41,7 @@ function App() {
       <Header />
       <Search modalHandler={modalHandler} />
       <TypeNav />
-
+      {/* <EditTaskModal /> */}
       <Outlet />
 
       {showAddModal && <TodoAddModal modalHandler={modalHandler} />}
