@@ -3,6 +3,7 @@ import todosReducer from "../features/todos/todosSlice";
 import searchReducer from "../features/search/searchSlice";
 import showEditModalReducer from "../features/showModal/showModalSlice";
 
+
 const store = configureStore({
   reducer: {
     todos: todosReducer,
@@ -13,7 +14,12 @@ const store = configureStore({
 
 //experimenting with tab syncing
 store.subscribe(() => {
-  localStorage.setItem("stateCurrent", JSON.stringify(store.getState()));
+  if (store.getState().todos.todos.length) {
+    localStorage.setItem(
+      "stateCurrent",
+      JSON.stringify(store.getState().todos.todos)
+    );
+  }
 });
 //experimenting with tab syncing
 

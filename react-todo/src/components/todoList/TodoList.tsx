@@ -37,9 +37,11 @@ const TodoList: FC<TodoListProps> = ({
 
   useEffect(() => {
     const handleStorageChange = () => {
-      const state = JSON.parse(localStorage.getItem("stateCurrent") || "{}");
+      if (localStorage.getItem("stateCurrent")) {
+        const state = JSON.parse(localStorage.getItem("stateCurrent") || "{}");
 
-      dispatch(updateState(state));
+        dispatch(updateState(state));
+      }
     };
 
     window.addEventListener("storage", handleStorageChange);

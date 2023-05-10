@@ -1,9 +1,9 @@
 {
   "tasks": [
     {
-      "title": "new task 4",
+      "title": "some other task under number 44",
       "task": "new task 4",
-      "date": "2023-05-02",
+      "date": "2023-05-11",
       "type": "home",
       "status": "pending",
       "id": "1683046721462"
@@ -53,7 +53,7 @@
       "task": "some other task fo rnow",
       "date": "2023-05-07",
       "type": "home",
-      "status": "completed",
+      "status": "pending",
       "id": "1683404365978"
     },
     {
@@ -77,7 +77,7 @@
       "task": "health",
       "date": "2023-05-11",
       "type": "health",
-      "status": "pending",
+      "status": "completed",
       "id": "1683713050335"
     }
   ]
