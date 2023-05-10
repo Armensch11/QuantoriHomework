@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
 import { showEditModal } from "../../../features/showModal/showModalSlice";
 
 import Form from "./Form";
-import { editTodo, markTodo } from "../../../features/todos/todosSlice";
+import { editTodo } from "../../../features/todos/todosSlice";
 import { ITodoItem } from "../../../Interfaces/Interfaces";
 
 type EditModalObject = {

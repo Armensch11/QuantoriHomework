@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { ITodoItem } from "../../Interfaces/Interfaces";
 import {
   fetchTodosFromServer,
@@ -61,6 +61,10 @@ export const todosSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
+    updateState: (state, action: PayloadAction<ITodoItem[]>) => {
+      const newState = action.payload;
+      state.todos = [...newState];
+    },
     // editTodo: (state, action: PayloadAction<ITodoItem>) => {
     //   const editedItem = action.payload;
     //   const newTodos = state.todos.map((todo) => {
@@ -165,4 +169,5 @@ export const todosSlice = createSlice({
   },
 });
 
+export const { updateState } = todosSlice.actions;
 export default todosSlice.reducer;

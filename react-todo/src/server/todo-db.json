@@ -21,7 +21,7 @@
       "task": "another task for tomorrow",
       "date": "2023-05-03",
       "type": "home",
-      "status": "completed",
+      "status": "pending",
       "id": "1683050549099"
     },
     {
@@ -53,7 +53,7 @@
       "task": "some other task fo rnow",
       "date": "2023-05-07",
       "type": "home",
-      "status": "pending",
+      "status": "completed",
       "id": "1683404365978"
     },
     {
@@ -69,8 +69,16 @@
       "task": "some task for some day",
       "date": "2023-05-08",
       "type": "home",
-      "status": "pending",
+      "status": "completed",
       "id": "1683472830625"
+    },
+    {
+      "title": "health",
+      "task": "health",
+      "date": "2023-05-11",
+      "type": "health",
+      "status": "pending",
+      "id": "1683713050335"
     }
   ]
 }

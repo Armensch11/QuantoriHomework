@@ -18,11 +18,12 @@
   padding-left: 18px;
   margin-bottom: 18px;
 }
-.typeDate-container {
+.typeDate-container-modal {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 .addTask__date {
   height: 40px;

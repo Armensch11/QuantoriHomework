@@ -35,7 +35,7 @@ const TaskTypes = ({
         {types.map((type) => (
           <div
             key={nextId()}
-            className="type"
+            className="types"
             style={{
               color: todoTypes[type].color,
               backgroundColor: todoTypes[type].background,

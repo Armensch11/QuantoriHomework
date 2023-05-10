@@ -11,6 +11,12 @@ const store = configureStore({
   },
 });
 
+//experimenting with tab syncing
+store.subscribe(() => {
+  localStorage.setItem("stateCurrent", JSON.stringify(store.getState()));
+});
+//experimenting with tab syncing
+
 export type RootState = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;
