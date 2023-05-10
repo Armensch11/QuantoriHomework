@@ -8,6 +8,7 @@ import { formatDate } from "../utils/formatDate";
 import { useAppDispatch } from "../../hooks/reduxHooks";
 import { markTodo, deleteTodo } from "../../features/todos/todosSlice";
 import { ITodoItem } from "../../Interfaces/Interfaces";
+import { showEditModal } from "../../features/showModal/showModalSlice";
 
 const TodoItem = ({
   id,
@@ -52,7 +53,7 @@ const TodoItem = ({
             className="todo__title"
             style={{ color: status === "completed" ? "#838383" : "#1D1D1D" }}
           >
-            {task}
+            {title}
           </div>
           <div className="typeDate-container">
             <div
@@ -76,7 +77,7 @@ const TodoItem = ({
             src={editIcon}
             alt="todo edit icon"
             onClick={() => {
-              // editHandler(+id);
+              dispatch(showEditModal({ show: true, todoId: id }));
             }}
           />
         </div>

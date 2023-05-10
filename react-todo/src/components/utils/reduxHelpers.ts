@@ -60,3 +60,25 @@ export const deleteTodoInServer = async (id: string) => {
     console.error(error.message);
   }
 };
+
+export const editTodoInServer = async (todo: ITodoItem) => {
+ 
+
+  const patchConfig = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(todo),
+  };
+  try {
+    const response = await fetch(
+      `http://localhost:3005/tasks/${todo.id}`,
+      patchConfig
+    );
+    const markedTodo: ITodoItem = await response.json();
+    return markedTodo;
+  } catch (error: any) {
+    console.error(error.message);
+  }
+};

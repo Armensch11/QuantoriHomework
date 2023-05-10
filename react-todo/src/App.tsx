@@ -13,11 +13,13 @@ import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import Home from "./pages/home/Home";
 import TypeNav from "./components/typeNav/TypeNav";
 import EditTaskModal from "./components/modals/editTaskModal/EditTaskModal";
+import { useAppSelector } from "./hooks/reduxHooks";
 
 function App() {
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDailyModal, setShowDailyModal] = useState(false);
 
+  const isShowEditModal = useAppSelector((state) => state.modal.show);
   const modalHandler = (type = "add") => {
     type === "add"
       ? setShowAddModal(!showAddModal)
@@ -41,11 +43,14 @@ function App() {
       <Header />
       <Search modalHandler={modalHandler} />
       <TypeNav />
-      {/* <EditTaskModal /> */}
+
       <Outlet />
 
       {showAddModal && <TodoAddModal modalHandler={modalHandler} />}
       {showDailyModal && <DailyTasksModal modalHandler={modalHandler} />}
+      {isShowEditModal && (
+        <EditTaskModal todos={{ id: "232323" }} modalHandler={modalHandler} />
+      )}
 
       <Routes>
         <Route path="/" element={<Navigate to="/tasks" />} />

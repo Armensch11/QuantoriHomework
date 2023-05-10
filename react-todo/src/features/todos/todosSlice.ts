@@ -1,10 +1,11 @@
-import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { ITodoItem } from "../../Interfaces/Interfaces";
 import {
   fetchTodosFromServer,
   postTodoToServer,
   changeTodoStatus,
   deleteTodoInServer,
+  editTodoInServer,
 } from "../../components/utils/reduxHelpers";
 
 type SliceState = {
@@ -48,22 +49,29 @@ export const deleteTodo = createAsyncThunk(
   }
 );
 
+export const editTodo = createAsyncThunk(
+  "todos/editTodo",
+  async (todo: ITodoItem) => {
+    const editedTodo = await editTodoInServer(todo);
+    return editedTodo;
+  }
+);
+
 export const todosSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
-    editTodo: (state, action: PayloadAction<ITodoItem>) => {
-      const editedItem = action.payload;
-      state.todos.forEach((todo) => {
-        if (todo.id === editedItem.id) {
-          todo.title = editedItem.title;
-          todo.status = editedItem.status;
-          todo.type = editedItem.type;
-          todo.task = editedItem.task;
-          todo.date = editedItem.date;
-        }
-      });
-    },
+    // editTodo: (state, action: PayloadAction<ITodoItem>) => {
+    //   const editedItem = action.payload;
+    //   const newTodos = state.todos.map((todo) => {
+    //     if (todo.id === editedItem.id) {
+    //       return { ...editedItem };
+    //     } else {
+    //       return todo;
+    //     }
+    //   });
+    //   state.todos = newTodos;
+    // },
   },
   extraReducers: (builder) => {
     builder
@@ -136,10 +144,25 @@ export const todosSlice = createSlice({
         state.loading = false;
         state.error =
           action.error.message ?? "Something went wrong with posting.";
+      })
+      .addCase(editTodo.fulfilled, (state, action) => {
+        const editedTodo = action.payload;
+
+        if (editedTodo) {
+          const newTodos = state.todos.map((todo) => {
+            if (todo.id === editedTodo.id) {
+              return { ...editedTodo };
+            } else {
+              return todo;
+            }
+          });
+          state.todos = newTodos;
+        }
+
+        state.loading = false;
+        state.error = null;
       });
   },
 });
-
-export const { editTodo } = todosSlice.actions;
 
 export default todosSlice.reducer;

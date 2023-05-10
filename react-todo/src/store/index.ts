@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import todosReducer from "../features/todos/todosSlice";
 import searchReducer from "../features/search/searchSlice";
+import showEditModalReducer from "../features/showModal/showModalSlice";
 
 const store = configureStore({
   reducer: {
     todos: todosReducer,
     search: searchReducer,
+    modal: showEditModalReducer,
   },
 });
 

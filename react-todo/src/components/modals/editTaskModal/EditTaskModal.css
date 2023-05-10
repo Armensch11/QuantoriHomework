@@ -1,0 +1,54 @@
+.todo-edit-form {
+  height: 35%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 48px;
+  margin-bottom: auto;
+}
+.form__textarea {
+  border-radius: 8px;
+  border: none;
+  padding: 4px 4px;
+  background-color: #e6e6e6;
+  width: 100%;
+  margin-bottom: 16px;
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+}
+.form__typeAndDate {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.form__types {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  column-gap: 16px;
+}
+.form__types input {
+  border: 1px solid transparent;
+  border-radius: 6px;
+  height: 20px;
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+}
+.form__types input:active {
+  border: 1px solid red;
+}
+.form__date {
+  height: 32px;
+  width: 128px;
+  border-radius: 6px;
+  border: 1px solid #b7b7b7;
+}
