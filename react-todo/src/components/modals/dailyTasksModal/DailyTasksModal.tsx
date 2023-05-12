@@ -1,34 +1,21 @@
-import React, { FC, useEffect, useLayoutEffect, useState } from "react";
+import React, { FC, useEffect } from "react";
 import ModalFooter from "../modalFooter/ModalFooter";
 import ModalTitle from "../modalTitle/ModalTitle";
-import { ITodoItem } from "../../../Interfaces/Interfaces";
+
 import { compareDate } from "../../utils/compareDate";
-import { getTodos } from "../../utils/todosActions";
+
 import "./DailyTasksModal.css";
+import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
+import { fetchTodos } from "../../../features/todos/todosSlice";
 type DailyModalProps = { modalHandler: () => void };
 
 const DaylyTasksModal: FC<DailyModalProps> = ({ modalHandler }) => {
-  const [todos, setTodos] = useState<ITodoItem[] | []>([]);
-  const fetchTodos = async () => {
-    await getTodos(setTodos);
-  };
-
-  // const todaysTodos: ITodoItem[] | [] = todos.filter((todo) =>
-  //   compareDate(todo)
-  // );
+  const todos = useAppSelector((state) => state.todos.todos);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    fetchTodos();
-  }, []);
-  useLayoutEffect(
-    () =>
-      setTodos(
-        [...todos]
-          .filter((todo) => compareDate(todo))
-          .filter((todo) => todo.status === "pending")
-      ),
-    [todos.length]
-  );
+    dispatch(fetchTodos());
+  }, [dispatch]);
 
   return (
     <>
@@ -48,7 +35,7 @@ const DaylyTasksModal: FC<DailyModalProps> = ({ modalHandler }) => {
           <ModalFooter
             buttonOK="Ok"
             cancelHandler={modalHandler}
-            addHandler={() => null}
+            addTodo={() => null}
           />
         </div>
       </div>

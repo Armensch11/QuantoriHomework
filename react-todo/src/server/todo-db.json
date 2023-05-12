@@ -1,36 +1,20 @@
 {
   "tasks": [
     {
-      "title": "new task 3",
-      "task": "new task 3",
-      "date": "2023-05-02",
-      "type": "other",
-      "status": "pending",
-      "id": "1683046707805"
-    },
-    {
-      "title": "new task 4",
+      "title": "some other task under number 44",
       "task": "new task 4",
-      "date": "2023-05-02",
+      "date": "2023-05-11",
       "type": "home",
-      "status": "pending",
+      "status": "completed",
       "id": "1683046721462"
     },
     {
-      "title": "new task 5",
+      "title": "new task 5 edited type",
       "task": "new task 5",
-      "date": "2023-05-02",
-      "type": "other",
+      "date": "2023-05-11",
+      "type": "work",
       "status": "completed",
       "id": "1683046733773"
-    },
-    {
-      "title": "some task for tommorow",
-      "task": "some task for tommorow",
-      "date": "2023-05-03",
-      "type": "home",
-      "status": "completed",
-      "id": "1683050536385"
     },
     {
       "title": "another task for tomorrow",
@@ -41,28 +25,60 @@
       "id": "1683050549099"
     },
     {
-      "title": "go play basketball",
+      "title": "go play basketball on Friday we play",
       "task": "go play basketball",
-      "date": "2023-05-02",
+      "date": "2023-05-12",
       "type": "home",
       "status": "pending",
       "id": "1683050712830"
     },
     {
-      "title": "far date task",
-      "task": "far date task",
-      "date": "2023-05-05",
-      "type": "home",
+      "title": "task for today",
+      "task": "task for today",
+      "date": "2023-05-06",
+      "type": "work",
       "status": "pending",
-      "id": "1683091901095"
+      "id": "1683402999814"
     },
     {
-      "title": "sdsdsdsd",
-      "task": "sdsdsdsd",
-      "date": "2023-05-05",
+      "title": "another task for 6 minutes late",
+      "task": "another task for 6 minutes late",
+      "date": "2023-05-07",
       "type": "other",
       "status": "pending",
-      "id": "1683221501582"
+      "id": "1683403032301"
+    },
+    {
+      "title": "some other task fo rnow",
+      "task": "some other task fo rnow",
+      "date": "2023-05-07",
+      "type": "home",
+      "status": "pending",
+      "id": "1683404365978"
+    },
+    {
+      "title": "go swimming this month",
+      "task": "go swimming this month",
+      "date": "2023-05-09",
+      "type": "health",
+      "status": "pending",
+      "id": "1683440197467"
+    },
+    {
+      "title": "some task for some day",
+      "task": "some task for some day",
+      "date": "2023-05-08",
+      "type": "home",
+      "status": "pending",
+      "id": "1683472830625"
+    },
+    {
+      "title": "health",
+      "task": "health",
+      "date": "2023-05-11",
+      "type": "health",
+      "status": "completed",
+      "id": "1683713050335"
     }
   ]
 }

@@ -1,48 +1,29 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
-import { ITodoItem } from "./Interfaces/Interfaces";
+
 import Header from "./components/header/";
 import Search from "./components/search/Search";
-import {
-  getTodos,
-  deleteTodos,
-  markTodos,
-} from "./components/utils/todosActions";
-import TodoList from "./components/todoList/TodoList";
-import { searchResult } from "./components/utils/searchResult";
+
 import TodoAddModal from "./components/modals/todoAddModal/TodoAddModal";
-import { dbPost } from "./components/utils/dbPost";
 import DailyTasksModal from "./components/modals/dailyTasksModal/DailyTasksModal";
 import { checkLocalStorage } from "./components/utils/checkLocalStorage";
 
+import FilterByTypes from "./pages/filterByTypes/FilterByTypes";
+import { Routes, Route, Outlet, Navigate } from "react-router-dom";
+import Home from "./pages/home/Home";
+import TypeNav from "./components/typeNav/TypeNav";
+import EditTaskModal from "./components/modals/editTaskModal/EditTaskModal";
+import { useAppSelector } from "./hooks/reduxHooks";
+
 function App() {
-  const [todos, setTodos] = useState<ITodoItem[] | []>([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchTodos, setSearchTodos] = useState<ITodoItem[] | []>([]);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDailyModal, setShowDailyModal] = useState(false);
-  const addHandler = async (newItem: ITodoItem) => {
-    setTodos((prevTodos) => [...prevTodos, newItem]);
-    await dbPost(newItem);
-  };
-  const deleteHandler = (id: number) => {
-    deleteTodos(setTodos, id);
-  };
-  const markHandler = (id: number, checked: boolean | null) => {
-    markTodos(setTodos, todos, id, checked);
-  };
-  const searchTermHandler = (value: string) => {
-    setSearchTerm(value);
-  };
-  const fetchWrapper = async () => {
-    await getTodos(setTodos);
-  };
 
+  const isShowEditModal = useAppSelector((state) => state.modal.show);
   const modalHandler = (type = "add") => {
     type === "add"
       ? setShowAddModal(!showAddModal)
       : setShowDailyModal(!showDailyModal);
-    // console.log(type);
   };
 
   const localStorageVisited = useRef(false);
@@ -52,45 +33,30 @@ function App() {
     }
     return (localStorageVisited.current = true);
   };
-  // checkDate();
+
   useEffect(() => {
     checkDate();
   }, []);
-  useEffect(() => {
-    fetchWrapper();
-  }, []);
-  useEffect(() => {
-    const result = searchResult(searchTerm, todos);
-    setSearchTodos([...result]);
-  }, [searchTerm, todos]);
+
   return (
     <div className="App">
       <Header />
-      <Search
-        searchTermHandler={searchTermHandler}
-        modalHandler={modalHandler}
-      />
-      {todos.length && (
-        <TodoList
-          todos={searchTerm.length ? searchTodos : todos}
-          deleteHandler={deleteHandler}
-          markHandler={markHandler}
-        />
-      )}
-      {todos.length && (
-        <TodoList
-          todos={todos}
-          status="completed"
-          title="Completed Tasks"
-          deleteHandler={deleteHandler}
-          markHandler={markHandler}
-        />
+      <Search modalHandler={modalHandler} />
+      <TypeNav />
+
+      <Outlet />
+
+      {showAddModal && <TodoAddModal modalHandler={modalHandler} />}
+      {showDailyModal && <DailyTasksModal modalHandler={modalHandler} />}
+      {isShowEditModal && (
+        <EditTaskModal todos={{ id: "232323" }} modalHandler={modalHandler} />
       )}
 
-      {showAddModal && (
-        <TodoAddModal modalHandler={modalHandler} addHandler={addHandler} />
-      )}
-      {showDailyModal && <DailyTasksModal modalHandler={modalHandler} />}
+      <Routes>
+        <Route path="/" element={<Navigate to="/tasks" />} />
+        <Route path="/tasks" element={<Home />} />
+        <Route path="/tasks/:type" element={<FilterByTypes />} />
+      </Routes>
     </div>
   );
 }

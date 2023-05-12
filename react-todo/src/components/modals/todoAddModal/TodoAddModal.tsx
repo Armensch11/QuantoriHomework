@@ -4,15 +4,18 @@ import ModalTitle from "../modalTitle";
 import ModalFooter from "../modalFooter";
 import AddTaskBody from "../modalBody/addTaskBody/AddTaskBody";
 import { ITodoItem } from "../../../Interfaces/Interfaces";
+import { useAppDispatch } from "../../../hooks/reduxHooks";
+import { postTodo } from "../../../features/todos/todosSlice";
 
 type TodoModalProps = {
   modalHandler: (type: string) => void;
-  addHandler: (newTodo: ITodoItem) => void;
 };
 
-const TodoAddModal: FC<TodoModalProps> = ({ modalHandler, addHandler }) => {
+const TodoAddModal: FC<TodoModalProps> = ({ modalHandler }) => {
   const [newTask, setNewTask] = useState<ITodoItem>();
+  const dispatch = useAppDispatch();
   const [buttonDisabled, setButtonDisabled] = useState(true);
+  
   const checkEntries = (input: string, date: string, taskType: string) => {
     if (input.length && date.length && taskType.length) {
       setButtonDisabled(false);
@@ -29,8 +32,10 @@ const TodoAddModal: FC<TodoModalProps> = ({ modalHandler, addHandler }) => {
     }
   };
 
-  const addButtonClickHandler = () => {
-    if (newTask) addHandler(newTask);
+  const addTodoOnClick = () => {
+    if (newTask) {
+      dispatch(postTodo(newTask));
+    }
   };
   return (
     <>
@@ -42,7 +47,7 @@ const TodoAddModal: FC<TodoModalProps> = ({ modalHandler, addHandler }) => {
             buttonCancel="Cancel"
             buttonAdd="Add Task"
             cancelHandler={modalHandler}
-            addHandler={addButtonClickHandler}
+            addTodo={addTodoOnClick}
             buttonStatus={buttonDisabled}
           />
         </div>

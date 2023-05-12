@@ -1,9 +1,14 @@
 import React, { useRef } from "react";
 
 import "./TodoItem.css";
-import trashBin from "../../assets/trash_bin.svg";
+import trashBin from "./assets/trash_bin.svg";
+import editIcon from "./assets/edit-icon.svg";
 import { todoTypes } from "../utils/todoTypes";
 import { formatDate } from "../utils/formatDate";
+import { useAppDispatch } from "../../hooks/reduxHooks";
+import { markTodo, deleteTodo } from "../../features/todos/todosSlice";
+import { ITodoItem } from "../../Interfaces/Interfaces";
+import { showEditModal } from "../../features/showModal/showModalSlice";
 
 const TodoItem = ({
   id,
@@ -12,9 +17,6 @@ const TodoItem = ({
   date,
   status,
   task,
-
-  deleteHandler,
-  markHandler,
 }: {
   id: string;
   title: string;
@@ -22,11 +24,10 @@ const TodoItem = ({
   date: string;
   status: string;
   task: string;
-
-  deleteHandler: (id: number) => void;
-  markHandler: (id: number, checked: boolean | null) => void;
 }) => {
   const checkbox = useRef<HTMLInputElement>(null);
+  const dispatch = useAppDispatch();
+
   return (
     <>
       <div className="todo-container">
@@ -36,9 +37,15 @@ const TodoItem = ({
           checked={status === "completed" ? true : false}
           ref={checkbox}
           onChange={() => {
-            if (checkbox.current) {
-              markHandler(+id, checkbox.current?.checked);
-            }
+            const todo: ITodoItem = {
+              id: id,
+              title: title,
+              type: type,
+              date: date,
+              status: status,
+              task: task,
+            };
+            dispatch(markTodo(todo));
           }}
         />
         <div className="todo-desc">
@@ -46,7 +53,7 @@ const TodoItem = ({
             className="todo__title"
             style={{ color: status === "completed" ? "#838383" : "#1D1D1D" }}
           >
-            {task}
+            {title}
           </div>
           <div className="typeDate-container">
             <div
@@ -65,12 +72,21 @@ const TodoItem = ({
             <div className="todo__date">{formatDate(date)}</div>
           </div>
         </div>
+        <div className="todo-edit">
+          <img
+            src={editIcon}
+            alt="todo edit icon"
+            onClick={() => {
+              dispatch(showEditModal({ show: true, todoId: id }));
+            }}
+          />
+        </div>
         <div className="todo-delete">
           <img
             src={trashBin}
             alt="todo delete icon"
             onClick={() => {
-              deleteHandler(+id);
+              dispatch(deleteTodo(id));
             }}
           />
         </div>

@@ -1,0 +1,26 @@
+.typeNav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  margin-left: 174px;
+  margin-right: 174px;
+  margin-bottom: 52px;
+}
+.typeNav-container-left {
+  column-gap: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.typeNav__item {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 18px;
+  text-decoration: none;
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+}

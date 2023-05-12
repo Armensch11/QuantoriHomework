@@ -3,6 +3,7 @@ import "./TaskTypes.css";
 import { todoTypes } from "../../../utils/todoTypes";
 import { typeSelector } from "../../../utils/typeSelector";
 import { IBorders } from "../../../../Interfaces/Interfaces";
+import nextId from "react-id-generator";
 
 const types = ["health", "work", "home", "other"];
 
@@ -10,8 +11,8 @@ const TaskTypes = ({
   typeHandler,
   focusOutHandler,
 }: {
-  typeHandler: (type: string) => void;
-  focusOutHandler: () => void;
+  typeHandler?: (type: string) => void;
+  focusOutHandler?: () => void;
 }) => {
   const [selected, setSelected] = useState<IBorders>({
     work: "none",
@@ -23,15 +24,18 @@ const TaskTypes = ({
     const target = e.target as HTMLElement;
     const type = target.innerText;
     setSelected(typeSelector(type));
-    typeHandler(type);
+    if (typeHandler) {
+      typeHandler(type);
+    }
   };
+
   return (
     <React.Fragment>
       <div className="types-container">
-        {types.map((type, index) => (
+        {types.map((type) => (
           <div
-            key={index}
-            className="type"
+            key={nextId()}
+            className="types"
             style={{
               color: todoTypes[type].color,
               backgroundColor: todoTypes[type].background,

@@ -39,7 +39,7 @@ const AddTaskBody = ({
             }
           }}
         />
-        <div className="typeDate-container">
+        <div className="typeDate-container-modal">
           <TaskTypes
             typeHandler={typeHandler}
             focusOutHandler={focusOutHandler}
