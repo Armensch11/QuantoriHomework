@@ -6,7 +6,7 @@ import { updateSearchTerm } from "../../features/search/searchSlice";
 import { useSearchParams } from "react-router-dom";
 
 const Search = ({ modalHandler }: { modalHandler: () => void }) => {
-  //in order to avoid having warning in terminal, cause dont use searchParams
+  //in order to avoid having warning in terminal, dont use searchParams
   const setSearchParams = useSearchParams()[1];
 
   const dispatch = useAppDispatch();

@@ -7,9 +7,6 @@ import {
   deleteTodoInServer,
   editTodoInServer,
 } from "../../components/utils/reduxHelpers";
-import { loadState } from "../../components/utils/checkStateInLocalstorage";
-
-const persistedState: ITodoItem[] = loadState();
 
 type SliceState = {
   todos: ITodoItem[];
@@ -18,7 +15,7 @@ type SliceState = {
 };
 
 const initialState: SliceState = {
-  todos: persistedState,
+  todos: [],
   loading: false,
   error: null,
 };

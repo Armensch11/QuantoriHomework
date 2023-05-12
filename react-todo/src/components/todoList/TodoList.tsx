@@ -2,7 +2,7 @@ import "./TodoList.css";
 import TodoItem from "../todoItem/TodoItem";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { fetchTodos, updateState } from "../../features/todos/todosSlice";
-import { FC, useEffect } from "react";
+import { FC, useEffect, useLayoutEffect } from "react";
 
 type TodoListProps = {
   title?: string;
@@ -33,14 +33,15 @@ const TodoList: FC<TodoListProps> = ({
 
   useEffect(() => {
     dispatch(fetchTodos());
-  }, [dispatch]);
+  }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handleStorageChange = () => {
       if (localStorage.getItem("stateCurrent")) {
-        const state = JSON.parse(localStorage.getItem("stateCurrent") || "{}");
-
-        dispatch(updateState(state));
+      //  const state = JSON.parse(localStorage.getItem("stateCurrent") || "{}");
+        
+        // dispatch(updateState(state));
+        dispatch(fetchTodos());
       }
     };
 
